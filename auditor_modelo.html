@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditor da rotina de pilares</title>
+<style>
+:root {
+  --fundo: #f6f6f4; --superficie: #ffffff; --linha: #deded9; --linha-forte: #b9b9b2;
+  --tinta: #1b1b19; --tinta-2: #4e4e49; --tinta-3: #77776f;
+  --acento: #1f5fae; --acento-claro: #e7eef8;
+  --ok: #1d7a46; --ok-fundo: #e3f3ea; --erro: #a3301c; --erro-fundo: #f8e6e1;
+  --serie-1: #2a78d6; --serie-2: #eb6834; --serie-3: #1baf7a;
+  --grade: #ecece8; --mono: "Consolas", "SFMono-Regular", "Menlo", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fundo); color: var(--tinta);
+       font: 14px/1.45 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; }
+header { background: var(--superficie); border-bottom: 1px solid var(--linha); padding: 12px 20px 0; position: sticky; top: 0; z-index: 5; }
+header h1 { font-size: 17px; margin: 0 0 2px; font-weight: 600; }
+header .sub { color: var(--tinta-3); font-size: 12px; margin-bottom: 10px; }
+nav { display: flex; gap: 4px; flex-wrap: wrap; }
+nav button { border: 0; background: none; padding: 8px 14px; font: inherit; color: var(--tinta-2); cursor: pointer;
+             border-bottom: 2px solid transparent; }
+nav button.ativo { color: var(--acento); border-bottom-color: var(--acento); font-weight: 600; }
+main { padding: 16px 20px 40px; }
+.aba { display: none; } .aba.ativa { display: block; }
+.cartao { background: var(--superficie); border: 1px solid var(--linha); border-radius: 8px; padding: 14px 16px; margin-bottom: 14px; }
+h2 { font-size: 15px; margin: 0 0 10px; font-weight: 600; }
+h3 { font-size: 13px; margin: 14px 0 6px; color: var(--tinta-2); font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
+.grade-pilar { display: grid; grid-template-columns: 300px 1fr; gap: 14px; align-items: start; }
+@media (max-width: 900px) { .grade-pilar { grid-template-columns: 1fr; } }
+.lista { max-height: calc(100vh - 230px); overflow: auto; padding: 0; }
+.lista button { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--grade); background: none;
+                padding: 7px 12px; font: inherit; cursor: pointer; color: var(--tinta); }
+.lista button:hover { background: var(--acento-claro); }
+.lista button.ativo { background: var(--acento-claro); box-shadow: inset 3px 0 0 var(--acento); }
+.lista .id { font-weight: 600; font-family: var(--mono); }
+.lista .det { color: var(--tinta-3); font-size: 12px; }
+.filtros { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--linha); }
+.filtros input, .filtros select, .barra input, .barra select { font: inherit; padding: 5px 7px; border: 1px solid var(--linha-forte); border-radius: 5px; background: #fff; width: 100%; }
+.selo { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+.selo.ok { background: var(--ok-fundo); color: var(--ok); } .selo.erro { background: var(--erro-fundo); color: var(--erro); }
+.indicadores { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 4px; }
+.indicador { border: 1px solid var(--linha); border-radius: 6px; padding: 6px 10px; min-width: 110px; }
+.indicador .r { font-size: 11px; color: var(--tinta-3); } .indicador .v { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { border-bottom: 1px solid var(--grade); padding: 5px 8px; text-align: left; vertical-align: top; }
+th { color: var(--tinta-2); font-weight: 600; background: #fafaf8; position: sticky; top: 0; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 12.5px; }
+.chip { display: inline-block; font-family: var(--mono); font-size: 11.5px; padding: 0 6px; margin: 1px 2px 1px 0; border-radius: 4px;
+        border: 1px solid var(--linha-forte); background: #fff; color: var(--acento); cursor: pointer; }
+.chip:hover { background: var(--acento-claro); }
+.chip.aux { color: var(--tinta-3); }
+.graficos { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 14px; }
+.grafico { border: 1px solid var(--linha); border-radius: 6px; padding: 8px; background: #fff; position: relative; }
+.grafico .tit { font-size: 12.5px; font-weight: 600; color: var(--tinta-2); margin: 0 0 4px; }
+.grafico .leg { font-size: 11.5px; color: var(--tinta-3); margin-top: 4px; }
+svg text { font-family: inherit; fill: var(--tinta-2); font-size: 11px; }
+.dica { position: fixed; pointer-events: none; background: #1b1b19; color: #fff; font-size: 12px; padding: 5px 8px; border-radius: 5px;
+        display: none; z-index: 20; max-width: 280px; white-space: pre-line; }
+.formula { border-top: 1px solid var(--grade); padding: 10px 0; }
+.formula.destaque { background: #fff8d6; transition: background 1.5s; }
+.formula .cab { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.formula .tag { font-family: var(--mono); font-weight: 700; color: var(--acento); }
+.formula .linha { color: var(--tinta-3); font-size: 12px; }
+.mat { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", "Times New Roman", serif; font-size: 17px;
+  line-height: 2.1; color: var(--tinta-1); }
+.formula .exibidas { background: #fafaf8; border-left: 3px solid var(--acento); padding: 4px 12px; margin: 8px 0; }
+.mat .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 2px;
+  line-height: 1.15; font-size: 0.92em; }
+.mat .fr > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px 1px; }
+.mat .fr > span:last-child { padding: 1px 3px 0; }
+.mat .rz { white-space: nowrap; } .mat .rz > span { border-top: 1px solid currentColor; padding: 0 2px; }
+.mat sub, .mat sup { font-size: 0.72em; line-height: 0; }
+td .mat { font-size: 14px; line-height: 1.9; display: block; margin-top: 2px; }
+pre { background: #f4f4f1; border: 1px solid var(--grade); border-radius: 5px; padding: 8px 10px; overflow: auto; font: 12px/1.45 var(--mono); margin: 6px 0; white-space: pre-wrap; }
+pre.comentario { background: #fbfbf9; color: var(--tinta-2); }
+.fontes a { display: inline-block; margin: 2px 6px 2px 0; padding: 3px 9px; border-radius: 5px; background: var(--acento); color: #fff;
+            text-decoration: none; font-size: 12px; }
+.fontes a:hover { filter: brightness(1.15); }
+.fontes .tt { color: var(--tinta-3); font-size: 11.5px; }
+.barra { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; } .barra input, .barra select { width: auto; }
+.mapa { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 18px; }
+@media (max-width: 700px) { .mapa { grid-template-columns: 1fr; } }
+.mapa table { table-layout: fixed; } .mapa table td { text-align: center; padding: 6px; font-family: var(--mono); }
+.mapa .tit-mapa { font-weight: 600; color: var(--tinta-2); margin: 8px 0 6px; }
+.mapa table td.cel { cursor: default; }
+.nota { color: var(--tinta-3); font-size: 12px; }
+.ok-t { color: var(--ok); font-weight: 600; } .erro-t { color: var(--erro); font-weight: 600; }
+#tabela-testes td.num, #tabela-engenharia td.num, #tabela-tolerancias td.num { white-space: nowrap; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Auditor da rotina de pilares — ABNT NBR 6118:2023, flexão normal composta reta, λ ≤ 140</h1>
+  <div class="sub" id="versao"></div>
+  <nav id="abas">
+    <button data-aba="pilar" class="ativo">Pilar a pilar</button>
+    <button data-aba="formulas">Fórmulas e fontes</button>
+    <button data-aba="matriz">Matriz</button>
+    <button data-aba="validacao">Validação</button>
+  </nav>
+</header>
+<main>
+  <section class="aba ativa" id="aba-pilar">
+    <div class="grade-pilar">
+      <div class="cartao lista-cartao" style="padding:0">
+        <div class="filtros">
+          <input id="f-busca" placeholder="P001 a P324 ou M01 a M09 (teste do momento mínimo)" style="grid-column: span 2">
+          <select id="f-situacao"></select><select id="f-secao"></select>
+          <select id="f-lambda"></select><select id="f-nu"></select>
+          <select id="f-e1bw"></select><select id="f-fck"></select>
+        </div>
+        <div class="lista" id="lista"></div>
+      </div>
+      <div id="detalhe"></div>
+    </div>
+  </section>
+  <section class="aba" id="aba-formulas">
+    <div class="cartao">
+      <h2>Zona de auditoria de pilares_nbr6118.py</h2>
+      <p class="nota" id="nota-fontes"></p>
+      <div class="barra"><input id="busca-formula" placeholder="Buscar por etiqueta, texto ou nome (ex.: F28, fluência, curvatura)" style="min-width:340px">
+        <select id="grupo-formula"><option value="">Todos os grupos</option><option value="C">C: constantes normativas</option>
+          <option value="H">H: hipóteses do trabalho</option><option value="N">N: parâmetros numéricos</option>
+          <option value="F">F: fórmulas</option><option value="R">R: regras</option><option value="M">M: métodos numéricos</option></select></div>
+      <div id="formulas"></div>
+    </div>
+  </section>
+  <section class="aba" id="aba-matriz">
+    <div class="cartao"><h2>Mapa de viabilidade (número de pilares viáveis em cada célula de 9)</h2>
+      <div class="mapa" id="mapa"></div>
+      <p class="nota">A: As,calc &gt; 4 % Ac; E: As,calc &gt; 8 % Ac ou sem equilíbrio estável; D: nenhum arranjo atende ao detalhamento.</p></div>
+    <div class="cartao"><h2>Taxa de armadura calculada em função de λ</h2>
+      <div class="barra"><select id="m-secao"></select><select id="m-e1bw"></select><select id="m-grandeza">
+        <option value="calc">ρ = As,calc / Ac</option><option value="ref">ρ ref = As,calc,ref / Ac</option><option value="adot">ρ adot = As,adot / Ac</option></select></div>
+      <div class="grafico" id="g-matriz"></div></div>
+  </section>
+  <section class="aba" id="aba-validacao">
+    <div class="cartao"><h2>Por que calculado e esperado diferem, por nível</h2><div id="explicacao-niveis"></div></div>
+    <div class="cartao"><h2>Origem dos desvios e limites internos de alarme</h2>
+      <p class="nota">Os desvios são apresentados com a sua origem; não há limite de aceitação. Os limites desta tabela servem só como alarme contra erro de programação ao reexecutar a rotina. Concordância = 100 % − Δ%. Detalhes nos comentários [N01], [R03], [N04], [N06] e [N07] da zona de auditoria de validacao.py.</p>
+      <div style="overflow:auto"><table id="tabela-tolerancias"></table></div></div>
+    <div class="cartao"><h2>Engenharia reversa de Bastos (2017)</h2><div id="resumo-engenharia" class="nota"></div>
+      <div style="max-height: 60vh; overflow:auto"><table id="tabela-engenharia"></table></div></div>
+    <div class="cartao"><h2>Testes da validação (validacao.py)</h2><div id="resumo-validacao" class="nota"></div>
+      <div class="barra"><input id="busca-teste" placeholder="Filtrar (ex.: Bastos, V3, fibras, secante)" style="min-width:320px">
+        <select id="nivel-teste"><option value="">Níveis 1 e 2</option><option value="1">Nível 1</option><option value="2">Nível 2</option></select></div>
+      <div style="max-height: 70vh; overflow:auto"><table id="tabela-testes"></table></div></div>
+  </section>
+</main>
+<div class="dica" id="dica"></div>
+<script>
+const DADOS = /*__DADOS__*/null;
+const fmt = (v, casas) => (v === null || v === undefined || v === "" || Number.isNaN(+v)) ? "–" :
+  (+v).toLocaleString("pt-BR", {minimumFractionDigits: casas, maximumFractionDigits: casas});
+const curto = v => (v === null || v === undefined || Number.isNaN(+v)) ? "–" : (+v === 0 ? "0" : (Math.abs(+v) < 1e-3 ? (+v).toExponential(2).replace(".", ",") : fmt(v, 4)));
+const significativo = v => (v === null || v === undefined || Number.isNaN(+v)) ? "–" : (+v !== 0 && Math.abs(+v) < 0.01 ? (+v).toExponential(5).replace(".", ",") : fmt(v, 6));
+const num = v => (v === "" || v === null || v === undefined) ? NaN : +v;
+const el = (tag, atributos = {}, filhos = []) => { const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(atributos)) { if (k === "html") e.innerHTML = v; else if (k === "texto") e.textContent = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); }
+  for (const f of [].concat(filhos)) if (f !== null && f !== undefined) e.append(f); return e; };
+const NS = "http://www.w3.org/2000/svg";
+const sv = (tag, atributos = {}) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(atributos)) e.setAttribute(k, v); return e; };
+const dica = document.getElementById("dica");
+function mostrarDica(evento, texto) { dica.textContent = texto; dica.style.display = "block";
+  dica.style.left = Math.min(evento.clientX + 12, innerWidth - 290) + "px"; dica.style.top = (evento.clientY + 12) + "px"; }
+function esconderDica() { dica.style.display = "none"; }
+const P = DADOS.pilares, G = DADOS.graficos, ST = DADOS.status;
+const formulaPorEtiqueta = Object.fromEntries(DADOS.formulas.map(f => [f.etiqueta, f]));
+const codigoSituacao = s => s === ST.ok ? "ok" : s === ST.A ? "A" : s === ST.E ? "E" : "D";
+
+document.getElementById("versao").textContent = `Resultados: resultados_matriz.csv (MD5 ${DADOS.versao.md5_resultados}), ${DADOS.versao.pilares} pilares, e resultados_teste_minimo.csv, ${DADOS.versao.pilares_teste} pilares do teste do momento mínimo (M01 a M09); Python ${DADOS.versao.python}. ` +
+  "Os botões de fonte abrem os PDFs locais em " + decodeURI(DADOS.pasta_local.replace("file:///", "")) + ".";
+
+// ------------------------------------------------------------------ abas
+const abas = document.querySelectorAll("#abas button");
+function abrirAba(nome) { abas.forEach(b => b.classList.toggle("ativo", b.dataset.aba === nome));
+  document.querySelectorAll(".aba").forEach(s => s.classList.toggle("ativa", s.id === "aba-" + nome)); }
+abas.forEach(b => b.addEventListener("click", () => abrirAba(b.dataset.aba)));
+
+// ------------------------------------------------------------------ fontes e fórmulas
+function linkFonte(fonte) {
+  const url = DADOS.pasta_local + encodeURI(fonte.arquivo).replace(/#/g, "%23") + "#page=" + fonte.pagina;
+  return el("a", {href: url, target: "_blank", title: (fonte.titulo ? fonte.titulo + " — " : "") + "PDF " + fonte.arquivo + ", página " + fonte.pagina + " do arquivo"}, fonte.rotulo);
+}
+// Renderiza a marcação das linhas "Fórmula:" ([R07] de gerar_auditor.py): _{...} índice, ^{...} expoente,
+// \frac{a}{b} fração e \sqrt{...} raiz; o resto é texto. Monta nós DOM (sem innerHTML), sem bibliotecas externas.
+function lerGrupo(texto, inicio) {
+  let nivel = 0;
+  for (let i = inicio; i < texto.length; i++) {
+    if (texto[i] === "{") nivel++;
+    else if (texto[i] === "}") { nivel--; if (nivel === 0) return [texto.slice(inicio + 1, i), i + 1]; }
+  }
+  return [texto.slice(inicio + 1), texto.length];
+}
+function nosFormula(texto) {
+  const nos = []; let buffer = "", i = 0;
+  const descarregar = () => { if (buffer) { nos.push(document.createTextNode(buffer)); buffer = ""; } };
+  while (i < texto.length) {
+    if (texto.startsWith("\\frac{", i)) {
+      descarregar(); const [num, j] = lerGrupo(texto, i + 5); const [den, k] = lerGrupo(texto, j);
+      nos.push(el("span", {class: "fr"}, [el("span", {}, nosFormula(num)), el("span", {}, nosFormula(den))])); i = k;
+    } else if (texto.startsWith("\\sqrt{", i)) {
+      descarregar(); const [arg, j] = lerGrupo(texto, i + 5);
+      nos.push(el("span", {class: "rz"}, ["√", el("span", {}, nosFormula(arg))])); i = j;
+    } else if ((texto[i] === "_" || texto[i] === "^") && texto[i + 1] === "{") {
+      descarregar(); const [arg, j] = lerGrupo(texto, i + 1);
+      nos.push(el(texto[i] === "_" ? "sub" : "sup", {}, nosFormula(arg))); i = j;
+    } else { buffer += texto[i]; i++; }
+  }
+  descarregar(); return nos;
+}
+const formulaExibida = texto => el("div", {class: "mat"}, nosFormula(texto));
+function chipsEtiquetas(etiquetas) {
+  return etiquetas.map((t, i) => el("span", {class: "chip" + (i ? " aux" : ""), title: formulaPorEtiqueta[t] ? formulaPorEtiqueta[t].titulo : t,
+    onclick: () => irParaFormula(t)}, "[" + t + "]"));
+}
+function celulaFormula(etiquetas) {
+  const comFormula = etiquetas.find(t => formulaPorEtiqueta[t] && formulaPorEtiqueta[t].formulas.length);
+  return [...chipsEtiquetas(etiquetas), ...(comFormula ? formulaPorEtiqueta[comFormula].formulas.map(formulaExibida) : [])];
+}
+function irParaFormula(t) {
+  abrirAba("formulas"); document.getElementById("busca-formula").value = ""; document.getElementById("grupo-formula").value = "";
+  desenharFormulas(); const alvo = document.getElementById("formula-" + t);
+  if (alvo) { alvo.scrollIntoView({behavior: "smooth", block: "start"}); alvo.classList.add("destaque"); setTimeout(() => alvo.classList.remove("destaque"), 1800); }
+}
+document.getElementById("nota-fontes").textContent = "Cada item traz o comentário de rastreabilidade (o que calcula, variáveis, fonte e onde é usado) e o código. " +
+  "Os botões azuis abrem o PDF local na página da fonte. Regras de página: " + Object.values(DADOS.documentos).map(d => d.arquivo + ": " + d.regra).join("; ") + ".";
+function desenharFormulas() {
+  const termo = document.getElementById("busca-formula").value.trim().toLowerCase();
+  const grupo = document.getElementById("grupo-formula").value;
+  const alvo = document.getElementById("formulas"); alvo.innerHTML = "";
+  for (const f of DADOS.formulas) {
+    if (grupo && f.etiqueta[0] !== grupo) continue;
+    const texto = (f.etiqueta + " " + f.comentario + " " + f.formulas.join(" ") + " " + f.codigo + " " + f.nomes.join(" ")).toLowerCase();
+    if (termo && !texto.includes(termo)) continue;
+    const fontes = el("div", {class: "fontes"}, f.fontes.length ? f.fontes.map(linkFonte) : [el("span", {class: "tt"}, "Sem página de norma ou livro: hipótese do trabalho, parâmetro numérico ou conversão.")]);
+    alvo.append(el("div", {class: "formula", id: "formula-" + f.etiqueta}, [
+      el("div", {class: "cab"}, [el("span", {class: "tag"}, "[" + f.etiqueta + "]"), el("strong", {}, f.titulo), el("span", {class: "linha"}, "pilares_nbr6118.py, linha " + f.linha)]),
+      fontes, f.formulas.length ? el("div", {class: "exibidas"}, f.formulas.map(formulaExibida)) : el("span", {}),
+      el("pre", {class: "comentario"}, f.comentario), el("pre", {}, f.codigo), el("div", {class: "nota"}, f.uso)]));
+  }
+}
+document.getElementById("busca-formula").addEventListener("input", desenharFormulas);
+document.getElementById("grupo-formula").addEventListener("change", desenharFormulas);
+desenharFormulas();
+
+// ------------------------------------------------------------------ gráficos (SVG)
+function escala(d0, d1, r0, r1) { const k = (r1 - r0) / ((d1 - d0) || 1); return v => r0 + (v - d0) * k; }
+function passo(amplitude) { const bruto = amplitude / 5, p10 = Math.pow(10, Math.floor(Math.log10(bruto || 1))); const r = bruto / p10;
+  return (r < 1.5 ? 1 : r < 3 ? 2 : r < 7 ? 5 : 10) * p10; }
+function graficoXY(alvo, opcoes) {
+  const L = opcoes.largura || 360, A = opcoes.altura || 270, m = {e: 52, d: 12, t: 10, b: 38};
+  const todosX = opcoes.series.flatMap(s => s.x).concat(opcoes.pontos.map(p => p.x)).filter(Number.isFinite);
+  const todosY = opcoes.series.flatMap(s => s.y).concat(opcoes.pontos.map(p => p.y)).filter(Number.isFinite);
+  let [x0, x1] = [Math.min(...todosX, opcoes.incluirZeroX ? 0 : Infinity), Math.max(...todosX, 0)];
+  let [y0, y1] = [Math.min(...todosY, opcoes.incluirZeroY ? 0 : Infinity), Math.max(...todosY)];
+  const fx = (x1 - x0) * 0.06, fy = (y1 - y0) * 0.06; x0 -= fx; x1 += fx; y0 -= fy; y1 += fy;
+  const X = escala(x0, x1, m.e, L - m.d), Y = escala(y0, y1, A - m.b, m.t);
+  const svg = sv("svg", {viewBox: `0 0 ${L} ${A}`, width: "100%", role: "img"});
+  const px = passo(x1 - x0), py = passo(y1 - y0);
+  const limpo = (v, p) => { const r = Math.round(v / p) * p; return Math.abs(r) < p * 1e-6 ? 0 : r; };
+  for (let k = Math.ceil(x0 / px); k * px <= x1; k++) { const v = limpo(k * px, px); svg.append(sv("line", {x1: X(v), x2: X(v), y1: m.t, y2: A - m.b, stroke: "#ecece8"}));
+    const t = sv("text", {x: X(v), y: A - m.b + 14, "text-anchor": "middle"}); t.textContent = fmt(v, px < 1 ? 1 : 0); svg.append(t); }
+  for (let k = Math.ceil(y0 / py); k * py <= y1; k++) { const v = limpo(k * py, py); svg.append(sv("line", {x1: m.e, x2: L - m.d, y1: Y(v), y2: Y(v), stroke: "#ecece8"}));
+    const t = sv("text", {x: m.e - 5, y: Y(v) + 4, "text-anchor": "end"}); t.textContent = fmt(v, py < 1 ? 2 : 0); svg.append(t); }
+  if (x0 < 0 && x1 > 0) svg.append(sv("line", {x1: X(0), x2: X(0), y1: m.t, y2: A - m.b, stroke: "#9a9a93"}));
+  if (y0 < 0 && y1 > 0) svg.append(sv("line", {x1: m.e, x2: L - m.d, y1: Y(0), y2: Y(0), stroke: "#9a9a93"}));
+  const tx = sv("text", {x: (m.e + L - m.d) / 2, y: A - 4, "text-anchor": "middle"}); tx.textContent = opcoes.rotuloX; svg.append(tx);
+  const ty = sv("text", {x: 12, y: (m.t + A - m.b) / 2, "text-anchor": "middle", transform: `rotate(-90 12 ${(m.t + A - m.b) / 2})`}); ty.textContent = opcoes.rotuloY; svg.append(ty);
+  for (const s of opcoes.series) {
+    const d = s.x.map((x, i) => (Number.isFinite(x) && Number.isFinite(s.y[i])) ? `${X(x).toFixed(1)},${Y(s.y[i]).toFixed(1)}` : null).filter(Boolean);
+    if (d.length) svg.append(sv("polyline", {points: d.join(" "), fill: "none", stroke: s.cor, "stroke-width": 2, "stroke-dasharray": s.traco || ""}));
+  }
+  for (const p of opcoes.pontos) { if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) continue;
+    const c = sv("circle", {cx: X(p.x), cy: Y(p.y), r: p.r || 5, fill: p.cor, stroke: "#fff", "stroke-width": 2});
+    const alvoHover = sv("circle", {cx: X(p.x), cy: Y(p.y), r: 11, fill: "transparent", style: p.clique ? "cursor:pointer" : ""});
+    alvoHover.addEventListener("mousemove", e => mostrarDica(e, p.dica)); alvoHover.addEventListener("mouseleave", esconderDica);
+    if (p.clique) alvoHover.addEventListener("click", p.clique);
+    svg.append(c, alvoHover); }
+  alvo.append(svg);
+}
+function desenharSecao(alvo, linha, barras) {
+  const bw = num(linha["b_w (cm)"]), h = num(linha["h (cm)"]); const escalaS = Math.min(300 / bw, 220 / h);
+  const L = bw * escalaS + 70, A = h * escalaS + 50, ox = 50, oy = 15;
+  const svg = sv("svg", {viewBox: `0 0 ${L} ${A}`, width: "100%", style: "max-height:300px"});
+  svg.append(sv("rect", {x: ox, y: oy, width: bw * escalaS, height: h * escalaS, fill: "#f1f1ed", stroke: "#4e4e49"}));
+  const c = num(linha["Cobrimento (cm)"]); svg.append(sv("rect", {x: ox + c * escalaS, y: oy + c * escalaS, width: (bw - 2 * c) * escalaS, height: (h - 2 * c) * escalaS, fill: "none", stroke: "#9a9a93", "stroke-dasharray": "3 3"}));
+  barras.x.forEach((x, i) => { const y = barras.y[i]; const r = Math.max(barras.diametro / 2 * escalaS, 2.5);
+    svg.append(sv("circle", {cx: ox + x * escalaS, cy: oy + (h - y) * escalaS, r, fill: barras.adotadas ? "#1b1b19" : "#9a9a93"})); });
+  const t1 = sv("text", {x: ox + bw * escalaS / 2, y: A - 18, "text-anchor": "middle"}); t1.textContent = "b_w = " + fmt(bw, 0) + " cm"; svg.append(t1);
+  const t2 = sv("text", {x: ox - 8, y: oy + h * escalaS / 2, "text-anchor": "end"}); t2.textContent = "h = " + fmt(h, 0); svg.append(t2);
+  if (num(linha["e1 (cm)"]) > 0) { const ye = oy + h * escalaS / 2, xc = ox + bw * escalaS / 2, xe = xc - num(linha["e1 (cm)"]) * escalaS;
+    svg.append(sv("line", {x1: xc, y1: ye, x2: xe, y2: ye, stroke: "#c2410c", "stroke-width": 1.5}));
+    svg.append(sv("circle", {cx: xe, cy: ye, r: 3.5, fill: "#c2410c"}));
+    const t4 = sv("text", {x: xc, y: ye - 6, "text-anchor": "middle", fill: "#c2410c"}); t4.textContent = "e1 = " + fmt(num(linha["e1 (cm)"]), 1) + " cm"; svg.append(t4); }
+  const t3 = sv("text", {x: ox + bw * escalaS / 2, y: A - 4, "text-anchor": "middle"});
+  t3.textContent = barras.adotadas ? "barras adotadas (" + textoBarras(linha["Barras"]) + " mm)" : "sem arranjo viável: geometria de nível 1 do arranjo (cinza)"; svg.append(t3);
+  alvo.append(svg);
+}
+
+// ------------------------------------------------------------------ pilar a pilar
+const opcoes = (id, rotulo, valores, texto) => { const s = document.getElementById(id); s.append(el("option", {value: ""}, rotulo));
+  valores.forEach(v => s.append(el("option", {value: v}, texto ? texto(v) : v))); };
+opcoes("f-situacao", "Todas as situações", ["ok", "A", "E", "D"], v => ({ok: "viáveis", A: "inviáveis: As > 4 % Ac", E: "inviáveis: seção insuficiente", D: "inviáveis: detalhamento"})[v]);
+const secoes = [...new Set(P.map(p => p["b_w (cm)"] + "x" + p["h (cm)"]))];
+opcoes("f-secao", "Todas as seções", secoes, v => v.replace(".0", "").replace(".0", "").replace("x", " × ") + " cm");
+opcoes("f-lambda", "Todos os λ", DADOS.niveis.lambda.map(String), v => "λ = " + v);
+opcoes("f-nu", "Todos os ν", DADOS.niveis.nu.map(String), v => "ν = " + fmt(v, 1));
+opcoes("f-e1bw", "Todos os e1/b_w", [...DADOS.niveis.e1bw, DADOS.niveis.e1bw_teste].map(String), v => +v === DADOS.niveis.e1bw_teste ? "e1 = 0 (teste do momento mínimo)" : "e1/b_w = " + fmt(v, 2));
+opcoes("f-fck", "Todos os fck", [...new Set(P.map(p => p["fck (MPa)"]))], v => "fck = " + fmt(v, 0) + " MPa");
+let pilarAtual = P[0]["ID"];
+function filtrados() {
+  const b = document.getElementById("f-busca").value.trim().toUpperCase(), s = document.getElementById("f-situacao").value,
+    sec = document.getElementById("f-secao").value, l = document.getElementById("f-lambda").value, n = document.getElementById("f-nu").value,
+    e = document.getElementById("f-e1bw").value, f = document.getElementById("f-fck").value;
+  return P.filter(p => (!b || p.ID.includes(b)) && (!s || codigoSituacao(p["Situação"]) === s) && (!sec || p["b_w (cm)"] + "x" + p["h (cm)"] === sec)
+    && (!l || num(p["λ (dir. b_w)"]) === +l) && (!n || num(p["ν"]) === +n) && (!e || num(p["e1/b_w"]) === +e) && (!f || p["fck (MPa)"] === f));
+}
+function desenharLista() {
+  const lista = document.getElementById("lista"); lista.innerHTML = "";
+  for (const p of filtrados()) {
+    const cod = codigoSituacao(p["Situação"]);
+    lista.append(el("button", {class: p.ID === pilarAtual ? "ativo" : "", onclick: () => { pilarAtual = p.ID; desenharLista(); desenharPilar(); }}, [
+      el("span", {class: "id"}, p.ID + " "), el("span", {class: "selo " + (cod === "ok" ? "ok" : "erro")}, cod === "ok" ? "viável" : "inviável " + cod),
+      el("div", {class: "det"}, `${fmt(p["b_w (cm)"], 0)} × ${fmt(p["h (cm)"], 0)} cm · fck ${fmt(p["fck (MPa)"], 0)} · λ ${fmt(p["λ (dir. b_w)"], 0)} · ν ${fmt(p["ν"], 1)} · e1/b_w ${fmt(p["e1/b_w"], 2)}`)]));
+  }
+}
+["f-busca", "f-situacao", "f-secao", "f-lambda", "f-nu", "f-e1bw", "f-fck"].forEach(id => document.getElementById(id).addEventListener("input", desenharLista));
+const LINHAS_DIRECAO = [
+  ["λ (índice de esbeltez)", "λ {d} calc", 4, ""], ["λ1 (valor-limite)", "λ1 {d}", 2, ""], ["αb", "αb {d}", 2, ""],
+  ["Método de 2ª ordem", "Método {d}", null, ""], ["Nd·e1", "Nd·e1 {d} (kN·m)", 2, "kN·m"], ["M1d,mín", "M1d,mín {d} (kN·m)", 2, "kN·m"],
+  ["ea (fluência)", "e_a {d} (cm)", 3, "cm"], ["Nsg", "N_sg {d} (kN)", 2, "kN"], ["Msg", "M_sg {d} (kN·m)", 2, "kN·m"], ["Ne", "N_e {d} (kN)", 1, "kN"],
+  ["ecc", "e_cc {d} (cm)", 3, "cm"], ["M1d,A (com ecc, se houver)", "M1d,A {d} (kN·m)", 2, "kN·m"], ["1/r", "1/r {d} (1/m)", 5, "1/m"],
+  ["Md,tot", "Md,tot {d} (kN·m)", 2, "kN·m"], ["As,nec da direção", "As,nec {d} (cm²)", 3, "cm²"], ["MRd com As,adot", "MRd {d} (kN·m)", 2, "kN·m"]];
+const LINHAS_ENTRADA = [["b_w", "b_w (cm)", 0, "cm"], ["h", "h (cm)", 0, "cm"], ["fck", "fck (MPa)", 0, "MPa"], ["fyk", "fyk (MPa)", 0, "MPa"],
+  ["fcd", "fcd (kN/cm²)", 4, "kN/cm²"], ["ℓe = ℓ (biapoiado)", "ℓe (cm)", 4, "cm"], ["Nd", "Nd (kN)", 2, "kN"], ["Nk", "Nk (kN)", 2, "kN"],
+  ["Ngk", "Ngk (kN)", 2, "kN"], ["Nqk", "Nqk (kN)", 2, "kN"], ["e1 (direção de b_w)", "e1 (cm)", 3, "cm"], ["ν", "ν calc", 4, ""], ["Cobrimento", "Cobrimento (cm)", 1, "cm"]];
+const LINHAS_ARMADURA = [["As,mín", "As,mín (cm²)", 3, "cm²"], ["As,máx (4 % Ac)", "As,máx (cm²)", 2, "cm²"], ["As,calc = máx(As,b_w; As,h; As,mín)", "As,calc (cm²)", 3, "cm²"],
+  ["Parcela que governa", "Governa", null, ""], ["Arranjos avaliados", "Arranjos avaliados", null, ""], ["Arranjo adotado", "Arranjo adotado", null, ""],
+  ["Barras", "Barras", null, "mm"], ["φt (estribo)", "φt (mm)", 1, "mm"], ["d'", "d' (cm)", 2, "cm"], ["As,adot", "As,adot (cm²)", 3, "cm²"],
+  ["ρ adot", "ρ adot", 4, ""], ["As,nec b_w na geometria de referência", "As,nec b_w ref (cm²)", 3, "cm²"], ["Md,tot b_w na geometria de referência", "Md,tot b_w ref (kN·m)", 2, "kN·m"],
+  ["As,calc na geometria de referência", "As,calc ref (cm²)", 3, "cm²"], ["d' de referência", "d' ref (cm)", 2, "cm"], ["Situação", "Situação", null, ""]];
+const LINHAS_ENVOLTORIA = [["Md,tot,mín b_w (semieixo na direção de b_w; só M1d,mín, αb = 1)", "Md,tot,mín b_w (kN·m)", 2, "kN·m"],
+  ["Md,tot,mín h (semieixo na direção de h; só M1d,mín, αb = 1)", "Md,tot,mín h (kN·m)", 2, "kN·m"],
+  ["η = mín (raio resistente / raio da elipse)", "η envoltória mínima", 4, ""], ["ψ crítico (0° = direção de b_w)", "ψ crítico (°)", 2, "°"],
+  ["Envoltória mínima com 2ª ordem", "Envoltória mínima (15.3.2)", null, ""], ["Primeiro arranjo que engloba a elipse", "Barras elipse", null, "mm"],
+  ["As,adot desse arranjo", "As,adot elipse (cm²)", 3, "cm²"]];
+function etiquetasDe(coluna) { const chave = coluna.replace(/ (b_w|h)( |$)/, " {d}$2"); return DADOS.etiquetas_colunas[coluna] || DADOS.etiquetas_colunas[chave] || []; }
+const textoBarras = v => (v || "–").replace(/\.0\b/, "").replace(".", ",");
+function valorCelula(p, coluna, casas) { const v = p[coluna]; if (v === undefined) return "–";
+  if (coluna === "Barras") return textoBarras(v);
+  if (casas === null) return (v || "–").replace(/duas_faces/g, "duas faces").replace(/perimetro/g, "perímetro"); return fmt(v, casas); }
+function tabelaSimples(p, linhas) {
+  const t = el("table", {}, [el("tr", {}, [el("th", {}, "Grandeza"), el("th", {}, "Valor"), el("th", {}, "Unidade"), el("th", {}, "Fórmula ou regra")])]);
+  for (const [rotulo, coluna, casas, unidade] of linhas) t.append(el("tr", {}, [el("td", {}, rotulo), el("td", {class: casas === null ? "" : "num"}, valorCelula(p, coluna, casas)), el("td", {}, unidade), el("td", {}, celulaFormula(etiquetasDe(coluna)))]));
+  return t;
+}
+function tabelaDirecoes(p) {
+  const t = el("table", {}, [el("tr", {}, [el("th", {}, "Grandeza"), el("th", {}, "Direção de b_w (e1 aplicado)"), el("th", {}, "Direção de h (só M1d,mín)"), el("th", {}, "Unidade"), el("th", {}, "Fórmula ou regra")])]);
+  for (const [rotulo, coluna, casas, unidade] of LINHAS_DIRECAO) {
+    const cb = coluna.replace("{d}", "b_w"), ch = coluna.replace("{d}", "h");
+    t.append(el("tr", {}, [el("td", {}, rotulo), el("td", {class: casas === null ? "" : "num"}, valorCelula(p, cb, casas)), el("td", {class: casas === null ? "" : "num"}, valorCelula(p, ch, casas)),
+      el("td", {}, unidade), el("td", {}, celulaFormula(etiquetasDe(cb)))]));
+  }
+  return t;
+}
+function desenharPilar() {
+  const p = P.find(x => x.ID === pilarAtual), g = G[pilarAtual], alvo = document.getElementById("detalhe"); alvo.innerHTML = "";
+  const cod = codigoSituacao(p["Situação"]);
+  const indic = (r, v) => el("div", {class: "indicador"}, [el("div", {class: "r"}, r), el("div", {class: "v"}, v)]);
+  alvo.append(el("div", {class: "cartao"}, [
+    el("h2", {}, [p.ID + " — " + fmt(p["b_w (cm)"], 0) + " × " + fmt(p["h (cm)"], 0) + " cm, fck = " + fmt(p["fck (MPa)"], 0) + " MPa, λ = " + fmt(p["λ (dir. b_w)"], 0) + ", ν = " + fmt(p["ν"], 2) + (num(p["e1/b_w"]) === DADOS.niveis.e1bw_teste ? ", e1 = 0 (teste do momento mínimo)  " : ", e1/b_w = " + fmt(p["e1/b_w"], 2) + "  "),
+      el("span", {class: "selo " + (cod === "ok" ? "ok" : "erro")}, p["Situação"])]),
+    el("p", {class: "nota"}, "Notação: " + DADOS.notacao + "."),
+    el("div", {class: "indicadores"}, [indic("Nd (kN)", fmt(p["Nd (kN)"], 1)), indic("ℓe (cm)", fmt(p["ℓe (cm)"], 4)), indic("e1 (cm)", fmt(p["e1 (cm)"], 2)),
+      indic("Md,tot b_w (kN·m)", fmt(p["Md,tot b_w (kN·m)"], 2)), indic("As,calc (cm²)", fmt(p["As,calc (cm²)"], 2)), indic("As,adot (cm²)", fmt(p["As,adot (cm²)"], 2)),
+      indic("Barras", textoBarras(p["Barras"]))])]));
+  const gr = el("div", {class: "graficos"});
+  for (const [d, nome, colMd, sufixo] of [["b", "direção de b_w (e1)", "Md,tot b_w (kN·m)", "b_w"], ["h", "direção de h (só M1d,mín)", "Md,tot h (kN·m)", "h"]]) {
+    const caixa = el("div", {class: "grafico"}, [el("div", {class: "tit"}, "Diagrama de interação, " + nome + " (As = " + fmt(g["interacao_" + d].area, 2) + " cm²)")]);
+    const di = g["interacao_" + d];
+    const xs = di.M.concat(di.M.map(v => v === null ? null : -v).reverse()), ys = di.N.concat(di.N.slice().reverse());
+    graficoXY(caixa, {series: [{x: xs, y: ys, cor: "var(--serie-1)"}], pontos: [{x: num(p[colMd]), y: num(p["Nd (kN)"]), cor: "var(--serie-2)",
+      dica: `Ponto de cálculo\nNd = ${fmt(p["Nd (kN)"], 1)} kN\nMd,tot = ${fmt(p[colMd], 2)} kN·m`}], rotuloX: "MRd (kN·m)", rotuloY: "NRd (kN)", incluirZeroX: true, incluirZeroY: true});
+    const mrd = num(p["MRd " + sufixo + " (kN·m)"]);
+    caixa.append(el("div", {class: "leg"}, g.barras.adotadas ? `Curva: armadura adotada; ponto laranja: (Md,tot; Nd). Para Nd = ${fmt(p["Nd (kN)"], 1)} kN, MRd = ${fmt(mrd, 2)} kN·m ≥ Md,tot = ${fmt(p[colMd], 2)} kN·m (a curva é traçada com ${di.N.length} pontos).` :
+      "Pilar inviável: curva com As,máx = 4 % Ac na geometria de nível 1 do arranjo; ponto laranja: (Md,tot; Nd)."));
+    gr.append(caixa);
+  }
+  const caixaSecao = el("div", {class: "grafico"}, [el("div", {class: "tit"}, "Seção transversal")]); desenharSecao(caixaSecao, p, g.barras); gr.append(caixaSecao);
+  const env = g.envoltoria;
+  if (env) {
+    const caixa = el("div", {class: "grafico"}, [el("div", {class: "tit"}, "Envoltória mínima com 2ª ordem (NBR 15.3.2), a Nd = " + fmt(p["Nd (kN)"], 1) + " kN")]);
+    const series = [{x: env.Mb, y: env.Mh, cor: "var(--serie-1)"}];
+    if (env.elipse_b) series.push({x: env.elipse_b, y: env.elipse_h, cor: "var(--serie-2)", traco: "6 4"});
+    const pontos = env.critico ? [{x: env.critico[0], y: env.critico[1], cor: "#1b1b19",
+      dica: `Direção crítica ψ = ${fmt(p["ψ crítico (°)"], 2)}°\nη = ${fmt(p["η envoltória mínima"], 4)} (raio resistente / raio da elipse)`}] : [];
+    graficoXY(caixa, {series, pontos, rotuloX: "M_b (kN·m), direção de b_w", rotuloY: "M_h (kN·m), direção de h", incluirZeroX: true, incluirZeroY: true});
+    const eta = num(p["η envoltória mínima"]);
+    caixa.append(el("div", {class: "leg"}, `Azul: envoltória resistente da armadura adotada a Nd (1º quadrante; extremos = MRd das duas direções). Laranja tracejada: elipse de semieixos ` +
+      `Md,tot,mín b_w = ${fmt(env.semieixo_b, 2)} e Md,tot,mín h = ${fmt(env.semieixo_h, 2)} kN·m. η = ${fmt(eta, 4)}: ` + (eta >= DADOS.fator_minimo ? "a armadura engloba a elipse." :
+      `a armadura das duas análises isoladas não engloba a elipse; o primeiro arranjo que a engloba tem ${textoBarras(p["Barras elipse"])} mm (As = ${fmt(p["As,adot elipse (cm²)"], 2)} cm²).`) +
+      " Leitura adotada: " + DADOS.leitura_envoltoria + "."));
+    gr.append(caixa);
+  }
+  for (const d of ["b", "h"]) { const c = g["mn1r_" + d]; if (!c) continue;
+    const caixa = el("div", {class: "grafico"}, [el("div", {class: "tit"}, "Pilar-padrão acoplado a M, N, 1/r, direção de " + (d === "b" ? "b_w" : "h"))]);
+    graficoXY(caixa, {series: [{x: c.k, y: c.Mdef, cor: "var(--serie-1)"}, {x: c.k, y: c.Mext, cor: "var(--serie-2)", traco: "6 4"}],
+      pontos: c.k_eq === null ? [] : [{x: c.k_eq, y: c.M_eq, cor: "#1b1b19", dica: `Equilíbrio\n1/r = ${fmt(c.k_eq, 3)} /km\nMd,tot/γf3 = ${fmt(c.M_eq, 2)} kN·m`}],
+      rotuloX: "1/r (1/km)", rotuloY: "M (kN·m)", incluirZeroX: true, incluirZeroY: true});
+    caixa.append(el("div", {class: "leg"}, "Azul: curva de deformação (1,10 fcd; Nd/γf3) com As,nec; laranja tracejada: Mext/γf3 = [αb M1d,A + Nd ℓe²/10 · 1/r]/γf3. O equilíbrio é o primeiro cruzamento [F30]."));
+    gr.append(caixa); }
+  alvo.append(el("div", {class: "cartao"}, [el("h2", {}, "Gráficos"), gr]));
+  alvo.append(el("div", {class: "cartao"}, [el("h2", {}, "Entradas"), tabelaSimples(p, LINHAS_ENTRADA), el("h3", {}, "Esforços e 2ª ordem por direção"), tabelaDirecoes(p),
+    el("h3", {}, "Armadura e detalhamento"), tabelaSimples(p, LINHAS_ARMADURA),
+    el("h3", {}, "Envoltória mínima com 2ª ordem (NBR 6118:2023, 11.3.3.4.3 e 15.3.2)"), tabelaSimples(p, LINHAS_ENVOLTORIA)]));
+  const inv = DADOS.inviaveis[p.ID];
+  if (inv) alvo.append(cartaoInviavel(inv));
+}
+const TEXTO_CRITERIO = {A: "A: As,calc > As,máx = 4 % Ac", E: "E: As,calc > 8 % Ac ou sem equilíbrio estável (seção insuficiente)",
+  D: "D: As,calc ≤ As,máx, mas nenhum arranjo com As,adot ≤ As,máx atende ao detalhamento", "viável": "viável"};
+function cartaoInviavel(v) {
+  const vazio = x => (x === "" || x === undefined) ? "sem equilíbrio ou > 8 % Ac" : fmt(x, 2);
+  const linha = (rotulo, valor) => el("tr", {}, [el("td", {}, rotulo), el("td", {}, valor)]);
+  const prova = el("table", {}, [el("tr", {}, [el("th", {}, "Cenário principal (momento na direção de b_w)"), el("th", {}, "Valor")]),
+    linha("Critério que falhou", TEXTO_CRITERIO[v["Critério"]]), linha("Parcela que governa", v["Governa"]),
+    linha("As,nec na direção de b_w (com e1; " + v["Método b_w"] + ")", vazio(v["As,nec b_w (cm²)"]) + " cm²"),
+    linha("As,nec na direção de h (só M1d,mín; " + v["Método h"] + ")", vazio(v["As,nec h (cm²)"]) + " cm²"),
+    linha("As,calc (geometria de nível 1) e As,máx (4 % Ac)", v["As,calc (cm²)"] === "" ? "As,calc: sem equilíbrio ou > 8 % Ac; As,máx = " + fmt(v["As,máx 4 % (cm²)"], 2) + " cm²" :
+      "As,calc = " + fmt(v["As,calc (cm²)"], 2) + " cm² (" + fmt(v["As,calc / Ac (%)"], 2) + " % Ac) " + (num(v["As,calc (cm²)"]) > num(v["As,máx 4 % (cm²)"]) ? ">" : "≤") + " As,máx = " + fmt(v["As,máx 4 % (cm²)"], 2) + " cm²")]);
+  for (const a of ["Duas faces", "Perímetro"]) {
+    if (!v[a + ": situação"]) continue;
+    let texto = TEXTO_CRITERIO[v[a + ": situação"]] + "; As,calc = " + vazio(v[a + ": As,calc (cm²)"]) + " cm²; " + v[a + ": candidatos"] + " candidatos que cabem";
+    if (v[a + ": maior candidato"]) texto += "; o maior (" + textoBarras(v[a + ": maior candidato"]) + " mm, As,adot = " + fmt(v[a + ": As,adot do maior (cm²)"], 2) +
+      " cm²) precisa de As,calc = " + vazio(v[a + ": As,calc do maior (cm²)"]) + " cm² na própria geometria";
+    prova.append(linha("Arranjo " + a.toLowerCase(), texto));
+  }
+  prova.append(linha("Com As,máx = 8 % Ac (sensibilidade; 8 % só sem sobreposição de barras)", TEXTO_CRITERIO[v["Situação com As,máx = 8 %"]] + (v["Barras com 8 %"] ? " (" + textoBarras(v["Barras com 8 %"]) + " mm)" : "")));
+  const cenario = el("table", {}, [el("tr", {}, [el("th", {}, "Mesmo pilar com a força na maior dimensão (momento na direção de h)"), el("th", {}, "Valor")]),
+    linha("Situação", TEXTO_CRITERIO[v["Critério (momento em h)"]]), linha("Parcela que governa", v["Governa (momento em h)"]),
+    linha("e1/h e λ na direção de h", fmt(v["e1/h"], 3) + " e " + fmt(v["λ h calc"], 1)),
+    linha("As,nec na direção de h (com e1; " + v["Método h (momento em h)"] + ")", vazio(v["As,nec h, momento em h (cm²)"]) + " cm²"),
+    linha("As,nec na direção de b_w (só M1d,mín; " + v["Método b_w (momento em h)"] + ")", vazio(v["As,nec b_w, momento em h (cm²)"]) + " cm²"),
+    linha("As,calc", vazio(v["As,calc, momento em h (cm²)"]) + " cm² (" + vazio(v["As,calc / Ac, momento em h (%)"]) + " % Ac)"),
+    linha("Barras", v["Barras, momento em h"] ? textoBarras(v["Barras, momento em h"]) + " mm" : "–"),
+    linha("Com As,máx = 8 % Ac", TEXTO_CRITERIO[v["Situação, momento em h, As,máx = 8 %"]])]);
+  return el("div", {class: "cartao"}, [el("h2", {}, "Por que este pilar é inviável"),
+    el("p", {class: "nota"}, "Prova do critério de [R05] e [R09] do núcleo; tabela completa na aba Inviaveis da planilha e em resultados_inviaveis.csv. " +
+      "No cenário da força na maior dimensão, a direção de b_w continua verificada com M1d,mín e 2ª ordem (NBR 6118:2023, 11.3.3.4.3 e 15.3.2)."),
+    prova, el("h3", {}, "Mesmo pilar com a força na maior dimensão"), cenario]);
+}
+desenharLista(); desenharPilar();
+
+// ------------------------------------------------------------------ matriz
+function desenharMapa() {
+  const alvo = document.getElementById("mapa"); alvo.innerHTML = "";
+  for (const e of DADOS.niveis.e1bw) {
+    const t = el("table", {}, [el("tr", {}, [el("th", {}, "λ \\ ν"), ...DADOS.niveis.nu.map(n => el("th", {style: "text-align:center"}, fmt(n, 1)))])]);
+    for (const l of DADOS.niveis.lambda) {
+      const tr = el("tr", {}, [el("th", {}, String(l))]);
+      for (const n of DADOS.niveis.nu) {
+        const grupo = P.filter(p => num(p["e1/b_w"]) === e && num(p["λ (dir. b_w)"]) === l && num(p["ν"]) === n);
+        const viaveis = grupo.filter(p => p["Situação"] === ST.ok).length;
+        const causas = ["A", "E", "D"].map(c => [c, grupo.filter(p => codigoSituacao(p["Situação"]) === c).length]).filter(x => x[1]);
+        const intensidade = viaveis / grupo.length;
+        const fundo = `rgba(31, 95, 174, ${0.08 + 0.82 * intensidade})`;
+        tr.append(el("td", {class: "cel", style: `background:${fundo};color:${intensidade > 0.5 ? "#fff" : "#1b1b19"}`,
+          title: grupo.map(p => p.ID + ": " + p["Situação"]).join("\n")}, [el("strong", {}, String(viaveis)), el("div", {style: "font-size:11px"}, causas.map(x => x.join(" ")).join("  "))]));
+      }
+      t.append(tr);
+    }
+    alvo.append(el("div", {}, [el("div", {class: "tit-mapa"}, "e1/b_w = " + fmt(e, 2)), t]));
+  }
+}
+desenharMapa();
+opcoes("m-secao", "Todas as seções", secoes, v => v.replace(".0", "").replace(".0", "").replace("x", " × ") + " cm");
+opcoes("m-e1bw", "Os dois níveis de e1/b_w", DADOS.niveis.e1bw.map(String), v => "e1/b_w = " + fmt(v, 2));
+function desenharGraficoMatriz() {
+  const alvo = document.getElementById("g-matriz"); alvo.innerHTML = "";
+  const sec = document.getElementById("m-secao").value, e = document.getElementById("m-e1bw").value, gq = document.getElementById("m-grandeza").value;
+  const coluna = {calc: "As,calc (cm²)", ref: "As,calc ref (cm²)", adot: "As,adot (cm²)"}[gq];
+  const cores = ["var(--serie-1)", "var(--serie-2)", "var(--serie-3)"];
+  const pontos = P.filter(p => p["Situação"] === ST.ok && DADOS.niveis.e1bw.includes(num(p["e1/b_w"])) && (!sec || p["b_w (cm)"] + "x" + p["h (cm)"] === sec) && (!e || num(p["e1/b_w"]) === +e)).map(p => {
+    const ac = num(p["b_w (cm)"]) * num(p["h (cm)"]); const indice = DADOS.niveis.nu.indexOf(num(p["ν"]));
+    const deslocamento = (indice - 1) * 1.6;
+    return {x: num(p["λ (dir. b_w)"]) + deslocamento, y: 100 * num(p[coluna]) / ac, cor: cores[indice], r: 4.5,
+      dica: `${p.ID}: ${fmt(p["b_w (cm)"], 0)} × ${fmt(p["h (cm)"], 0)} cm, fck ${fmt(p["fck (MPa)"], 0)}\nλ ${fmt(p["λ (dir. b_w)"], 0)}, ν ${fmt(p["ν"], 1)}, e1/b_w ${fmt(p["e1/b_w"], 2)}\n${coluna} = ${fmt(p[coluna], 2)} (${fmt(100 * num(p[coluna]) / ac, 2)} % Ac)\nclique para abrir o pilar`,
+      clique: () => { pilarAtual = p.ID; abrirAba("pilar"); desenharLista(); desenharPilar(); }};
+  });
+  graficoXY(alvo, {series: [], pontos, largura: 900, altura: 380, rotuloX: "λ (direção de b_w); pontos deslocados por ν para não sobrepor", rotuloY: "ρ (%)", incluirZeroY: true});
+  alvo.append(el("div", {class: "leg"}, [el("span", {style: "color:var(--serie-1)"}, "● ν = 0,2  "), el("span", {style: "color:var(--serie-2)"}, "● ν = 0,4  "),
+    el("span", {style: "color:var(--serie-3)"}, "● ν = 0,6"), " · somente pilares viáveis; o limite de 4 % é a armadura máxima adotada."]));
+}
+["m-secao", "m-e1bw", "m-grandeza"].forEach(id => document.getElementById(id).addEventListener("change", desenharGraficoMatriz));
+desenharGraficoMatriz();
+
+// ------------------------------------------------------------------ validação
+const virgula = texto => String(texto).replace(".", ",");
+const percentualSinal = v => {
+  if (v === null || v === undefined) return "–";
+  const texto = fmt(v, 4);
+  return (texto === "-0,0000" ? "+0,0000" : texto.startsWith("-") ? texto : "+" + texto) + " %";
+};
+function desenharTestes() {
+  const termo = document.getElementById("busca-teste").value.trim().toLowerCase(), nivel = document.getElementById("nivel-teste").value;
+  const t = document.getElementById("tabela-testes"); t.innerHTML = "";
+  t.append(el("tr", {}, ["Nível", "Teste", "Calculado", "Esperado", "Critério", "Δ", "Concordância", "Alarme interno se", "Alarme"].map(c => el("th", {}, c))));
+  for (const x of DADOS.testes) {
+    if (nivel && x.nivel !== nivel) continue; if (termo && !x.teste.toLowerCase().includes(termo)) continue;
+    const logico = x.tolerancia === 0;
+    const desvio = logico ? "–" : x.criterio === "relativo" ? curto(x.desvio_percentual) + " %" : curto(x.diferenca_absoluta);
+    const concordancia = x.concordancia === null || x.concordancia === undefined ? "–" : virgula(x.concordancia) + " %";
+    const exigido = logico ? "falsa" : x.criterio === "relativo" ? "< " + virgula(x.concordancia_minima) + " %" : "|Δ| > " + curto(x.tolerancia);
+    t.append(el("tr", {}, [el("td", {}, x.nivel), el("td", {}, x.teste), el("td", {class: "num"}, significativo(x.calculado)), el("td", {class: "num"}, significativo(x.esperado)),
+      el("td", {}, logico ? "lógico" : x.criterio), el("td", {class: "num"}, desvio), el("td", {class: "num"}, concordancia), el("td", {class: "num"}, exigido),
+      el("td", {class: x.aprovado ? "ok-t" : "erro-t"}, x.aprovado ? "não" : "SIM")]));
+  }
+}
+function desenharQuadrosValidacao() {
+  const explicacao = document.getElementById("explicacao-niveis");
+  for (const nivel of ["1", "2"]) explicacao.append(el("p", {}, DADOS.explicacao_niveis[nivel]));
+  const tt = document.getElementById("tabela-tolerancias");
+  tt.append(el("tr", {}, ["Constante", "Limite interno de alarme", "Testes", "Maior desvio observado", "Origem do desvio"].map(c => el("th", {}, c))));
+  for (const x of DADOS.tolerancias) {
+    tt.append(el("tr", {}, [el("td", {}, x.constante), el("td", {}, x.exigido.replace(">=", "≥").replace("<=", "≤").replace(/(\d)\.(\d)/g, "$1,$2")),
+      el("td", {class: "num"}, String(x.testes)), el("td", {}, x.observado.replace(/(\d)\.(\d)/g, "$1,$2")), el("td", {}, x.origem)]));
+  }
+  const er = DADOS.engenharia_reversa, impressos = er.filter(x => x.reproduz !== null), reproduzidos = impressos.filter(x => x.reproduz).length;
+  document.getElementById("resumo-engenharia").textContent = `${reproduzidos} de ${impressos.length} valores impressos nas etapas de cálculo reproduzidos pela cadeia do autor (3,46 no lugar de √12 e, em cada etapa, os valores impressos das anteriores): o valor da cadeia, arredondado às casas impressas, resulta no número impresso. As ${er.length - impressos.length} leituras de ω no ábaco são comparadas só pela diferença, com a seção no arranjo e na hipótese do ábaco (seção bruta), em ábacos com curvas espaçadas de 0,10. Cadeia exata = mesmo passo a passo com √12 e sem arredondamentos, igual à rotina até o ponto flutuante. Total = (rotina − impresso)/impresso = arredondamento desta etapa (autor − impresso) + efeito propagado de 3,46 e dos arredondamentos anteriores (exata − autor).`;
+  const te = document.getElementById("tabela-engenharia");
+  te.append(el("tr", {}, ["Exemplo", "Etapa", "Impresso", "Cadeia do autor", "Cadeia exata", "Rotina", "Reproduz", "Total", "Desta etapa", "Propagado", "Observação", "Fontes"].map(c => el("th", {}, c))));
+  for (const x of er) {
+    te.append(el("tr", {}, [el("td", {}, x.exemplo + " (" + x.paginas + ")"), el("td", {}, x.etapa), el("td", {class: "num"}, virgula(x.impresso)),
+      el("td", {class: "num"}, significativo(x.autor)), el("td", {class: "num"}, significativo(x.exata)), el("td", {class: "num"}, significativo(x.rotina)),
+      el("td", {class: x.reproduz === null ? "" : x.reproduz ? "ok-t" : "erro-t"}, x.reproduz === null ? "–" : x.reproduz ? "sim" : "não"), el("td", {class: "num"}, percentualSinal(x.desvio_total_percentual)),
+      el("td", {class: "num"}, percentualSinal(x.parcela_impressao_percentual)), el("td", {class: "num"}, percentualSinal(x.parcela_propagada_percentual)),
+      el("td", {}, x.observacao), el("td", {class: "fontes"}, x.fontes.map(linkFonte))]));
+  }
+}
+desenharQuadrosValidacao();
+document.getElementById("resumo-validacao").textContent = `${DADOS.testes.length} testes; alarmes internos: ${DADOS.testes.filter(x => !x.aprovado).length}.`;
+document.getElementById("busca-teste").addEventListener("input", desenharTestes);
+document.getElementById("nivel-teste").addEventListener("change", desenharTestes);
+desenharTestes();
+</script>
+</body>
+</html>
