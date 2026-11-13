@@ -1,0 +1,371 @@
+ROTINA PYTHON DO TCC (dimensionamento de pilares, ABNT NBR 6118:2023, flexão normal composta reta, λ ≤ 140)
+Versão de 12/11/2026 (Prioridades 1, 2 e 3 da revisão)
+
+Ambiente usado para gerar os resultados (reprodutibilidade)
+  Python 3.13.16, NumPy 2.5.3, SciPy 1.18.1, openpyxl 3.1.5, Matplotlib 3.11.2, python-docx 1.2.0, Pillow 12.3.0
+  Processador: Intel(R) Xeon(R) Processor @ 2.10GHz, 2 núcleos (os scripts usam todos os núcleos disponíveis)
+
+Nota de uso
+  A rotina foi desenvolvida e validada para as condições estudadas no TCC: seções retangulares de 20 × 30 cm a
+  40 × 80 cm, fck de 25 a 35 MPa, ν de 0,2 a 0,6, e1/b_w de 0,15 ou 0,30, pilares biapoiados com momento de 1ª ordem
+  constante, aço CA-50, armadura em duas faces ou no perímetro e classe de agressividade I. Ela é uma ferramenta de
+  estudo e de conferência: a validação feita não comprova a aptidão para uso irrestrito em projetos reais, e os
+  resultados devem ser verificados pelo engenheiro responsável pelo projeto. Com 90 < λ ≤ 140, o método geral feito
+  com as mesmas hipóteses pede mais armadura que o pilar-padrão acoplado em 30 dos 62 pilares, até 14,4 % mais
+  (validacao.json, comparações "pilar-padrao x metodo geral"; Seção 4.2 do TCC).
+
+Licença
+  O código e os resultados deste material são distribuídos sob a licença de código aberto MIT (arquivo LICENSE).
+  A licença não se estende à ABNT NBR 6118:2023 nem às obras citadas, que não fazem parte do material, nem ao TQS e
+  às listagens e aos relatórios gravados por ele (pasta tqs/resultados_lote, que só está no pacote entregue à banca
+  e fica fora da versão pública).
+
+Notação das dimensões (alterada em 22/10/2026, noite)
+  Seção b_w × h, com b_w = MENOR dimensão (20, 30 e 40 cm) e h = maior (30, 50 e 80 cm). A excentricidade e1, a flexão
+  de 1ª ordem e o λ da matriz estão na direção de b_w (menor inércia); na direção de h atua só o momento mínimo.
+  Nas fórmulas da NBR 6118:2023, nos ábacos e em Bastos (2017), h é a altura da seção NA DIREÇÃO CONSIDERADA (a medida
+  no plano do momento): vale b_w na direção de b_w e h na direção de h ([H07] do núcleo). Coordenadas das barras:
+  x ao longo de b_w e y ao longo de h.
+
+Arquivos
+  executar_rotina.py              programa principal: executa todos os programas abaixo, na ordem de execução, com um
+                                  único comando (python executar_rotina.py; --completo inclui a busca exaustiva;
+                                  --tqs, a comparação com o TQS; --lista mostra as etapas e a seção do TCC que
+                                  descreve cada uma). Não faz cálculo de engenharia; a lista das etapas fica na zona
+                                  de auditoria
+  pilares_nbr6118.py              núcleo de cálculo: constantes [C..], hipóteses [H01] a [H07], fórmulas [F..], regras [R..]
+                                  e métodos numéricos [M..] reunidos na ZONA DE AUDITORIA, no início do arquivo;
+                                  abaixo dela, só o motor (sem fórmula escrita no corpo)
+  processar_matriz.py             monta os 324 pilares-teste e os 9 do teste do momento mínimo (M01 a M09, e1 = 0),
+                                  confere as entradas (etapa 1), dimensiona todos e grava saida/resultados_matriz.csv,
+                                  saida/resultados_teste_minimo.csv, saida/resultados_inviaveis.csv e
+                                  saida/resultados_matriz.xlsx (abas Matriz_entradas, Resultados, Entrada_softwares,
+                                  com as entradas a lançar no TQS e o Md,tot nas direções de b_w e de h,
+                                  Teste_momento_minimo, Inviaveis, Resumo e Hipoteses)
+  verificar_matriz.py             confere as orientações do PP, dos orientadores e da NBR em duas etapas
+                                  (18 requisitos das entradas e 22 dos resultados) e grava
+                                  saida/verificacao_orientacoes.csv e a aba Conferencia_orientacoes da planilha
+  validacao.py                    validação em dois níveis (450 testes): soluções exatas, modelo de fibras, método geral
+                                  elástico x fórmula da secante, flexão oblíqua e envoltória mínima (fibras em grade,
+                                  limites, simetria, pontos refeitos com equilíbrio próprio, refinamento), memoriais com
+                                  etapas recalculadas, fluência e pilar-padrão acoplado refeitos por fibras, exemplos de
+                                  Bastos (2017) e comparações entre métodos
+  conferir_busca_exaustiva.py     refaz a escolha das barras pela definição literal (As,calc de todos os arranjos
+                                  candidatos) e compara com a rotina
+  sensibilidade_secao_liquida.py  efeito da hipótese [H05] (seção bruta x seção líquida)
+  figuras_tcc.py                  figuras do TCC calculadas pela rotina (domínios, diagrama de interação, mapa de viabilidade)
+  gerar_auditor.py                gera saida/auditor_pilares.html (auditor visual, ver abaixo), a partir de auditor_modelo.html
+  figuras_complementares.py       figuras do Capítulo 4 e do Apêndice F calculadas pela rotina: estado final do V1,
+                                  curvas M, N, 1/r do V3 e do P091, taxa x esbeltez, telas do auditor (Chromium) e
+                                  curvas de Fusco (1981) com os pontos digitalizados (opção --fusco: só esta)
+  validacao_literatura.py         engenharia reversa de exemplos resolvidos de Carvalho e Pinheiro (2009), Scadelai
+                                  e Pinheiro (2007), Fusco (1981), Kimura ([2005?]) e Franco (2010): cadeia exata de
+                                  cada autor (o caminho do autor sem arredondar as etapas intermediárias) e rotina,
+                                  valor a valor; grava saida/validacao_literatura.txt e .json
+                                  (usa o PDF de Fusco, se houver, para a sobreposição da figura: o indicado na variável
+                                  de ambiente PDF_FUSCO ou o da pasta bibliografia/2 Livros, ao lado dos programas)
+  memorial_pilares.py             memorial de cálculo dos 333 pilares (324 da matriz e 9 do teste do momento mínimo),
+                                  até as barras e os estribos adotados, com conferência automática contra os
+                                  resultados; grava saida/memorial/ (docx, pdf pelo LibreOffice, json e
+                                  conferencia_memorial.json); requer python-docx
+  rastreabilidade.py              atualiza e confere as linhas "Usada em:" e "TCC:" da zona de auditoria de todos os
+                                  scripts e verifica que não há fórmula escrita no motor de cálculo
+  equacoes_tcc.json               correspondência entre as equações numeradas do TCC e as etiquetas do código
+  fontes/                         páginas dos PDFs locais citados (só números de seção e de página, sem texto da norma)
+  tqs/                            comparação com o TQS 25.14.6 (Seções 3.8.1, 3.9, 4.3 e 4.4 do TCC), com os
+                                  programas, as tabelas CSV e as listagens e relatórios do TQS (resultados_lote);
+                                  ver "Comparação com o TQS" abaixo
+
+Ordem de execução (na pasta destes arquivos) e tempo medido neste ambiente
+  Com um único comando: python executar_rotina.py (alteração de 12/11/2026), que segue esta ordem, sem a busca
+  exaustiva (só com --completo), e monta também a tabela de entrada do TQS (tqs/gerar_entrada_tqs.py).
+  python processar_matriz.py               (610 s)
+  python verificar_matriz.py               (53 s)
+  python validacao.py                      (428 s)
+  python sensibilidade_secao_liquida.py    (273 s)
+  python conferir_busca_exaustiva.py       (1043 s; opcional, conferência independente)
+  python figuras_tcc.py                    (2 s)
+  python gerar_auditor.py                  (215 s)
+  python figuras_complementares.py         (18 s)
+  python validacao_literatura.py           (8 s)
+  python memorial_pilares.py               (279 s)
+  python rastreabilidade.py --conferir
+
+Comparação com o TQS (pasta tqs; Python 3.13.16 e a rotina da pasta acima)
+  1. python gerar_entrada_tqs.py: monta entrada_tqs_lote.csv (cargas a lançar, peso próprio descontado) a partir de
+     saida/resultados_matriz.csv e saida/resultados_teste_minimo.csv.
+  2. No computador com o TQS (Windows, Python 3.13 e TQSPythonInterface 2.1.7), na subpasta windows, com o TQS
+     fechado: py -3.13 tqs_00_diagnostico.py TCCPILAR (leitura do edifício-modelo) e py -3.13 tqs_01_lote.py lote e
+     py -3.13 tqs_01_lote.py minimo (lançamento, processamento e cópia das listagens para a subpasta lote;
+     lote, 467 s, e minimo, 202 s, medidos nesse computador). As listagens e os relatórios dos 25 edifícios deste trabalho (TCCL01 a TCCL16 e TCCM01 a TCCM09)
+     já estão em resultados_lote, para onde foram movidos; os passos seguintes usam só essa pasta.
+  3. Em qualquer computador, nesta ordem: python comparar_tqs_lote.py (373 s), python resumir_comparacao_tqs.py (menos de 1 s), python decompor_curvatura_tqs.py (12 s), python camada2_nm1r_tqs.py (42 s), python replica_tqs_nm1r.py (24 s) e python teste_minimo_tqs.py (6 s).
+  Os caminhos são relativos à pasta de cada programa (a pasta tqs fica dentro da pasta da rotina).
+  Os programas desta pasta têm a zona de auditoria no início do arquivo, com os comentários de rastreabilidade, mas não
+  estão na lista conferida por rastreabilidade.py. As regras do TQS que eles reproduzem foram inferidas dos resultados
+  do programa (engenharia reversa) e valem para a versão 25.14.6, nos pilares estudados.
+
+Auditor visual (saida/auditor_pilares.html)
+  Abrir no Chrome ou no Edge. Funciona sem internet. Os botões que abrem os PDFs das obras citadas apontam para a pasta
+  bibliografia, ao lado da pasta saida (ou para a pasta indicada na variável de ambiente BIBLIOGRAFIA_TCC ao gerar o
+  auditor), que não faz parte do material (as obras e a norma não são redistribuídas). Abas: "Pilar a pilar" (os 324 pilares da matriz e os 9 do teste do momento mínimo, com todas as etapas,
+  cada valor ligado à fórmula que o produz, diagramas de interação, seção, envoltória resistente com a elipse da
+  envoltória mínima com 2ª ordem e curva M, N, 1/r), "Fórmulas e fontes" (comentário e código de cada item da zona de auditoria, com
+  botões que abrem o PDF local da NBR 6118, de Bastos, de Fusco ou de Pinheiro NA PÁGINA citada), "Matriz" e "Validação".
+  Nenhuma página da norma é copiada para o HTML (exemplar licenciado): os botões apenas abrem o PDF de quem o tiver.
+
+Resultados de referência desta versão
+  resultados_matriz.csv: MD5 21bbc2ac567105205bbcba390f58c862
+  212 pilares viáveis de 324 (1 no perímetro, o P305); verificação: 40 requisitos atendidos; validação: 450 testes
+  aprovados; busca exaustiva: 212 viáveis, 0 divergências em 11 548 candidatos.
+  Envoltória mínima com 2ª ordem (NBR 6118:2023, 15.3.2): elipse englobada nos 212 viáveis; no teste do momento mínimo, em 7 de 9 (M02 e M08 não).
+  Pilares inviáveis (resultados_inviaveis.csv): 112 (A 44, E 56, D 12); com As,máx = 8 %, 13 passariam a viáveis; com a força na maior dimensão, 36 viáveis e 76 inviáveis, todos governados pela direção de b_w (só momento mínimo e 2ª ordem), 52 viáveis com 8 %.
+  Com a seção bruta (sensibilidade_secao_liquida.py): 215 viáveis; As,calc de 0,36 % a 4,53 % menor (média 2,44 %) em 125 pilares.
+
+Alteração de 22/10/2026 na busca do detalhamento
+  A versão de 21/10/2026 pulava os arranjos candidatos com área menor que o As,calc da geometria de nível 1 do arranjo
+  (suposto limite inferior). A conferência exaustiva mostrou que esse limite não vale no arranjo no perímetro e que o
+  P305 era viável com 26 φ 25 mm no perímetro. A busca passou a verificar todos os candidatos, sem atalho (regra [R09]);
+  só o P305 mudou. O registro da primeira conferência está em saida/historico.
+
+Alteração de 22/10/2026 (tarde): envoltória mínima com 2ª ordem e teste do momento mínimo
+  O dimensionamento continua pelas duas análises isoladas de flexão composta normal (segundo período da Seção 15.3.2;
+  [H06] do núcleo). A rotina passou a verificar à parte a envoltória mínima com 2ª ordem completa (elipse da Figura
+  15.2), com a armadura adotada: semieixos Md,tot,mín só com M1d,mín (alfa_b = 1), envoltória resistente a Nd por
+  flexão oblíqua ([F63] a [F73], [R12], [M08]) e fator eta (eta >= 1: elipse englobada); quando eta < 1, informa o
+  primeiro arranjo que engloba a elipse. As colunas antigas de resultados_matriz.csv ficaram idênticas; foram
+  acrescentadas 7 colunas. A aba Entrada_softwares ganhou o Md,tot da direção sem momento aplicado (Python, Eberick,
+  TQS e Delta%; na notação atual, Md,tot h), e a aba
+  Teste_momento_minimo traz os 9 pilares M01 a M09 (três seções; lambda = 30, 90 e 110; fck = 30 MPa; nu = 0,40).
+  No auditor, a leitura dos números de seção da norma nos comentários foi corrigida (um número seguido de vírgula,
+  como em "11.3.3.4.3, 15.3.2", era truncado, por exemplo 17.2.2 lido como 17.2).
+
+Alteração de 22/10/2026 (noite): notação b_w (menor dimensão) e h (maior)
+  Até esta versão, a rotina chamava de h a menor dimensão (a da flexão) e de b_w a maior, e as seções eram descritas
+  como 30 × 20, 50 × 30 e 80 × 40 cm. Os nomes foram trocados para b_w = menor e h = maior (20 × 30, 30 × 50 e
+  40 × 80 cm, como na Tabela 3.1 do PP), sem mudar a física: a flexão de 1ª ordem continua na menor dimensão. Colunas
+  renomeadas: as da direção da flexão passaram de "h" para "b_w" (por exemplo, "Md,tot h" -> "Md,tot b_w",
+  "λ (dir. h)" -> "λ (dir. b_w)", "e1/h" -> "e1/b_w") e as da outra direção, de "b" para "h"; as coordenadas x e y
+  das barras trocaram de eixo (x ao longo de b_w). A comparação coluna a coluna com a versão anterior, com essa
+  correspondência, deu valores idênticos (registro em saida/historico).
+
+Alteração de 22/10/2026 (noite): tabela dos pilares inviáveis
+  resultados_inviaveis.csv e a aba Inviaveis trazem, para cada pilar inviável, o critério que falhou ([R05] e [R09] do
+  núcleo; [R19] de processar_matriz) com a prova numérica: A (As,calc > As,máx = 4 % Ac), E (sem equilíbrio estável ou
+  As,calc > 8 % Ac, com a direção que falhou) ou D (o maior candidato que cabe tem As,adot menor que o As,calc da própria
+  geometria), para os dois arranjos da regra do PP. Trazem também a sensibilidade com As,máx = 8 % Ac ([R18]; válida
+  fora da emenda só sem sobreposição de barras) e o cenário com a força excêntrica na direção da maior dimensão ([R17];
+  mesmos Nd, ℓe e e1), em que a direção de b_w continua verificada com o momento mínimo e a 2ª ordem. A aba
+  Entrada_softwares_opcional lista os pilares viáveis só nesse cenário, para modelar se houver tempo. O cenário
+  principal e os resultados de resultados_matriz.csv não mudaram.
+
+Alteração de 22/10/2026 (noite): entradas exatas, sem arredondamento por conveniência de digitação
+  Até esta versão, ℓe era arredondado para baixo ao cm inteiro e Nk a 0,1 kN, supondo (sem conferir) que os softwares
+  só aceitariam esses valores; o λ efetivo ficava de 0,007 % a 0,31 % abaixo do nível e o ν, a até 0,03 % dele. Por
+  decisão do autor, a rotina passou a usar os valores exatos dos níveis (ℓe = λ b_w/√12 e Nd = ν Ac fcd; [R10] de
+  processar_matriz): o λ calculado é o próprio nível. Se um software não aceitar o valor exato, o valor que ele aceitou
+  é registrado nas colunas "digitado" das abas de entrada (com o Delta% em relação ao exato), e a diferença é relatada
+  como limitação de entrada do software, sem compensação na rotina. Nas fronteiras de método (λ = 90 e 140), o λ
+  recalculado de ℓe é comparado com tolerância de 1e-9 ([N05] do núcleo), e a dispensa da 2ª ordem segue o texto da
+  NBR 6118:2023, 15.8.2 ("menor que" λ1).
+
+Alteração de 23/10/2026: validação com tolerâncias justificadas e engenharia reversa de Bastos (2017)
+  Cada tolerância de validacao.py tem a origem escrita na zona de auditoria ([N01], [R03], [N04], [N06], [N07]) e um
+  quadro em saida/validacao.txt e na aba "Validação" do auditor, com o número de testes e o maior desvio observado. O
+  critério relativo passou a ser apresentado como concordância = 100 % - Δ% (testes exatos: concordância mínima
+  99,9999999 %, a tolerância 1e-9 de sempre, média geométrica entre o ruído do ponto flutuante e o menor efeito de
+  interesse). Foram acrescentados o limite teórico do erro das fibras e as ordens de convergência (fibras e método
+  geral elástico). Nos exemplos de Bastos, a comparação direta com os valores impressos (tolerância de 0,5 %) foi
+  substituída por uma dupla verificação: o passo a passo do autor refeito com √12 e sem arredondamentos coincide
+  com a rotina até o ponto flutuante (testes), e o mesmo passo a passo com 3,46 e com os valores impressos reproduz os
+  valores publicados (tabela informativa, com a decomposição da diferença). O ω é comparado, como informação, no
+  ponto (ν, μ) em que o autor entrou no ábaco, com a seção no arranjo do ábaco (A-4: duas camadas; A-27 e A-29, item
+  16.2.3: 8 barras, 3 por face nas quatro faces) e na hipótese dele (seção bruta: Venturini e Rodrigues, 1987, eq.
+  4.6), contra a precisão de leitura de 0,02 (1/5 do espaçamento de 0,10 das curvas). Os resultados da rotina não
+  mudaram. O auditor passou a exibir as fórmulas da zona de auditoria com símbolos, índices e frações (linhas
+  "Fórmula:" dos comentários) e tem botões que abrem a apostila de Venturini na página de cada ábaco.
+
+Alteração de 23/10/2026 (2): tolerância do equilíbrio do memorial e texto do TCC
+  Nos quatro pilares do memorial (Nível 2), o equilíbrio do estado final refeito à mão era comparado com o literal
+  1e-6, que o quadro das tolerâncias atribuía, por coincidência de valor, à TOLERANCIA_LIMITE (limites da flexão
+  oblíqua). Passou a usar a TOLERANCIA_EXATA (1e-9), com a origem escrita em [N01]: o estado final vem de uma busca de
+  raiz com xtol = 1e-12 no parâmetro de domínio, e o resíduo observado é de 9e-14. A tolerância e os limites da busca
+  de raiz do modelo de fibras em grade e os números de amostras dos testes de crescimento de N_R viraram constantes
+  nomeadas ([N06]). Os 450 testes continuam aprovados, com os mesmos valores calculados e esperados
+  (saida/historico/conferencia_validacao_C_2026-10-23.txt). Com as entradas exatas (22/10/2026), o método geral
+  encontra equilíbrio em 39 dos 62 pilares viáveis com λ > 90 (eram 41: P067 e P128 ficaram no limite;
+  saida/historico/conferencia_metodo_geral_entradas_exatas_2026-10-23.txt).
+
+Alteração de 23/10/2026 (3) — seção de integração do concreto e diagrama retangular
+  sensibilidade_secao_liquida.py: nova parte 3 (zona de auditoria [R05], [R06], [C01], [F02], [F03], [F04]):
+    compara, na direção de b_w, com a geometria de barras adotada, quatro modelos da resultante do concreto
+    (parábola-retângulo e retângulo 0,8 x da NBR 6118:2023, 17.2.2 e), cada um com seção líquida e bruta):
+    N_R na reta b, M_Rd com N = Nd (212 pilares) e As,nec para M_d,tot (lambda <= 90). Grava
+    saida/sensibilidade_secao_liquida_diagramas.csv e acrescenta a parte 3 ao resumo .txt. O modelo adotado
+    reproduz M_Rd e As,nec da rotina com diferença 0. Partes 1 e 2 inalteradas.
+  Texto: Seção 3.5 reescrita (formulação geral de Fusco, 1981, p. 101-102 e 226; a norma não define a área de
+    integração; Venturini e Rodrigues, 1987, p. 14, usam a seção bruta) e Tabela 1 nova (build_novo/secao_3_5.py).
+
+Alteração de 23/10/2026 (4) — item 1 do "Pessoal 2": sem limite de aceitação na apresentação da validação
+  validacao.py: os limites de [R06] passam a ser "limites internos de alarme" (só acusam erro de programação ao
+    reexecutar a rotina); relatório validacao.txt com "alarmes internos" no lugar de "reprovados"; origens dos
+    desvios sem justificativa de valor-limite; ω lido no ábaco sem critério de reprodução (TOLERANCIA_ABACO e
+    DIVISOES_LEITURA_ABACO retiradas; "reproduz" = None nas 8 leituras; 55 de 56 valores impressos reproduzidos).
+    Os 450 testes, os memoriais e as comparações ficaram idênticos (conferido com o validacao.json anterior).
+  auditor_modelo.html: mesmos rótulos (alarme interno; origem do desvio).
+  Texto: Seção 3.7 sem critérios de aprovação e sem o Quadro 3 (tolerâncias); Tabela 4 com "Maior desvio" e
+    "Origem do desvio"; Seção 4.1 com a avaliação do autor; Resumo e Abstract sem "testes aprovados".
+
+Alteração de 23/10/2026 (5) — item 2 do "Pessoal 2" (parte 1): famílias de diagramas de interação
+  figuras_tcc.py: figuras familias_bw e familias_h ([R09] a [R11], [F14] a [F17]): os 424 diagramas dos 212
+    pilares viáveis (armadura e barras adotadas), adimensionais, em 3 x 3 painéis (seção x ν) numa página em
+    paisagem; metades do painel por e1/b_w (direção de b_w) ou por método (direção de h); pontos (ν_d, μ_d,tot)
+    com rótulo do λ; cores conferidas com o validador de paletas (duas rampas ordinais de 3 passos). Dados de
+    cada ponto em saida/figuras/familias_bw_dados.csv e familias_h_dados.csv, com o μ_Rd da rotina e o lido no
+    diagrama desenhado (diferença máxima 6,3e-5).
+  Texto: Seção 4.2 com dois parágrafos (leitura das figuras; todos os pontos dentro dos diagramas; caso do P091,
+    governado pela estabilidade do pilar-padrão acoplado) e as Figuras 5 e 6 numa seção em paisagem.
+
+Alteração de 23/10/2026 (6) — item 2 do "Pessoal 2" (parte 1, revisão): 9 gráficos por direção
+  figuras_tcc.py: as famílias em página única foram substituídas por um gráfico por seção e nível de ν em cada
+    direção (diagramas_bw_*.svg/png e diagramas_h_*.svg/png; [R09] a [R12], [F14] a [F17]), em kN e kN·m, com
+    painel inteiro e faixa ampliada das linhas de N_d; na direção de b_w, cada ponto de cálculo é ligado por um
+    traço ao M_Rd do próprio diagrama (faixas de leitura quando haveria sobreposição); na direção de h, ponto e
+    marca do M_Rd com o λ escrito acima e abaixo. Valores de cada par em saida/figuras/diagramas_dados.csv.
+  Texto: Seção 4.2 com três parágrafos (leitura dos gráficos; exemplo do P160 da Figura 2; todos os pontos dentro
+    dos diagramas e origem dos traços longos) e as Figuras 5 a 13 (direção de b_w); Apêndice E novo com as
+    Figuras 14 a 22 (direção de h). A seção em paisagem foi retirada.
+
+Alteração de 23/10/2026 (7) — revisão de escopo e nexo
+  validacao.py: o teste de término das análises do método geral passou ao Nível 1 (verificação do algoritmo, com o
+    teste da fórmula da secante); as comparações pilar-padrão acoplado x método geral e curvatura x rigidez κ
+    continuam gravadas em "comparacoes", mas deixam de fazer parte da validação. Os 450 testes ficaram iguais.
+  processar_matriz.py: retiradas a aba Entrada_softwares_opcional e a coluna "Modelar nos softwares (momento em h)"
+    dos inviáveis; o cenário da força na maior dimensão [R17] fica só como justificativa da direção da força.
+    Resultados idênticos (212 viáveis; 40 requisitos atendidos).
+  figuras_complementares.py (novo, conferido por rastreabilidade.py): secao_v1 (estado final do V1), curvas_mn1r
+    (equilíbrio do pilar-padrão acoplado no V3 e no P091, com o resíduo da condição de equilíbrio), taxa_esbeltez
+    (ρ x λ) e auditor (duas telas do auditor capturadas com o Chromium).
+  Texto: comparação com o método geral fora da validação (Seção 3.9 e observação na 4.2, sem "seria
+    insuficiente") e fora do Resumo e do Abstract; curvatura x κ na Seção 4.4; resultados das hipóteses do
+    equilíbrio da Seção 3.5 para a 4.2 (Tabela 5); números da Seção 3.6 para a 4.2; frase sobre a flexão oblíqua
+    na delimitação; Tabela 6 sem as linhas da força em h; Seção 2 com o nexo de Beer, Süssekind, Martha, Azevedo,
+    Soriano, Kassimali e Alves e Souza; Junges só na 2.3.1; Carvalho e Figueiredo Filho de volta às referências,
+    só para registrar que a obra do MSL não é usada.
+
+Alteração de 24 e 25/10/2026 — estribos, engenharia reversa da literatura e memorial de todos os pilares
+  pilares_nbr6118.py: regras dos estribos de pilares ([C14], [F74], [F75], [R13]): espaçamento longitudinal
+    máximo st <= mín(200 mm; menor dimensão; 12 φl) (NBR 6118:2023, 18.4.3) e barras de face que exigem estribo
+    suplementar, com a proteção do estribo poligonal até 20 φt de cada canto, no máximo duas barras além da de
+    canto (18.2.4). As regras são usadas no memorial e na engenharia reversa; resultados_matriz.csv inalterado
+    (mesmo MD5).
+  validacao.py: só comentários ([F55], rigidez secante do diagrama M, N, 1/r na forma do TQS; Kimura, [2005?]).
+  validacao_literatura.py (novo): engenharia reversa de 5 fontes (Carvalho e Pinheiro, 2009; Scadelai e Pinheiro, 2007; Fusco, 1981; Kimura, [2005?]; Franco, 2010), valor a valor: 130 de 145 valores impressos considerados reproduzidos pela cadeia de cálculo de cada fonte, com os valores impressos das etapas anteriores e o arredondamento às casas impressas; as 15 exceções têm origem identificada (4 truncamentos de impressão, 7 valores levados pela fonte à etapa seguinte sem arredondar, 1 valor calculado com raiz(12) numa conta escrita com 3,46 e 3 erros da fonte); com os 56 de Bastos (2017, validacao.py), 185 de 201.
+  memorial_pilares.py (novo): 333 memoriais (221 viáveis), com conferência automática em saida/memorial/conferencia_memorial.json: 333 iguais aos resultados, 442 de 442 direções com MRd >= Md,tot, 1326 de 1326 regras de detalhamento atendidas, 0 falhas; volume de 736 páginas. Curvatura impressa com 5 algarismos significativos ([F05]), para que Md,tot possa ser refeito com os números impressos; P150, P156 e P165 refeitos por código independente em 25/10/2026, com maior desvio fora do arredondamento de 0,008 %.
+  figuras_complementares.py: figura fusco_rotina (curvas M, N, 1/r da Fig. 8.2.5-1 de Fusco, 1981, calculadas pela
+    rotina, com os pontos digitalizados da figura impressa).
+  gerar_auditor.py: auditor regerado com os comentários atuais da zona de auditoria.
+  Reexecução de 25/10/2026: processar_matriz.py, verificar_matriz.py e validacao.py refeitos com o código desta
+    versão; resultados_*.csv, verificacao_orientacoes.csv e validacao.json idênticos aos anteriores (MD5), e
+    validacao_literatura.py e memorial_pilares.py refeitos duas vezes com saídas JSON idênticas.
+Alteração de 25/10/2026 (2) — ajustes finos para a pré-correção (sem mudança de resultado)
+  validacao_literatura.py: "cadeia do autor" passou a "cadeia da fonte" (o autor do livro ou artigo, e não o do
+    TCC); cada linha ganhou o código da origem da diferença ([R07], [F13]): T arredondamento da fonte, H hipótese
+    da fonte, N norma, E erro da fonte, L leitura, M método, P programa. Contagens inalteradas (134 de 142).
+  figuras_complementares.py: Figura 7 (taxa x esbeltez) refeita em 3 x 2 painéis com eixo de λ proporcional, ν em
+    cada painel e marca vazada onde a armadura mínima governa ([R05], [F09]); legenda da Figura 18 diz o que é da
+    rotina e o que é de Fusco (1981). Dados das figuras inalterados.
+Alteração de 25/10/2026 (3) — Figura 4 com a seção em pé (sem mudança de resultado)
+  figuras_complementares.py: painel (a) da figura secao_v1 com a seção desenhada em pé (b_w na horizontal, h na
+    vertical), a face comprimida à esquerda e a linha neutra vertical ([R03], [F06]); diagramas de deformações e
+    tensões (b) e (c) como antes, com a profundidade na vertical. Dados da figura (secao_v1_dados.csv) inalterados.
+Alteração de 25/10/2026 (4) — pasta Bibliografia organizada por tipo (sem mudança de resultado)
+  fontes/paginas_bibliografia.json e fontes/paginas_nbr6118.json: caminhos dos PDFs na pasta Bibliografia
+    organizada por tipo (1 Normas ABNT, 2 Livros, 3 Apostilas e notas de aula, ...), com os nomes "AUTOR (ano) -
+    título"; auditor_pilares.html regerado com esses caminhos (só os caminhos mudaram).
+  validacao_literatura.py: novo caminho do PDF de Fusco (1981) na lista CAMINHOS_PDF_FUSCO ([R01]); o antigo
+    continua na lista.
+Alteração de 27/10/2026 — ℓe, i e λ com 4 casas no memorial (sem mudança de resultado)
+  memorial_pilares.py: o comprimento equivalente ℓe, o raio de giração i e o índice de esbeltez λ passam a ser
+    impressos com 4 casas (ℓe em metros, 6) ([R03]), para que ℓe = λ bw/√12 e λ = ℓe/i, refeitos na calculadora com
+    os números impressos, deem ao menos 99,999 % do valor impresso (conferido nas 666 linhas de λ do memorial: no
+    mínimo 99,99942 %); memorial_pilares.json idêntico ao anterior (mesmo MD5).
+Alteração de 02/11/2026 — contas do memorial refeitas na calculadora com ao menos 99,999 % (sem mudança de resultado)
+  memorial_pilares.py ([R03]): forças e momentos com 4 casas, 1/r com 7 algarismos, Eci com 4 casas, fcd e σcd com 6,
+    θ1 com 9, ea com 6 e ecc com 7, para que as contas que usam ℓe e as que as alimentam (Nd, Nk, Ngk, Nqk, Nsg, Msg,
+    M1d,mín, Nd e1, 1/r, Md,tot, θ1, ea, Ne, ecc, M1d,A com fluência, γf3 Mdef e Mext), refeitas com os números
+    impressos, deem ao menos 99,999 % do valor impresso (conferido no memorial impresso: pior caso λ = ℓe/i, com
+    99,99942 %; as demais acima de 99,9999 %); memorial_pilares.json idêntico ao anterior (mesmo MD5).
+  auditor_modelo.html: ℓe com 4 casas (tabela de entradas e indicador do topo) e λ com 4; auditor regerado, com os
+    números de linha dos 122 itens conferidos com o código.
+Alteração de 03/11/2026 — comparação só com o TQS (sem mudança de resultado)
+  Por decisão do autor, a comparação passa a ser feita só com o TQS 25.14.6 (o Eberick não será modelado).
+  processar_matriz.py ([R15]): SOFTWARES_COMPARADOS = ("TQS",); as abas Entrada_softwares e Teste_momento_minimo
+    perderam as colunas do Eberick (ficam as do TQS, com os mesmos Delta%), e as legendas e o critério das entradas
+    citam só o TQS. Os três CSV de resultados ficaram idênticos byte a byte; os valores das colunas comuns da planilha
+    também; verificar_matriz.py: 40 de 40 requisitos atendidos.
+  memorial_pilares.py: a frase do Md,tot passa a dizer "planilha de comparação com o TQS"; memorial_pilares.json
+    idêntico ao anterior (mesmo conteúdo), memorial com as mesmas 733 páginas e a mesma conferência (0 falhas).
+Alteração de 03/11/2026 (2): revisão final antes do envio ao orientador
+  validacao_literatura.py ([N01], [F01]): o critério de reprodução passa a ser o arredondamento às casas impressas com
+    a meia unidade para cima, em módulo e com o mesmo sinal; a "cadeia da fonte" de Kimura ([2005?]) usa os valores
+    impressos das etapas anteriores; três etapas impressas de Franco (2010, p. 34) entram na contagem; notas, origens
+    e notação revistas (ϕ para diâmetro, d′, m⁻¹, separador de milhar do SI). Contagem: de 134 de 142 para 130 de 145
+    valores impressos considerados; com Bastos (2017), de 189 de 198 para 185 de 201. A coluna "rotina" não mudou.
+  validacao.py: o critério dos exemplos de Bastos (2017) passa a ser o mesmo de validacao_literatura.py;
+    validacao.json idêntico (55 de 56).
+  figuras_tcc.py e figuras_complementares.py: rótulos dos diagramas de interação sem sobreposição (rótulo afastado
+    ligado ao ponto por linha cinza), separador de milhar do SI nos eixos (até quatro algarismos sem separador; com
+    cinco ou mais, espaço) e notação revista; dados das figuras inalterados.
+  memorial_pilares.py: unidades de fyd e Eci explícitas, cabeçalhos sem travessão, λ, bw, d′, ϕl e ϕt, curvatura em
+    cm⁻¹ e separador de milhar do SI; memorial_pilares.json e conferencia_memorial.json idênticos (0 falhas), volume
+    de 736 páginas.
+  Comentários dos programas: remissões ao TCC (Figura 3 e Quadro 1) e ao projeto de pesquisa revistas;
+    rastreabilidade.py conferido (351 itens) e auditor regerado.
+
+Alteração de 03/11/2026 (3): cadeia exata do autor no Apêndice F e na Seção 4.1.2
+  validacao_literatura.py ([R09], [R10], [F17]): cada linha ganhou o desvio e a classe da rotina em relação à cadeia
+    exata do autor ("sem diferença" até 1e-9 %, "abaixo do limite" até 0,001 %, "difere") e a nota curta das tabelas
+    do TCC ("nota_tabela"), obrigatória onde a rotina difere da cadeia exata e onde há erro da fonte; o TXT traz essas
+    notas e o resumo "Rotina × cadeia exata". Em Fusco (1981), a coluna "rotina" da excentricidade de fluência passou a
+    usar o Fg e o FE sem arredondar (antes, os impressos), como as demais linhas da rotina: ec, e1x, μ1d e o ω com
+    fluência mudaram a partir da terceira casa decimal (ec: 1,2253 para 1,2275 cm). Campos antigos (cadeia da fonte,
+    "reproduz" e "origem") inalterados.
+  Resultado: a rotina coincide com a cadeia exata em 103 das 115 etapas comparáveis das cinco fontes (100 sem
+    diferença e 3 abaixo de 0,001 %, em Franco, 2010, pela tangente do ângulo θ1); as 12 diferenças vêm de hipóteses
+    dos autores e da edição da norma (7, Carvalho e Pinheiro, 2009, exemplos 5.5 e 5.10) e do método (3 em Scadelai e
+    Pinheiro, 2007; 2 em Fusco, 1981). Com Bastos (2017), 148 de 160. Arredondada às casas impressas, a cadeia exata
+    dá 107 dos 145 valores impressos considerados (34 diferenças por aproximações dos autores e 4 valores com erro da
+    fonte); em Bastos (2017), 42 de 56.
+  TCC: as tabelas do Apêndice F e a Tabela 4 mostram o valor impresso, a cadeia exata do autor e a rotina (sem as
+    colunas "Reproduz o impresso?" e "Origem"), com notas só onde a rotina difere da cadeia exata, onde há erro da
+    fonte ou onde a linha precisa de explicação.
+Alteração de 04/11/2026: comparação com o TQS (pasta tqs nova; sem mudança nos resultados da rotina)
+  Os 212 pilares viáveis foram lançados no TQS 25.14.6 em 16 edifícios (TCCL01 a TCCL16) e os 9 do teste do momento
+  mínimo em 9 (TCCM01 a TCCM09), pela TQSPythonInterface 2.1.7 (subpasta windows). comparar_tqs_lote.py confere as
+  entradas (TEP, PEDDUP, λ do SELEC), lê as listagens e o Pilar.rep (analise/ler_pilar_rep.py) e faz a comparação em
+  duas camadas: resultados finais e, com os esforços e as barras do TQS, a relação Sd/Rd (1/k) e a armadura pelo
+  núcleo de seção da rotina, com seção bruta e líquida. resumir_comparacao_tqs.py resume por grupo;
+  decompor_curvatura_tqs.py separa, nos pilares com curvatura aproximada, as parcelas do momento da direção de h, do
+  arranjo e da seção; camada2_nm1r_tqs.py aplica o pilar-padrão acoplado da rotina às barras do TQS; replica_tqs_nm1r.py
+  refaz a regra do TQS para a fluência nos nove pilares em que ele adota menos armadura do que a rotina exige com as
+  mesmas barras (valores das telas do visualizador de efeitos locais escritos na zona de auditoria);
+  teste_minimo_tqs.py analisa o teste do momento mínimo e a envoltória mínima gravada nos 212 pilares.
+  Reexecução de 04/11/2026: gerar_entrada_tqs.py e os seis programas do passo 3 foram refeitos, sem o cache da segunda camada; os sete arquivos CSV e o resumo ficaram idênticos byte a byte aos anteriores. validacao_literatura.py foi refeito (saídas idênticas) e o auditor foi regerado só para atualizar os números de linha dos comentários.
+Alteração de 12/11/2026: relação de correções do orientador (TCC_v5, versão para a banca)
+  validacao.py: a comparação complementar pilar-padrão acoplado x método geral ([R09], [F56] a [F58]) passou a gravar,
+  para cada um dos 62 pilares viáveis com λ > 90, a área que o método geral exige nas mesmas posições das barras
+  (bisseção até 8 % de Ac, marcada quando passa de 4 %), a verificação M_Rd(As,adot) >= M_d,tot do método geral e, nos
+  pilares sem equilíbrio, o maior fator de carga com equilíbrio; validacao.txt traz a tabela dessa comparação. Os 450
+  testes e os demais campos ficaram idênticos.
+  processar_matriz.py e memorial_pilares.py: quando a elipse da envoltória mínima com 2ª ordem não é englobada (M02 e
+  M08), a saída diz que a armadura adotada atende à Seção 15.3.2 pelas duas análises isoladas, critério de aceitação
+  da rotina, e indica o arranjo que atende também à elipse. resultados_matriz.csv, resultados_inviaveis.csv,
+  memorial_pilares.json e conferencia_memorial.json ficaram idênticos; em resultados_teste_minimo.csv, só o texto da
+  coluna "Envoltória mínima (15.3.2)" do M02 e do M08 mudou.
+Alteração de 13/11/2026: nenhum caminho do computador do autor no material
+  gerar_auditor.py e fontes/paginas_bibliografia.json: a pasta dos PDFs citados passou a ser relativa (bibliografia,
+  ao lado da pasta saida), com a variável de ambiente BIBLIOGRAFIA_TCC para indicar outra ([R01a]); antes, o arquivo
+  trazia o endereço absoluto da pasta do autor. validacao_literatura.py: o PDF de Fusco é procurado na variável
+  PDF_FUSCO ou na pasta bibliografia, e o relatório grava só o nome do arquivo. Resultados idênticos; no auditor,
+  mudaram só a pasta dos PDFs e as linhas citadas nos comentários de validacao_literatura.py.

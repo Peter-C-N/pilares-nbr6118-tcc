@@ -1,0 +1,3447 @@
+{
+"documento": "ABNT NBR 6118:2023 (versão corrigida 2, 30.01.2024)",
+"arquivo": "1 Normas ABNT/ABNT NBR 6118 (2023) - versão corrigida 2.pdf",
+"deslocamento_paginas": "página do PDF = página impressa + 18 (numeradas); i a xviii nas páginas 1 a 18",
+"itens": {
+"1": {
+"pagina_pdf": 19,
+"titulo": "Escopo"
+},
+"1.1": {
+"pagina_pdf": 19,
+"titulo": "Esta Norma estabelece os procedimentos e requisitos básicos para o projeto de es"
+},
+"1.2": {
+"pagina_pdf": 19,
+"titulo": "Esta Norma se aplica às estruturas de concretos normais, identificados por massa"
+},
+"1.3": {
+"pagina_pdf": 19,
+"titulo": "Esta Norma estabelece os requisitos gerais a serem atendidos pelo projeto como u"
+},
+"1.5": {
+"pagina_pdf": 19,
+"titulo": "No caso de estruturas especiais, como de elementos pré-moldados, pontes e viadut"
+},
+"2": {
+"pagina_pdf": 19,
+"titulo": "Referências normativas"
+},
+"3": {
+"pagina_pdf": 21,
+"titulo": "Termos e definições"
+},
+"3.1": {
+"pagina_pdf": 21,
+"titulo": "Definições de concreto estrutural"
+},
+"3.2": {
+"pagina_pdf": 22,
+"titulo": "Definições de estados-limites"
+},
+"4": {
+"pagina_pdf": 22,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"3.3": {
+"pagina_pdf": 23,
+"titulo": "Definição relativa aos envolvidos no processo construtivo"
+},
+"4.1": {
+"pagina_pdf": 23,
+"titulo": "Generalidades"
+},
+"4.2": {
+"pagina_pdf": 24,
+"titulo": "Símbolos-base"
+},
+"4.2.1": {
+"pagina_pdf": 24,
+"titulo": "Generalidades"
+},
+"4.2.2": {
+"pagina_pdf": 24,
+"titulo": "Letras minúsculas"
+},
+"6": {
+"pagina_pdf": 24,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"4.2.3": {
+"pagina_pdf": 25,
+"titulo": "Letras maiúsculas"
+},
+"8": {
+"pagina_pdf": 26,
+"titulo": "Impresso por: Pedro Henrique Verde Silva"
+},
+"4.2.4": {
+"pagina_pdf": 27,
+"titulo": "Letras gregas"
+},
+"4.3": {
+"pagina_pdf": 28,
+"titulo": "Símbolos subscritos"
+},
+"4.3.1": {
+"pagina_pdf": 28,
+"titulo": "Generalidades"
+},
+"10": {
+"pagina_pdf": 28,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"4.3.2": {
+"pagina_pdf": 29,
+"titulo": "Letras minúsculas"
+},
+"4.3.3": {
+"pagina_pdf": 30,
+"titulo": "Letras maiúsculas"
+},
+"4.3.4": {
+"pagina_pdf": 30,
+"titulo": "Números"
+},
+"5": {
+"pagina_pdf": 30,
+"titulo": "Requisitos gerais de qualidade da estrutura e avaliação da conformidade do"
+},
+"5.1": {
+"pagina_pdf": 30,
+"titulo": "Requisitos de qualidade da estrutura"
+},
+"5.1.1": {
+"pagina_pdf": 30,
+"titulo": "Condições gerais"
+},
+"12": {
+"pagina_pdf": 30,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"5.1.2": {
+"pagina_pdf": 31,
+"titulo": "Classificação dos requisitos de qualidade da estrutura"
+},
+"5.1.2.1": {
+"pagina_pdf": 31,
+"titulo": "Estabilidade e segurança à ruína"
+},
+"5.1.2.2": {
+"pagina_pdf": 31,
+"titulo": "Comportamento em serviço"
+},
+"5.1.2.3": {
+"pagina_pdf": 31,
+"titulo": "Durabilidade"
+},
+"5.2": {
+"pagina_pdf": 31,
+"titulo": "Requisitos de qualidade do projeto"
+},
+"5.2.1": {
+"pagina_pdf": 31,
+"titulo": "Qualidade da solução adotada"
+},
+"5.2.2": {
+"pagina_pdf": 31,
+"titulo": "Condições impostas ao projeto"
+},
+"5.2.2.1": {
+"pagina_pdf": 31,
+"titulo": "Todas as condições impostas ao projeto, descritas em 5.2.2.2 a 5.2.2.6, devem se"
+},
+"5.2.2.2": {
+"pagina_pdf": 31,
+"titulo": "Para atender aos requisitos de qualidade impostos às estruturas de concreto, o p"
+},
+"5.2.2.3": {
+"pagina_pdf": 31,
+"titulo": "As exigências relativas à capacidade resistente e ao desempenho em serviço deixa"
+},
+"5.2.2.4": {
+"pagina_pdf": 31,
+"titulo": "As exigências de durabilidade deixam de ser atendidas quando não são observados "
+},
+"5.2.2.5": {
+"pagina_pdf": 31,
+"titulo": "Para tipos especiais de estruturas, devem ser atendidas as exigências particular"
+},
+"5.2.2.6": {
+"pagina_pdf": 32,
+"titulo": "Exigências suplementares podem ser fixadas em projeto."
+},
+"5.2.3": {
+"pagina_pdf": 32,
+"titulo": "Documentação da solução adotada"
+},
+"5.2.3.2": {
+"pagina_pdf": 32,
+"titulo": "Os documentos relacionados em 5.2.3.1 devem conter informações claras, corretas,"
+},
+"5.2.3.3": {
+"pagina_pdf": 32,
+"titulo": "O projeto estrutural deve proporcionar as informações necessárias para a execuçã"
+},
+"5.2.3.4": {
+"pagina_pdf": 32,
+"titulo": "Como objetivo de garantir a qualidade da execução da estrutura de uma obra, com "
+},
+"5.3": {
+"pagina_pdf": 32,
+"titulo": "Avaliação da conformidade do projeto"
+},
+"5.3.1": {
+"pagina_pdf": 32,
+"titulo": "A avaliação da conformidade do projeto deve ser realizada por profissional habil"
+},
+"5.3.2": {
+"pagina_pdf": 32,
+"titulo": "Entende-se que o contratante pode ser o proprietário da obra, em uma primeira in"
+},
+"5.3.3": {
+"pagina_pdf": 32,
+"titulo": "O contratante também definirá em comum acordo com o projetista, as demais prerro"
+},
+"5.3.4": {
+"pagina_pdf": 32,
+"titulo": "Aavaliação da conformidade do projeto deve ser realizada antes da fase de constr"
+},
+"14": {
+"pagina_pdf": 32,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"6.1": {
+"pagina_pdf": 33,
+"titulo": "Exigências de durabilidade"
+},
+"6.2": {
+"pagina_pdf": 33,
+"titulo": "Vida útil de projeto"
+},
+"6.2.2": {
+"pagina_pdf": 33,
+"titulo": "O conceito de vida útil aplica-se à estrutura como um todo ou às suas partes. De"
+},
+"6.2.3": {
+"pagina_pdf": 33,
+"titulo": "Adurabilidade das estruturas de concreto requer cooperação e atitudes coordenada"
+},
+"6.3": {
+"pagina_pdf": 33,
+"titulo": "Mecanismos de envelhecimento e deterioração"
+},
+"6.3.1": {
+"pagina_pdf": 33,
+"titulo": "Generalidades"
+},
+"6.3.2": {
+"pagina_pdf": 33,
+"titulo": "Mecanismos preponderantes de deterioração relativos ao concreto"
+},
+"6.3.2.1": {
+"pagina_pdf": 33,
+"titulo": "Lixiviação"
+},
+"6.3.2.2": {
+"pagina_pdf": 33,
+"titulo": "Expansão por sulfato"
+},
+"6.3.2.3": {
+"pagina_pdf": 33,
+"titulo": "Reação álcali-agregado"
+},
+"6.3.3": {
+"pagina_pdf": 34,
+"titulo": "Mecanismos preponderantes de deterioração relativos à armadura"
+},
+"6.3.3.1": {
+"pagina_pdf": 34,
+"titulo": "Despassivação por carbonatação"
+},
+"6.3.3.2": {
+"pagina_pdf": 34,
+"titulo": "Despassivação por ação de cloretos"
+},
+"6.3.4": {
+"pagina_pdf": 34,
+"titulo": "Mecanismos de deterioração da estrutura propriamente dita"
+},
+"6.4": {
+"pagina_pdf": 34,
+"titulo": "Agressividade ambiental"
+},
+"6.4.1": {
+"pagina_pdf": 34,
+"titulo": "A agressividade ambiental está relacionada às ações físicas e químicas que atuam"
+},
+"6.4.2": {
+"pagina_pdf": 34,
+"titulo": "Nos projetos das estruturas correntes, a agressividade ambiental deve ser classi"
+},
+"16": {
+"pagina_pdf": 34,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"6.4.3": {
+"pagina_pdf": 35,
+"titulo": "O responsável pelo projeto estrutural, de posse de dados relativos ao ambiente e"
+},
+"7": {
+"pagina_pdf": 35,
+"titulo": "Critérios de projeto que visam a durabilidade"
+},
+"7.1": {
+"pagina_pdf": 35,
+"titulo": "Simbologia específica desta seção"
+},
+"7.2": {
+"pagina_pdf": 35,
+"titulo": "Drenagem"
+},
+"7.21": {
+"pagina_pdf": 35,
+"titulo": "Deve ser evitada a presença ou acumulação de água proveniente de chuva ou decorr"
+},
+"7.2.2": {
+"pagina_pdf": 36,
+"titulo": "As superfícies expostas horizontais, como coberturas, pátios, garagens, estacion"
+},
+"7.2.3": {
+"pagina_pdf": 36,
+"titulo": "Todas as juntas de movimento ou de dilatação, em superfícies sujeitas à ação de "
+},
+"7.2.4": {
+"pagina_pdf": 36,
+"titulo": "Todos os topos de platibandas e paredes devem ser protegidos. Todos os beirais d"
+},
+"7.3": {
+"pagina_pdf": 36,
+"titulo": "Formas arquitetônicas e estruturais"
+},
+"7.3.1": {
+"pagina_pdf": 36,
+"titulo": "Disposições arquitetônicas ou construtivas que possam reduzir a durabilidade da "
+},
+"7.3.2": {
+"pagina_pdf": 36,
+"titulo": "Deve ser previsto em projeto o acesso para inspeção e manutenção de partes da es"
+},
+"7.4": {
+"pagina_pdf": 36,
+"titulo": "Qualidade do concreto de cobrimento"
+},
+"7.4.1": {
+"pagina_pdf": 36,
+"titulo": "Atendidas as demais condições estabelecidas nesta seção, a durabilidade das estr"
+},
+"7.4.2": {
+"pagina_pdf": 36,
+"titulo": "Ensaios comprobatórios de desempenho da durabilidade da estrutura frente ao tipo"
+},
+"7.4.3": {
+"pagina_pdf": 36,
+"titulo": "Os requisitos das Tabelas 7.1 e 7.2 são válidos para concretos executados com ci"
+},
+"18": {
+"pagina_pdf": 36,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"7.4.4": {
+"pagina_pdf": 37,
+"titulo": "Não é permitido o uso de aditivos à base de cloreto em estruturas de concreto, d"
+},
+"7.4.5": {
+"pagina_pdf": 37,
+"titulo": "A proteção das armaduras ativas externas deve ser garantida pela bainha, complet"
+},
+"7.4.6": {
+"pagina_pdf": 37,
+"titulo": "Atenção especial deve ser dedicada à proteção contra corrosão das ancoragens das"
+},
+"7.4.7": {
+"pagina_pdf": 37,
+"titulo": "Parao cobrimento deve ser observado o prescrito em 7.4.7.1 a 7.4.7.7."
+},
+"7.4.7.1": {
+"pagina_pdf": 37,
+"titulo": "Para atender aos requisitos estabelecidos nesta Norma, o cobrimento mínimo da ar"
+},
+"7.4.7.2": {
+"pagina_pdf": 37,
+"titulo": "Para garantir o cobrimento mínimo (cmin), O projeto e a execução devem considera"
+},
+"7.4.7.3": {
+"pagina_pdf": 37,
+"titulo": "Nas obras correntes, o valor de Ac deve ser maior ou igual a 10 mm."
+},
+"7.4.7.4": {
+"pagina_pdf": 37,
+"titulo": "Para estruturas projetadas de acordo com a ABNT NBR 9062, quando houver um contr"
+},
+"7.4.7.5": {
+"pagina_pdf": 37,
+"titulo": "Oscobrimentos nominais e mínimos estão sempre referidos à superfície da armadura"
+},
+"7.4.7.6": {
+"pagina_pdf": 37,
+"titulo": "A dimensão máxima característica do agregado graúdo utilizado no concreto não po"
+},
+"7.4.7.7": {
+"pagina_pdf": 38,
+"titulo": "No caso de elementos estruturais pré-fabricados, os valores relativos ao cobrime"
+},
+"7.5": {
+"pagina_pdf": 38,
+"titulo": "Detalhamento das armaduras"
+},
+"7.5.1": {
+"pagina_pdf": 38,
+"titulo": "As barras devem ser dispostas dentro do componente ou elemento estrutural, de mo"
+},
+"7.5.2": {
+"pagina_pdf": 38,
+"titulo": "Para garantir um bom adensamento, é necessário prever no detalhamento da disposi"
+},
+"7.6": {
+"pagina_pdf": 38,
+"titulo": "Controle da fissuração"
+},
+"20": {
+"pagina_pdf": 38,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"7.7": {
+"pagina_pdf": 39,
+"titulo": "Medidas especiais"
+},
+"7.8": {
+"pagina_pdf": 39,
+"titulo": "Inspeção e manutenção preventiva"
+},
+"7.8.2": {
+"pagina_pdf": 39,
+"titulo": "O manual de utilização, inspeção e manutenção deve ser produzido conforme 25.3."
+},
+"8.1": {
+"pagina_pdf": 39,
+"titulo": "Simbologia específica desta seção"
+},
+"8.2": {
+"pagina_pdf": 40,
+"titulo": "Concreto"
+},
+"8.2.1": {
+"pagina_pdf": 40,
+"titulo": "Classes"
+},
+"8.2.2": {
+"pagina_pdf": 40,
+"titulo": "Massa específica"
+},
+"22": {
+"pagina_pdf": 40,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"8.2.3": {
+"pagina_pdf": 41,
+"titulo": "Coeficiente de dilatação térmica"
+},
+"8.2.4": {
+"pagina_pdf": 41,
+"titulo": "Resistência à compressão"
+},
+"8.2.5": {
+"pagina_pdf": 41,
+"titulo": "Resistência à tração"
+},
+"8.2.6": {
+"pagina_pdf": 42,
+"titulo": "Resistência no estado multiaxial de tensões"
+},
+"8.2.7": {
+"pagina_pdf": 42,
+"titulo": "Resistência à fadiga"
+},
+"8.2.8": {
+"pagina_pdf": 42,
+"titulo": "Módulo de elasticidade"
+},
+"24": {
+"pagina_pdf": 42,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"80": {
+"pagina_pdf": 43,
+"titulo": "A deformação elástica do concreto depende da composição do traço do concreto, es"
+},
+"8.2.9": {
+"pagina_pdf": 43,
+"titulo": "Coeficiente de Poisson e módulo de elasticidade transversal"
+},
+"8.2.10": {
+"pagina_pdf": 44,
+"titulo": "Diagramas tensão-deformação"
+},
+"8.2.10.1": {
+"pagina_pdf": 44,
+"titulo": "Compressão"
+},
+"26": {
+"pagina_pdf": 44,
+"titulo": "Impresso por: Pedro Henrique Verde Silva"
+},
+"8.2.10.2": {
+"pagina_pdf": 45,
+"titulo": "Tração"
+},
+"8.2.11": {
+"pagina_pdf": 45,
+"titulo": "Fluência e retração"
+},
+"8.3": {
+"pagina_pdf": 46,
+"titulo": "Aço de armadura passiva"
+},
+"8.3.1": {
+"pagina_pdf": 46,
+"titulo": "Categoria"
+},
+"8.3.2": {
+"pagina_pdf": 46,
+"titulo": "Tipo de superfície aderente"
+},
+"28": {
+"pagina_pdf": 46,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"8.3.3": {
+"pagina_pdf": 47,
+"titulo": "Massa específica"
+},
+"8.3.4": {
+"pagina_pdf": 47,
+"titulo": "Coeficiente de dilatação térmica"
+},
+"8.3.5": {
+"pagina_pdf": 47,
+"titulo": "Módulo de elasticidade"
+},
+"8.3.6": {
+"pagina_pdf": 47,
+"titulo": "Diagrama tensão-deformação, resistência ao escoamento e à tração"
+},
+"8.3.7": {
+"pagina_pdf": 48,
+"titulo": "Características de dutilidade"
+},
+"8.3.8": {
+"pagina_pdf": 48,
+"titulo": "Resistência à fadiga"
+},
+"8.3.9": {
+"pagina_pdf": 48,
+"titulo": "Soldabilidade"
+},
+"8.4": {
+"pagina_pdf": 48,
+"titulo": "Aço de armadura ativa"
+},
+"8.4.1": {
+"pagina_pdf": 48,
+"titulo": "Classificação"
+},
+"8.4.2": {
+"pagina_pdf": 48,
+"titulo": "Massa específica"
+},
+"8.4.3": {
+"pagina_pdf": 48,
+"titulo": "Coeficiente de dilatação térmica"
+},
+"8.4.4": {
+"pagina_pdf": 48,
+"titulo": "Módulo de elasticidade"
+},
+"8.4.5": {
+"pagina_pdf": 48,
+"titulo": "Diagrama tensão-deformação, resistência ao escoamento e à tração"
+},
+"30": {
+"pagina_pdf": 48,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"8.4.6": {
+"pagina_pdf": 49,
+"titulo": "Características de dutilidade"
+},
+"8.4.7": {
+"pagina_pdf": 49,
+"titulo": "Resistência à fadiga"
+},
+"8.4.8": {
+"pagina_pdf": 49,
+"titulo": "Relaxação"
+},
+"9": {
+"pagina_pdf": 50,
+"titulo": "Comportamento conjunto dos materiais"
+},
+"9.1": {
+"pagina_pdf": 50,
+"titulo": "Simbologia específica desta seção"
+},
+"32": {
+"pagina_pdf": 50,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.2": {
+"pagina_pdf": 52,
+"titulo": "Disposições gerais"
+},
+"9.2.1": {
+"pagina_pdf": 52,
+"titulo": "Generalidades"
+},
+"9.2.2": {
+"pagina_pdf": 52,
+"titulo": "Níveis de protensão"
+},
+"9.3": {
+"pagina_pdf": 52,
+"titulo": "Verificação da aderência"
+},
+"9.3.1": {
+"pagina_pdf": 52,
+"titulo": "Posição da barra durante a concretagem"
+},
+"9.3.2": {
+"pagina_pdf": 52,
+"titulo": "Valores das resistências de aderência"
+},
+"9.3.2.1": {
+"pagina_pdf": 52,
+"titulo": "A resistência de aderência de cálculo entre a armadura e o concreto na ancoragem"
+},
+"34": {
+"pagina_pdf": 52,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.3.2.2": {
+"pagina_pdf": 53,
+"titulo": "Aresistência de aderência de cálculo entre armadura e concreto na ancoragem de a"
+},
+"9.3.2.3": {
+"pagina_pdf": 53,
+"titulo": "No escorregamento da armadura, em elementos estruturais fletidos, devem ser adot"
+},
+"9.4": {
+"pagina_pdf": 53,
+"titulo": "Ancoragem das armaduras"
+},
+"9.4.1": {
+"pagina_pdf": 53,
+"titulo": "Condições gerais"
+},
+"9.4.1.1": {
+"pagina_pdf": 53,
+"titulo": "Ancoragem por aderência"
+},
+"9.4.1.2": {
+"pagina_pdf": 54,
+"titulo": "Ancoragem por meio de dispositivos mecânicos"
+},
+"9.4.2": {
+"pagina_pdf": 54,
+"titulo": "Ancoragem de armaduras passivas por aderência"
+},
+"9.4.2.1": {
+"pagina_pdf": 54,
+"titulo": "Prolongamento retilíneo da barra ou grande raio de curvatura"
+},
+"9.4.2.2": {
+"pagina_pdf": 54,
+"titulo": "Barras transversais soldadas"
+},
+"9.4.2.3": {
+"pagina_pdf": 54,
+"titulo": "Ganchos das armaduras de tração"
+},
+"36": {
+"pagina_pdf": 54,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.4.2.4": {
+"pagina_pdf": 56,
+"titulo": "Comprimento de ancoragem básico"
+},
+"9.4.2.5": {
+"pagina_pdf": 56,
+"titulo": "Comprimento de ancoragem necessário"
+},
+"9.4.2.6": {
+"pagina_pdf": 56,
+"titulo": "Armadura transversal na ancoragem"
+},
+"9.4.2.6.1": {
+"pagina_pdf": 56,
+"titulo": "Barras com 4 < 32 mm"
+},
+"9.4.2.6.2": {
+"pagina_pdf": 56,
+"titulo": "Barras com 4 > 32 mm"
+},
+"9.4.3": {
+"pagina_pdf": 56,
+"titulo": "Ancoragem de feixes de barras por aderência"
+},
+"38": {
+"pagina_pdf": 56,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.4.4": {
+"pagina_pdf": 57,
+"titulo": "Ancoragem de telas soldadas por aderência"
+},
+"9.4.5": {
+"pagina_pdf": 57,
+"titulo": "Ancoragem de armaduras ativas (fios e cordoalhas pré-tracionadas) por aderência"
+},
+"9.4.5.1": {
+"pagina_pdf": 57,
+"titulo": "Comprimento de ancoragem básico"
+},
+"9.4.5.2": {
+"pagina_pdf": 57,
+"titulo": "Comprimento de transferência ((bpt)"
+},
+"9.4.5.3": {
+"pagina_pdf": 58,
+"titulo": "Comprimento de ancoragem necessário"
+},
+"9.4.5.4": {
+"pagina_pdf": 58,
+"titulo": "Armaduras transversais na zona de ancoragem"
+},
+"9.4.6": {
+"pagina_pdf": 58,
+"titulo": "Ancoragem de estribos"
+},
+"9.4.6.1": {
+"pagina_pdf": 58,
+"titulo": "Ganchos dos estribos"
+},
+"40": {
+"pagina_pdf": 58,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.4.6.2": {
+"pagina_pdf": 59,
+"titulo": "Barras transversais soldadas"
+},
+"9.4.7": {
+"pagina_pdf": 59,
+"titulo": "Ancoragem por meio de dispositivos mecânicos"
+},
+"9.4.7.1": {
+"pagina_pdf": 60,
+"titulo": "Barra transversal única"
+},
+"9.5": {
+"pagina_pdf": 60,
+"titulo": "Emendas das barras"
+},
+"9.5.1": {
+"pagina_pdf": 60,
+"titulo": "Tipos"
+},
+"9.5.2": {
+"pagina_pdf": 60,
+"titulo": "Emendas por traspasse"
+},
+"9.5.2.1": {
+"pagina_pdf": 60,
+"titulo": "Proporção das barras emendadas"
+},
+"42": {
+"pagina_pdf": 60,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.5.2.2": {
+"pagina_pdf": 61,
+"titulo": "Comprimento de traspasse de barras tracionadas, isoladas"
+},
+"9.5.2.2.1": {
+"pagina_pdf": 61,
+"titulo": "Quando a distância livre entre barras emendadas estiver compreendida entre O e 4"
+},
+"9.5.2.2.2": {
+"pagina_pdf": 61,
+"titulo": "Quando a distância livre entre barras emendadas for maior que 4 4, ao compriment"
+},
+"9.5.2.3": {
+"pagina_pdf": 62,
+"titulo": "Comprimento por traspasse de barras comprimidas, isoladas"
+},
+"9.5.2.4": {
+"pagina_pdf": 62,
+"titulo": "Armadura transversal nas emendas por traspasse, em barras isoladas"
+},
+"9.5.2.4.1": {
+"pagina_pdf": 62,
+"titulo": "Emendas de barras tracionadas da armadura principal (ver Figura 9.5)"
+},
+"9.5.2.4.2": {
+"pagina_pdf": 62,
+"titulo": "Emendas de barras comprimidas (ver Figura 9.5)"
+},
+"44": {
+"pagina_pdf": 62,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.5.2.4.3": {
+"pagina_pdf": 63,
+"titulo": "Emendas de barras de armaduras secundárias"
+},
+"9.5.2.5": {
+"pagina_pdf": 63,
+"titulo": "Emendas por traspasse em feixes de barras"
+},
+"9.5.3": {
+"pagina_pdf": 63,
+"titulo": "Emendas por luvas rosqueadas ou prensadas"
+},
+"9.5.4": {
+"pagina_pdf": 63,
+"titulo": "Emendas por solda"
+},
+"46": {
+"pagina_pdf": 64,
+"titulo": "Impresso por: Pedro Henrique Verde Silva"
+},
+"9.6": {
+"pagina_pdf": 65,
+"titulo": "Protensão"
+},
+"9.6.1": {
+"pagina_pdf": 65,
+"titulo": "Força de protensão"
+},
+"9.6.1.1": {
+"pagina_pdf": 65,
+"titulo": "Generalidades"
+},
+"9.6.1.2": {
+"pagina_pdf": 65,
+"titulo": "Valores-limites da força na armadura de protensão"
+},
+"9.6.1.2.1": {
+"pagina_pdf": 65,
+"titulo": "Valores-limites por ocasião da operação de protensão"
+},
+"9.6.1.2.2": {
+"pagina_pdf": 65,
+"titulo": "Valores-limites ao término da operação de protensão"
+},
+"9.6.1.2.3": {
+"pagina_pdf": 65,
+"titulo": "Tolerância de execução"
+},
+"9.6.1.3": {
+"pagina_pdf": 66,
+"titulo": "Valores representativos da força de protensão"
+},
+"9.6.1.4": {
+"pagina_pdf": 66,
+"titulo": "Valores de cálculo da força de protensão"
+},
+"9.6.2": {
+"pagina_pdf": 66,
+"titulo": "Introdução das forças de protensão"
+},
+"9.6.2.1": {
+"pagina_pdf": 66,
+"titulo": "Generalidades"
+},
+"9.6.2.2": {
+"pagina_pdf": 66,
+"titulo": "Casos de pós-tração"
+},
+"48": {
+"pagina_pdf": 66,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.6.2.3": {
+"pagina_pdf": 67,
+"titulo": "Casos de pré-tração"
+},
+"9.6.3": {
+"pagina_pdf": 67,
+"titulo": "Perdas da força de protensão"
+},
+"9.6.3.1": {
+"pagina_pdf": 67,
+"titulo": "Generalidades"
+},
+"9.6.3.2": {
+"pagina_pdf": 67,
+"titulo": "Perdas iniciais da força de protensão"
+},
+"9.6.3.3": {
+"pagina_pdf": 68,
+"titulo": "Perdas imediatas da força de protensão"
+},
+"9.6.3.3.1": {
+"pagina_pdf": 68,
+"titulo": "Caso da pré-tração"
+},
+"9.6.3.3.2": {
+"pagina_pdf": 68,
+"titulo": "Caso de pós-tração"
+},
+"9.6.3.3.2.1": {
+"pagina_pdf": 68,
+"titulo": "Encurtamento imediato do concreto"
+},
+"9.6.3.3.2.2": {
+"pagina_pdf": 68,
+"titulo": "Perdas por atrito"
+},
+"50": {
+"pagina_pdf": 68,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.6.3.3.2.3": {
+"pagina_pdf": 69,
+"titulo": "Perdas por deslizamento da armadura na ancoragem e acomodação da ancoragem"
+},
+"9.6.3.4": {
+"pagina_pdf": 69,
+"titulo": "Perdas progressivas"
+},
+"9.6.3.4.1": {
+"pagina_pdf": 69,
+"titulo": "Generalidades"
+},
+"9.6.3.4.2": {
+"pagina_pdf": 69,
+"titulo": "Processo simplificado para o caso de fases únicas de operação"
+},
+"52": {
+"pagina_pdf": 70,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"9.6.3.4.3": {
+"pagina_pdf": 71,
+"titulo": "Processo aproximado"
+},
+"9.6.3.4.4": {
+"pagina_pdf": 71,
+"titulo": "Método geral de cálculo"
+},
+"9.6.3.4.5": {
+"pagina_pdf": 72,
+"titulo": "Relaxação do aço"
+},
+"10.1": {
+"pagina_pdf": 72,
+"titulo": "Critérios de segurança"
+},
+"10.2": {
+"pagina_pdf": 72,
+"titulo": "Estados-limites"
+},
+"10.3": {
+"pagina_pdf": 72,
+"titulo": "Estados-limites últimos (ELU)"
+},
+"54": {
+"pagina_pdf": 72,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"10.4": {
+"pagina_pdf": 73,
+"titulo": "Estados-limites de serviço (ELS)"
+},
+"11": {
+"pagina_pdf": 73,
+"titulo": "Ações"
+},
+"11.1": {
+"pagina_pdf": 73,
+"titulo": "Simbologia específica desta Seção"
+},
+"11.2": {
+"pagina_pdf": 74,
+"titulo": "Ações a considerar"
+},
+"11.2.1": {
+"pagina_pdf": 74,
+"titulo": "Generalidades"
+},
+"11.2.2": {
+"pagina_pdf": 74,
+"titulo": "Classificação das ações"
+},
+"11.3": {
+"pagina_pdf": 74,
+"titulo": "Ações permanentes"
+},
+"11.3.1": {
+"pagina_pdf": 74,
+"titulo": "Generalidades"
+},
+"56": {
+"pagina_pdf": 74,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"11.3.2": {
+"pagina_pdf": 75,
+"titulo": "Ações permanentes diretas"
+},
+"11.3.2.1": {
+"pagina_pdf": 75,
+"titulo": "Peso próprio"
+},
+"11.3.2.2": {
+"pagina_pdf": 75,
+"titulo": "Peso dos elementos construtivos fixos e de instalações permanentes"
+},
+"11.3.2.3": {
+"pagina_pdf": 75,
+"titulo": "Empuxos permanentes"
+},
+"11.3.3": {
+"pagina_pdf": 75,
+"titulo": "Ações permanentes indiretas"
+},
+"11.3.3.1": {
+"pagina_pdf": 75,
+"titulo": "Retração do concreto"
+},
+"11.3.3.2": {
+"pagina_pdf": 76,
+"titulo": "Fluência do concreto"
+},
+"11.3.3.3": {
+"pagina_pdf": 76,
+"titulo": "Deslocamentos de apoio"
+},
+"11.3.3.4": {
+"pagina_pdf": 76,
+"titulo": "Imperfeições geométricas"
+},
+"58": {
+"pagina_pdf": 76,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"11.3.3.4.1": {
+"pagina_pdf": 77,
+"titulo": "Imperfeições globais"
+},
+"11.3.3.4.2": {
+"pagina_pdf": 78,
+"titulo": "Imperfeições locais"
+},
+"11.3.3.4.3": {
+"pagina_pdf": 78,
+"titulo": "Momento mínimo"
+},
+"60": {
+"pagina_pdf": 78,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"11.3.3.5": {
+"pagina_pdf": 79,
+"titulo": "Protensão"
+},
+"11.4": {
+"pagina_pdf": 79,
+"titulo": "Ações variáveis"
+},
+"11.4.1": {
+"pagina_pdf": 79,
+"titulo": "Ações variáveis diretas"
+},
+"11.4.1.1": {
+"pagina_pdf": 79,
+"titulo": "Cargas previstas para a utilização da edificação"
+},
+"11.4.1.2": {
+"pagina_pdf": 80,
+"titulo": "Ação do vento"
+},
+"11.4.1.3": {
+"pagina_pdf": 80,
+"titulo": "Ação da água"
+},
+"11.4.1.4": {
+"pagina_pdf": 80,
+"titulo": "Ações variáveis durante a construção"
+},
+"11.4.2": {
+"pagina_pdf": 80,
+"titulo": "Ações variáveis indiretas"
+},
+"11.4.2.1": {
+"pagina_pdf": 80,
+"titulo": "Variações uniformes de temperatura"
+},
+"62": {
+"pagina_pdf": 80,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"11.4.2.2": {
+"pagina_pdf": 81,
+"titulo": "Variações não uniformes de temperatura"
+},
+"11.4.2.3": {
+"pagina_pdf": 81,
+"titulo": "Ações dinâmicas"
+},
+"11.5": {
+"pagina_pdf": 81,
+"titulo": "Ações excepcionais"
+},
+"11.6": {
+"pagina_pdf": 81,
+"titulo": "Valores das ações"
+},
+"11.6.1": {
+"pagina_pdf": 81,
+"titulo": "Valores característicos"
+},
+"11.6.1.1": {
+"pagina_pdf": 81,
+"titulo": "Ações permanentes"
+},
+"11.6.1.2": {
+"pagina_pdf": 81,
+"titulo": "Ações variáveis"
+},
+"11.6.2": {
+"pagina_pdf": 82,
+"titulo": "Valores representativos"
+},
+"11.6.3": {
+"pagina_pdf": 82,
+"titulo": "Valores de cálculo"
+},
+"11.7": {
+"pagina_pdf": 82,
+"titulo": "Coeficientes de ponderação das ações"
+},
+"11.7.1": {
+"pagina_pdf": 82,
+"titulo": "Coeficientes de ponderação das ações no estado-limite último (ELU)"
+},
+"64": {
+"pagina_pdf": 82,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"11.7.2": {
+"pagina_pdf": 84,
+"titulo": "Coeficientes de ponderação das ações no estado-limite de serviço (ELS)"
+},
+"11.8": {
+"pagina_pdf": 84,
+"titulo": "Combinações de ações"
+},
+"11.8.1": {
+"pagina_pdf": 84,
+"titulo": "Generalidades"
+},
+"11.8.2": {
+"pagina_pdf": 84,
+"titulo": "Combinações últimas"
+},
+"11.8.2.1": {
+"pagina_pdf": 84,
+"titulo": "Combinações últimas normais"
+},
+"11.8.2.2": {
+"pagina_pdf": 84,
+"titulo": "Combinações últimas especiais ou de construção"
+},
+"11.8.2.3": {
+"pagina_pdf": 84,
+"titulo": "Combinações últimas excepcionais"
+},
+"66": {
+"pagina_pdf": 84,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"11.8.2.4": {
+"pagina_pdf": 85,
+"titulo": "Combinações últimas usuais"
+},
+"11.8.3": {
+"pagina_pdf": 86,
+"titulo": "Combinações de serviço"
+},
+"11.8.3.1": {
+"pagina_pdf": 86,
+"titulo": "Classificação"
+},
+"11.8.3.2": {
+"pagina_pdf": 87,
+"titulo": "Combinações de serviço usuais"
+},
+"12.1": {
+"pagina_pdf": 87,
+"titulo": "Simbologia específica desta seção"
+},
+"12.2": {
+"pagina_pdf": 88,
+"titulo": "Valores característicos"
+},
+"12.3": {
+"pagina_pdf": 88,
+"titulo": "Valores de cálculo"
+},
+"12.3.1": {
+"pagina_pdf": 88,
+"titulo": "Resistência de cálculo"
+},
+"12.3.2": {
+"pagina_pdf": 88,
+"titulo": "Tensões resistentes de cálculo"
+},
+"12.3.3": {
+"pagina_pdf": 88,
+"titulo": "Resistência de cálculo do concreto"
+},
+"70": {
+"pagina_pdf": 88,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"12.4": {
+"pagina_pdf": 89,
+"titulo": "Coeficientes de ponderação das resistências"
+},
+"12.4.1": {
+"pagina_pdf": 89,
+"titulo": "Coeficientes de ponderação das resistências no estado-limite último (ELU)"
+},
+"12.4.2": {
+"pagina_pdf": 90,
+"titulo": "Coeficientes de ponderação das resistências no estado-limite de serviço (ELS)"
+},
+"12.5": {
+"pagina_pdf": 90,
+"titulo": "Verificação da segurança"
+},
+"12.5.1": {
+"pagina_pdf": 90,
+"titulo": "Condições construtivas de segurança"
+},
+"12.5.2": {
+"pagina_pdf": 90,
+"titulo": "Condições analíticas de segurança"
+},
+"12.5.3": {
+"pagina_pdf": 90,
+"titulo": "Esforços resistentes de cálculo"
+},
+"12.5.4": {
+"pagina_pdf": 90,
+"titulo": "Esforços solicitantes de cálculo"
+},
+"13": {
+"pagina_pdf": 90,
+"titulo": "Limites para dimensões, deslocamentos e aberturas de fissuras"
+},
+"13.1": {
+"pagina_pdf": 90,
+"titulo": "Simbologia específica desta Seção"
+},
+"72": {
+"pagina_pdf": 90,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"13.2": {
+"pagina_pdf": 91,
+"titulo": "Dimensões-limites"
+},
+"13.2.1": {
+"pagina_pdf": 91,
+"titulo": "Introdução"
+},
+"13.2.2": {
+"pagina_pdf": 91,
+"titulo": "Vigas e vigas-parede"
+},
+"13.2.3": {
+"pagina_pdf": 91,
+"titulo": "Pilares e pilares-parede"
+},
+"13.2.4": {
+"pagina_pdf": 92,
+"titulo": "Lajes"
+},
+"13.2.4.1": {
+"pagina_pdf": 92,
+"titulo": "Lajes maciças"
+},
+"13.2.4.2": {
+"pagina_pdf": 92,
+"titulo": "Lajes nervuradas"
+},
+"74": {
+"pagina_pdf": 92,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"13.2.4.3": {
+"pagina_pdf": 93,
+"titulo": "Lajes pré-moldadas"
+},
+"13.2.5": {
+"pagina_pdf": 93,
+"titulo": "Furos e aberturas"
+},
+"13.2.5.1": {
+"pagina_pdf": 93,
+"titulo": "Furos que atravessam vigas na direção de sua largura"
+},
+"13.2.5.2": {
+"pagina_pdf": 93,
+"titulo": "Aberturas que atravessam lajes na direção de sua espessura"
+},
+"13.2.6": {
+"pagina_pdf": 94,
+"titulo": "Canalizações embutidas"
+},
+"13.3": {
+"pagina_pdf": 94,
+"titulo": "Deslocamentos-limites"
+},
+"76": {
+"pagina_pdf": 94,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"77": {
+"pagina_pdf": 96,
+"titulo": "ABNT NBR 6118:2023"
+},
+"78": {
+"pagina_pdf": 96,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"13.4": {
+"pagina_pdf": 97,
+"titulo": "Controle da fissuração e proteção das armaduras"
+},
+"13.4.1": {
+"pagina_pdf": 97,
+"titulo": "Introdução"
+},
+"13.4.2": {
+"pagina_pdf": 97,
+"titulo": "Limites para fissuração e proteção das armaduras quanto à durabilidade"
+},
+"13.4.3": {
+"pagina_pdf": 98,
+"titulo": "Controle da fissuração quanto à aceitabilidade sensorial e à utilização"
+},
+"14.1": {
+"pagina_pdf": 99,
+"titulo": "Simbologia específica desta seção"
+},
+"14.2": {
+"pagina_pdf": 99,
+"titulo": "Princípios gerais da análise estrutural"
+},
+"14.2.1": {
+"pagina_pdf": 99,
+"titulo": "Objetivo da análise estrutural"
+},
+"14.2.2": {
+"pagina_pdf": 100,
+"titulo": "Premissas necessárias à análise estrutural"
+},
+"14.2.3": {
+"pagina_pdf": 100,
+"titulo": "Aplicação dos resultados obtidos com os modelos de análises em regime linear"
+},
+"82": {
+"pagina_pdf": 100,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.2.4": {
+"pagina_pdf": 101,
+"titulo": "Aplicação dos resultados obtidos com os modelos de análises em regime não linear"
+},
+"14.3": {
+"pagina_pdf": 101,
+"titulo": "Hipóteses básicas"
+},
+"14.3.1": {
+"pagina_pdf": 101,
+"titulo": "Condições de equilíbrio"
+},
+"14.3.2": {
+"pagina_pdf": 101,
+"titulo": "Condições de compatibilidade"
+},
+"14.3.3": {
+"pagina_pdf": 101,
+"titulo": "Carregamento monotônico"
+},
+"14.4": {
+"pagina_pdf": 101,
+"titulo": "Elementos estruturais"
+},
+"14.4.1": {
+"pagina_pdf": 101,
+"titulo": "Elementos lineares"
+},
+"14.4.1.1": {
+"pagina_pdf": 101,
+"titulo": "Vigas"
+},
+"14.4.1.2": {
+"pagina_pdf": 102,
+"titulo": "Pilares"
+},
+"14.4.1.3": {
+"pagina_pdf": 102,
+"titulo": "Tirantes"
+},
+"14.4.1.4": {
+"pagina_pdf": 102,
+"titulo": "Arcos"
+},
+"14.4.2": {
+"pagina_pdf": 102,
+"titulo": "Elementos de superfície"
+},
+"14.4.2.1": {
+"pagina_pdf": 102,
+"titulo": "Placas"
+},
+"14.4.2.2": {
+"pagina_pdf": 102,
+"titulo": "Chapas"
+},
+"14.4.2.3": {
+"pagina_pdf": 102,
+"titulo": "Cascas"
+},
+"14.4.2.4": {
+"pagina_pdf": 102,
+"titulo": "Pilares-parede"
+},
+"14.5": {
+"pagina_pdf": 102,
+"titulo": "Métodos de análise estrutural"
+},
+"14.5.1": {
+"pagina_pdf": 102,
+"titulo": "Generalidades"
+},
+"84": {
+"pagina_pdf": 102,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.5.2": {
+"pagina_pdf": 103,
+"titulo": "Análise linear"
+},
+"14.5.3": {
+"pagina_pdf": 103,
+"titulo": "Análise linear com redistribuição"
+},
+"14.5.4": {
+"pagina_pdf": 103,
+"titulo": "Análise plástica"
+},
+"14.5.5": {
+"pagina_pdf": 104,
+"titulo": "Análise não linear"
+},
+"14.5.6": {
+"pagina_pdf": 104,
+"titulo": "Análise através de modelos físicos"
+},
+"14.6": {
+"pagina_pdf": 104,
+"titulo": "Estruturas de elementos lineares"
+},
+"14.6.1": {
+"pagina_pdf": 104,
+"titulo": "Hipóteses básicas"
+},
+"86": {
+"pagina_pdf": 104,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.6.2": {
+"pagina_pdf": 105,
+"titulo": "Caracterização da geometria"
+},
+"14.6.2.1": {
+"pagina_pdf": 105,
+"titulo": "Trechos rígidos"
+},
+"14.6.2.2": {
+"pagina_pdf": 105,
+"titulo": "Largura colaborante de vigas de seção T"
+},
+"88": {
+"pagina_pdf": 106,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.6.2.3": {
+"pagina_pdf": 107,
+"titulo": "Mísulas e variações bruscas de seções"
+},
+"14.6.2.4": {
+"pagina_pdf": 107,
+"titulo": "Vãos efetivos de vigas"
+},
+"14.6.3": {
+"pagina_pdf": 108,
+"titulo": "Arredondamento do diagrama de momentos fletores"
+},
+"90": {
+"pagina_pdf": 108,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.6.4": {
+"pagina_pdf": 109,
+"titulo": "Análise linear com ou sem redistribuição"
+},
+"14.6.4.1": {
+"pagina_pdf": 109,
+"titulo": "Valores de rigidez"
+},
+"14.6.4.2": {
+"pagina_pdf": 109,
+"titulo": "Restrições para a redistribuição"
+},
+"14.6.4.3": {
+"pagina_pdf": 109,
+"titulo": "Limites para redistribuição de momentos e condições de dutilidade"
+},
+"14.6.4.4": {
+"pagina_pdf": 110,
+"titulo": "Análise não linear com verificação explícita da rotação plástica solicitante"
+},
+"92": {
+"pagina_pdf": 110,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.6.5": {
+"pagina_pdf": 111,
+"titulo": "Análise não linear"
+},
+"14.6.6": {
+"pagina_pdf": 111,
+"titulo": "Estruturas usuais de edifícios — Aproximações permitidas"
+},
+"14.6.6.1": {
+"pagina_pdf": 111,
+"titulo": "Vigas contínuas"
+},
+"14.6.6.2": {
+"pagina_pdf": 112,
+"titulo": "Grelhas e pórticos espaciais"
+},
+"14.6.6.3": {
+"pagina_pdf": 112,
+"titulo": "Consideração de cargas variáveis"
+},
+"14.6.6.4": {
+"pagina_pdf": 112,
+"titulo": "Estrutura de contraventamento lateral"
+},
+"94": {
+"pagina_pdf": 112,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.7": {
+"pagina_pdf": 113,
+"titulo": "Estruturas com elementos de placa"
+},
+"14.7.1": {
+"pagina_pdf": 113,
+"titulo": "Hipóteses básicas"
+},
+"14.7.2": {
+"pagina_pdf": 113,
+"titulo": "Caracterização da geometria"
+},
+"14.7.2.1": {
+"pagina_pdf": 113,
+"titulo": "Mísulas e variações bruscas de espessuras"
+},
+"14.7.2.2": {
+"pagina_pdf": 113,
+"titulo": "Vãos efetivos de lajes ou placas"
+},
+"14.7.3": {
+"pagina_pdf": 113,
+"titulo": "Análise linear com ou sem redistribuição"
+},
+"14.7.3.1": {
+"pagina_pdf": 113,
+"titulo": "Valores de rigidez"
+},
+"14.7.3.2": {
+"pagina_pdf": 113,
+"titulo": "Redistribuição de momentos e condições de dutilidade"
+},
+"14.7.4": {
+"pagina_pdf": 114,
+"titulo": "Análise plástica"
+},
+"14.7.5": {
+"pagina_pdf": 114,
+"titulo": "Análise não linear"
+},
+"14.7.6": {
+"pagina_pdf": 114,
+"titulo": "Lajes maciças"
+},
+"14.7.6.1": {
+"pagina_pdf": 114,
+"titulo": "Reações de apoio"
+},
+"96": {
+"pagina_pdf": 114,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"14.7.6.2": {
+"pagina_pdf": 115,
+"titulo": "Aproximações para diagramas de momentos fletores"
+},
+"14.7.7": {
+"pagina_pdf": 115,
+"titulo": "Lajes nervuradas"
+},
+"14.7.8": {
+"pagina_pdf": 115,
+"titulo": "Lajes lisas e lajes-cogumelo"
+},
+"14.8": {
+"pagina_pdf": 116,
+"titulo": "Estruturas contendo outros elementos"
+},
+"14.8.1": {
+"pagina_pdf": 116,
+"titulo": "Vigas-parede e pilares-parede"
+},
+"14.8.2": {
+"pagina_pdf": 116,
+"titulo": "Blocos"
+},
+"98": {
+"pagina_pdf": 116,
+"titulo": "O ABNT 2023 - Todos os direitos reservados"
+},
+"15": {
+"pagina_pdf": 117,
+"titulo": "Instabilidade e efeitos de 2º ordem"
+},
+"15.1": {
+"pagina_pdf": 117,
+"titulo": "Simbologia específica desta Seção"
+},
+"15.2": {
+"pagina_pdf": 117,
+"titulo": "Campo de aplicação e conceitos fundamentais"
+},
+"15.3": {
+"pagina_pdf": 118,
+"titulo": "Princípio básico de cálculo"
+},
+"15.3.1": {
+"pagina_pdf": 118,
+"titulo": "Relações momento-curvatura"
+},
+"15.3.2": {
+"pagina_pdf": 119,
+"titulo": "Imperfeições geométricas"
+},
+"15.4": {
+"pagina_pdf": 120,
+"titulo": "Definições e classificação das estruturas"
+},
+"15.4.1": {
+"pagina_pdf": 120,
+"titulo": "Efeitos globais, locais e localizados de 2º ordem"
+},
+"15.4.2": {
+"pagina_pdf": 121,
+"titulo": "Estruturas de nós fixos e estruturas de nós móveis"
+},
+"15.4.3": {
+"pagina_pdf": 121,
+"titulo": "Contraventamento"
+},
+"15.4.4": {
+"pagina_pdf": 121,
+"titulo": "Elementos isolados"
+},
+"15.5": {
+"pagina_pdf": 122,
+"titulo": "Dispensa da consideração dos esforços globais de 2º ordem"
+},
+"15.5.1": {
+"pagina_pdf": 122,
+"titulo": "Generalidades"
+},
+"15.5.2": {
+"pagina_pdf": 122,
+"titulo": "Parâmetro de instabilidade o"
+},
+"15.5.3": {
+"pagina_pdf": 123,
+"titulo": "Coeficiente y"
+},
+"15.6": {
+"pagina_pdf": 123,
+"titulo": "Análise de estruturas de nós fixos"
+},
+"15.7": {
+"pagina_pdf": 124,
+"titulo": "Análise de estruturas de nós móveis"
+},
+"15.7.1": {
+"pagina_pdf": 124,
+"titulo": "Generalidades"
+},
+"15.7.2": {
+"pagina_pdf": 124,
+"titulo": "Análise não linear com 2º ordem"
+},
+"15.7.3": {
+"pagina_pdf": 124,
+"titulo": "Consideração aproximada da não linearidade física"
+},
+"15.7.4": {
+"pagina_pdf": 125,
+"titulo": "Análise dos efeitos locais de 2º ordem"
+},
+"15.8": {
+"pagina_pdf": 125,
+"titulo": "Análise de elementos isolados"
+},
+"15.8.1": {
+"pagina_pdf": 125,
+"titulo": "Generalidades"
+},
+"15.8.2": {
+"pagina_pdf": 125,
+"titulo": "Dispensa da análise dos efeitos locais de 2º ordem"
+},
+"15.8.3": {
+"pagina_pdf": 126,
+"titulo": "Determinação dos efeitos locais de 2º ordem"
+},
+"15.8.3.1": {
+"pagina_pdf": 126,
+"titulo": "Barras submetidas a flexo-compressão normal"
+},
+"15.8.3.2": {
+"pagina_pdf": 126,
+"titulo": "Método geral"
+},
+"15.8.3.3": {
+"pagina_pdf": 127,
+"titulo": "Métodos aproximados"
+},
+"15.8.3.3.1": {
+"pagina_pdf": 127,
+"titulo": "Generalidades"
+},
+"15.8.3.3.2": {
+"pagina_pdf": 127,
+"titulo": "Método do pilar-padrão com curvatura aproximada"
+},
+"15.8.3.3.3": {
+"pagina_pdf": 127,
+"titulo": "Método do pilar-padrão com rigidez x aproximada"
+},
+"15.8.3.3.4": {
+"pagina_pdf": 128,
+"titulo": "Método do pilar-padrão acoplado a diagramas M, N, 1/r"
+},
+"15.8.3.3.5": {
+"pagina_pdf": 128,
+"titulo": "Método do pilar-padrão para pilares de seção retangular submetidos à flexão"
+},
+"15.8.4": {
+"pagina_pdf": 129,
+"titulo": "Consideração da fluência"
+},
+"15.9": {
+"pagina_pdf": 129,
+"titulo": "Análise de pilares-parede"
+},
+"15.9.1": {
+"pagina_pdf": 129,
+"titulo": "Generalidades"
+},
+"15.9.2": {
+"pagina_pdf": 129,
+"titulo": "Dispensa da análise dos efeitos localizados de 2º ordem"
+},
+"15.9.3": {
+"pagina_pdf": 130,
+"titulo": "Processo aproximado para consideração do efeito localizado de 2º ordem"
+},
+"15.10": {
+"pagina_pdf": 131,
+"titulo": "Instabilidade lateral de vigas"
+},
+"16.1": {
+"pagina_pdf": 132,
+"titulo": "Objetivo"
+},
+"16.2": {
+"pagina_pdf": 133,
+"titulo": "Princípios gerais"
+},
+"16.2.1": {
+"pagina_pdf": 133,
+"titulo": "Generalidades"
+},
+"16.2.2": {
+"pagina_pdf": 133,
+"titulo": "Visão global e local"
+},
+"16.2.3": {
+"pagina_pdf": 133,
+"titulo": "Segurança em relação aos ELU"
+},
+"16.2.4": {
+"pagina_pdf": 133,
+"titulo": "Segurança em relação aos ELS (desempenho em serviço)"
+},
+"16.3": {
+"pagina_pdf": 134,
+"titulo": "Critérios de projeto"
+},
+"16.4": {
+"pagina_pdf": 135,
+"titulo": "Durabilidade"
+},
+"16.5": {
+"pagina_pdf": 135,
+"titulo": "Caso de cargas cíclicas"
+},
+"17": {
+"pagina_pdf": 135,
+"titulo": "Dimensionamento e verificação de elementos lineares"
+},
+"17.1": {
+"pagina_pdf": 135,
+"titulo": "Simbologia específica desta seção"
+},
+"17.2": {
+"pagina_pdf": 138,
+"titulo": "Elementos lineares sujeitos a solicitações normais - Estado-limite último"
+},
+"17.2.1": {
+"pagina_pdf": 138,
+"titulo": "Introdução"
+},
+"17.2.2": {
+"pagina_pdf": 138,
+"titulo": "Hipóteses básicas"
+},
+"17.2.3": {
+"pagina_pdf": 140,
+"titulo": "Dutilidade em vigas"
+},
+"17.2.4": {
+"pagina_pdf": 141,
+"titulo": "Armaduras ativas e passivas"
+},
+"17.2.4.1": {
+"pagina_pdf": 141,
+"titulo": "Generalidades"
+},
+"17.2.4.2": {
+"pagina_pdf": 141,
+"titulo": "Protensão"
+},
+"17.2.4.2.1": {
+"pagina_pdf": 141,
+"titulo": "Generalidades"
+},
+"17.2.4.3": {
+"pagina_pdf": 141,
+"titulo": "Estado-limite último no ato da protensão"
+},
+"17.2.4.3.1": {
+"pagina_pdf": 141,
+"titulo": "Generalidades"
+},
+"17.2.4.3.2": {
+"pagina_pdf": 142,
+"titulo": "Verificação simplificada"
+},
+"17.2.4.4": {
+"pagina_pdf": 142,
+"titulo": "Estado-limite de serviço"
+},
+"17.2.4.4.1": {
+"pagina_pdf": 142,
+"titulo": "Limites de tensão de compressão"
+},
+"17.2.4.4.2": {
+"pagina_pdf": 142,
+"titulo": "Limites de tensão de tração"
+},
+"17.2.5": {
+"pagina_pdf": 143,
+"titulo": "Processo aproximado para o dimensionamento à flexão composta oblíqua"
+},
+"17.3": {
+"pagina_pdf": 143,
+"titulo": "Elementos lineares sujeitos a solicitações normais — Estados-limites de serviço"
+},
+"17.3.1": {
+"pagina_pdf": 143,
+"titulo": "Generalidades"
+},
+"17.3.2": {
+"pagina_pdf": 144,
+"titulo": "Estado-limite de deformação"
+},
+"17.3.2.1": {
+"pagina_pdf": 144,
+"titulo": "Avaliação aproximada da flecha em vigas"
+},
+"17.3.2.1.1": {
+"pagina_pdf": 144,
+"titulo": "Flecha imediata em vigas de concreto armado"
+},
+"17.3.2.1.2": {
+"pagina_pdf": 145,
+"titulo": "Cálculo da flecha diferida no tempo para vigas de concreto armado"
+},
+"17.3.2.1.3": {
+"pagina_pdf": 146,
+"titulo": "Flecha em vigas com armaduras ativas"
+},
+"17.3.3": {
+"pagina_pdf": 146,
+"titulo": "Estado-limite de fissuração"
+},
+"17.3.3.1": {
+"pagina_pdf": 146,
+"titulo": "Generalidades"
+},
+"17.3.3.2": {
+"pagina_pdf": 146,
+"titulo": "Controle da fissuração através da limitação da abertura estimada das fissuras"
+},
+"17.3.3.3": {
+"pagina_pdf": 148,
+"titulo": "Controle da fissuração sem a verificação da abertura de fissuras"
+},
+"17.3.4": {
+"pagina_pdf": 148,
+"titulo": "Estado-limite de descompressão e de formação de fissuras"
+},
+"17.3.5": {
+"pagina_pdf": 149,
+"titulo": "Armaduras longitudinais máximas e mínimas"
+},
+"17.3.5.1": {
+"pagina_pdf": 149,
+"titulo": "Princípios básicos"
+},
+"17.3.5.2": {
+"pagina_pdf": 149,
+"titulo": "Valores-limites para armaduras longitudinais de vigas"
+},
+"17.3.5.2.1": {
+"pagina_pdf": 149,
+"titulo": "Armadura de tração"
+},
+"17.3.5.2.2": {
+"pagina_pdf": 150,
+"titulo": "Valores mínimos para a armadura de tração sob deformações impostas"
+},
+"17.3.5.2.3": {
+"pagina_pdf": 151,
+"titulo": "Armadura de pele"
+},
+"17.3.5.2.4": {
+"pagina_pdf": 151,
+"titulo": "Armaduras de tração e de compressão"
+},
+"17.3.5.3": {
+"pagina_pdf": 151,
+"titulo": "Valores-limites para armaduras longitudinais de pilares"
+},
+"17.3.5.3.1": {
+"pagina_pdf": 151,
+"titulo": "Valores mínimos"
+},
+"17.3.5.3.2": {
+"pagina_pdf": 151,
+"titulo": "Valores máximos"
+},
+"17.4": {
+"pagina_pdf": 151,
+"titulo": "Elementos lineares sujeitos à força cortante - Estado-limite último"
+},
+"17.4.1": {
+"pagina_pdf": 151,
+"titulo": "Hipóteses básicas"
+},
+"17.4.1.1": {
+"pagina_pdf": 152,
+"titulo": "Condições gerais"
+},
+"17.4.1.1.1": {
+"pagina_pdf": 152,
+"titulo": "Todos os elementos lineares submetidos a força cortante, com exceção dos casos"
+},
+"17.4.1.1.2": {
+"pagina_pdf": 152,
+"titulo": "São exceção ao descrito em 17.4.1.1.1:"
+},
+"17.4.1.1.3": {
+"pagina_pdf": 153,
+"titulo": "A armadura transversal (Asw) pode ser constituída por estribos (fechados na regi"
+},
+"17.4.1.1.4": {
+"pagina_pdf": 153,
+"titulo": "Podem ser utilizadas barras verticais soldadas combinadas com estribos fechados,"
+},
+"17.4.1.1.5": {
+"pagina_pdf": 153,
+"titulo": "O ângulo de inclinação a das armaduras transversais em relação ao eixo longitudi"
+},
+"17.4.1.1.6": {
+"pagina_pdf": 153,
+"titulo": "Os espaçamentos máximos e mínimos entre elementos da armadura devem atender às"
+},
+"17.4.1.2": {
+"pagina_pdf": 153,
+"titulo": "Condições relativas aos esforços solicitantes"
+},
+"17.4.1.2.1": {
+"pagina_pdf": 153,
+"titulo": "Cargas próximas aos apoios"
+},
+"17.4.1.2.2": {
+"pagina_pdf": 153,
+"titulo": "Efeito da componente tangencial da força de protensão"
+},
+"17.4.1.2.3": {
+"pagina_pdf": 153,
+"titulo": "Elementos estruturais com altura variável"
+},
+"17.4.2": {
+"pagina_pdf": 154,
+"titulo": "Verificação do estado-limite último"
+},
+"17.4.2.1": {
+"pagina_pdf": 154,
+"titulo": "Cálculo da resistência"
+},
+"17.4.2.2": {
+"pagina_pdf": 154,
+"titulo": "Modelo de cálculo |"
+},
+"17.4.2.3": {
+"pagina_pdf": 156,
+"titulo": "Modelo de cálculo II"
+},
+"17.5": {
+"pagina_pdf": 157,
+"titulo": "Elementos lineares sujeitos à torção — Estado-limite último"
+},
+"17.5.1": {
+"pagina_pdf": 157,
+"titulo": "Torção uniforme"
+},
+"17.5.1.1": {
+"pagina_pdf": 157,
+"titulo": "Generalidades"
+},
+"17.5.1.2": {
+"pagina_pdf": 157,
+"titulo": "Condições gerais"
+},
+"17.5.1.3": {
+"pagina_pdf": 158,
+"titulo": "Resistência do elemento estrutural —- Torção pura"
+},
+"17.5.1.4": {
+"pagina_pdf": 158,
+"titulo": "Geometria da seção resistente"
+},
+"17.5.1.4.1": {
+"pagina_pdf": 158,
+"titulo": "Seções poligonais convexas cheias"
+},
+"17.5.1.4.2": {
+"pagina_pdf": 159,
+"titulo": "Seção composta de retângulos"
+},
+"17.5.1.4.3": {
+"pagina_pdf": 159,
+"titulo": "Seções vazadas"
+},
+"17.5.1.5": {
+"pagina_pdf": 159,
+"titulo": "Verificação da compressão diagonal do concreto"
+},
+"17.5.1.6": {
+"pagina_pdf": 160,
+"titulo": "Cálculo das armaduras"
+},
+"17.5.2": {
+"pagina_pdf": 160,
+"titulo": "Torção em perfis abertos de parede fina"
+},
+"17.5.2.1": {
+"pagina_pdf": 160,
+"titulo": "Generalidades"
+},
+"17.5.2.2": {
+"pagina_pdf": 160,
+"titulo": "Considerações gerais"
+},
+"17.5.2.3": {
+"pagina_pdf": 160,
+"titulo": "Rigidez à flexo-torção"
+},
+"17.5.2.4": {
+"pagina_pdf": 161,
+"titulo": "Resistência à flexo-torção"
+},
+"17.6": {
+"pagina_pdf": 162,
+"titulo": "Estado-limite de fissuração inclinada da alma - Força cortante e torção"
+},
+"17.7": {
+"pagina_pdf": 162,
+"titulo": "Solicitações combinadas"
+},
+"17.7.1": {
+"pagina_pdf": 162,
+"titulo": "Flexão e torção"
+},
+"17.7.1.1": {
+"pagina_pdf": 162,
+"titulo": "Generalidades"
+},
+"17.7.1.2": {
+"pagina_pdf": 162,
+"titulo": "Armadura longitudinal"
+},
+"17.7.1.3": {
+"pagina_pdf": 162,
+"titulo": "Armadura longitudinal no banzo comprimido por flexão"
+},
+"17.7.1.4": {
+"pagina_pdf": 162,
+"titulo": "Resistência do banzo comprimido"
+},
+"17.7.2": {
+"pagina_pdf": 163,
+"titulo": "Torção e força cortante"
+},
+"17.7.2.1": {
+"pagina_pdf": 163,
+"titulo": "Generalidades"
+},
+"17.7.2.2": {
+"pagina_pdf": 163,
+"titulo": "A resistência à compressão diagonal do concreto deve ser satisfeita atendendo à "
+},
+"17.7.2.3": {
+"pagina_pdf": 163,
+"titulo": "A armadura transversal pode ser calculada pela soma das armaduras calculadas"
+},
+"18.1": {
+"pagina_pdf": 163,
+"titulo": "Simbologia específica desta Seção"
+},
+"18.2": {
+"pagina_pdf": 164,
+"titulo": "Disposições gerais relativas às armaduras"
+},
+"18.2.1": {
+"pagina_pdf": 164,
+"titulo": "Arranjo das armaduras"
+},
+"18.2.2": {
+"pagina_pdf": 164,
+"titulo": "Barras curvadas"
+},
+"18.2.3": {
+"pagina_pdf": 164,
+"titulo": "Mudanças de direção das armaduras"
+},
+"18.2.4": {
+"pagina_pdf": 165,
+"titulo": "Proteção contra flambagem das barras"
+},
+"18.3": {
+"pagina_pdf": 165,
+"titulo": "Vigas"
+},
+"18.3.1": {
+"pagina_pdf": 165,
+"titulo": "Generalidades"
+},
+"18.3.2": {
+"pagina_pdf": 165,
+"titulo": "Armadura longitudinal"
+},
+"18.3.2.1": {
+"pagina_pdf": 165,
+"titulo": "Quantidade mínima"
+},
+"18.3.2.2": {
+"pagina_pdf": 166,
+"titulo": "Distribuição transversal"
+},
+"18.3.2.3": {
+"pagina_pdf": 166,
+"titulo": "Distribuição longitudinal"
+},
+"18.3.2.3.1": {
+"pagina_pdf": 166,
+"titulo": "Armaduras de tração na flexão simples, ancoradas por aderência"
+},
+"18.3.2.3.2": {
+"pagina_pdf": 167,
+"titulo": "Caso de barras alojadas nas mesas"
+},
+"18.3.2.4": {
+"pagina_pdf": 167,
+"titulo": "Armadura de tração nas seções de apoio"
+},
+"18.3.2.4.1": {
+"pagina_pdf": 168,
+"titulo": "Ancoragem da armadura de tração no apoio"
+},
+"18.3.3": {
+"pagina_pdf": 168,
+"titulo": "Armadura transversal para força cortante"
+},
+"18.3.3.1": {
+"pagina_pdf": 168,
+"titulo": "Generalidades"
+},
+"18.3.3.2": {
+"pagina_pdf": 168,
+"titulo": "Elementos estruturais armados com estribos"
+},
+"18.3.3.3": {
+"pagina_pdf": 169,
+"titulo": "Elementos estruturais armados com barras dobradas"
+},
+"18.3.3.3.1": {
+"pagina_pdf": 169,
+"titulo": "Ancoragem"
+},
+"18.3.3.3.2": {
+"pagina_pdf": 169,
+"titulo": "Espaçamento longitudinal"
+},
+"18.3.4": {
+"pagina_pdf": 169,
+"titulo": "Armadura para torção"
+},
+"18.3.5": {
+"pagina_pdf": 170,
+"titulo": "Armadura de pele"
+},
+"18.3.6": {
+"pagina_pdf": 170,
+"titulo": "Armadura de suspensão"
+},
+"18.3.7": {
+"pagina_pdf": 170,
+"titulo": "Armaduras de ligação mesa-alma ou talão-alma"
+},
+"18.4": {
+"pagina_pdf": 170,
+"titulo": "Pilares"
+},
+"18.4.1": {
+"pagina_pdf": 170,
+"titulo": "Introdução"
+},
+"18.4.2": {
+"pagina_pdf": 171,
+"titulo": "Armaduras longitudinais"
+},
+"18.4.2.1": {
+"pagina_pdf": 171,
+"titulo": "Diâmetro mínimo e taxa de armadura"
+},
+"18.4.2.2": {
+"pagina_pdf": 171,
+"titulo": "Distribuição transversal"
+},
+"18.4.3": {
+"pagina_pdf": 171,
+"titulo": "Armaduras transversais"
+},
+"18.5": {
+"pagina_pdf": 172,
+"titulo": "Pilares-parede"
+},
+"18.6": {
+"pagina_pdf": 172,
+"titulo": "Cabos de protensão"
+},
+"18.6.1": {
+"pagina_pdf": 172,
+"titulo": "Arranjo longitudinal"
+},
+"18.6.1.1": {
+"pagina_pdf": 172,
+"titulo": "Traçado"
+},
+"18.6.1.2": {
+"pagina_pdf": 172,
+"titulo": "Curvaturas"
+},
+"18.6.1.3": {
+"pagina_pdf": 173,
+"titulo": "Curvatura nas proximidades das ancoragens"
+},
+"18.6.1.4": {
+"pagina_pdf": 173,
+"titulo": "Fixação durante a execução"
+},
+"18.6.1.5": {
+"pagina_pdf": 173,
+"titulo": "Extremidades retas"
+},
+"18.6.1.6": {
+"pagina_pdf": 173,
+"titulo": "Prolongamento de extremidade"
+},
+"18.6.1.7": {
+"pagina_pdf": 173,
+"titulo": "Emendas"
+},
+"18.6.1.8": {
+"pagina_pdf": 173,
+"titulo": "Ancoragens"
+},
+"18.6.2": {
+"pagina_pdf": 173,
+"titulo": "Arranjo transversal"
+},
+"18.6.2.1": {
+"pagina_pdf": 173,
+"titulo": "Bainhas"
+},
+"18.6.2.1.1": {
+"pagina_pdf": 173,
+"titulo": "Protensão interna com armadura aderente"
+},
+"18.6.2.1.2": {
+"pagina_pdf": 174,
+"titulo": "Protensão interna com armadura não aderente"
+},
+"18.6.2.1.3": {
+"pagina_pdf": 174,
+"titulo": "Protensão externa"
+},
+"18.6.2.2": {
+"pagina_pdf": 174,
+"titulo": "Agrupamento de cabos na pós-tração"
+},
+"18.6.2.3": {
+"pagina_pdf": 174,
+"titulo": "Espaçamentos mínimos"
+},
+"4.4": {
+"pagina_pdf": 174,
+"titulo": "É O diâmetro externo da bainha."
+},
+"19": {
+"pagina_pdf": 175,
+"titulo": "Dimensionamento e verificação de lajes"
+},
+"19.1": {
+"pagina_pdf": 175,
+"titulo": "Simbologia específica desta seção"
+},
+"19.2": {
+"pagina_pdf": 176,
+"titulo": "Dimensionamento e verificação de lajes — Estado-limite último"
+},
+"19.3": {
+"pagina_pdf": 177,
+"titulo": "Dimensionamento e verificação de lajes —- Estados-limites de serviço"
+},
+"19.3.1": {
+"pagina_pdf": 177,
+"titulo": "Estado-limite de deformação"
+},
+"19.3.2": {
+"pagina_pdf": 177,
+"titulo": "Estados-limites de fissuração e de descompressão ou de formação de fissuras"
+},
+"19.3.3": {
+"pagina_pdf": 177,
+"titulo": "Armaduras longitudinais máximas e mínimas"
+},
+"19.3.3.1": {
+"pagina_pdf": 177,
+"titulo": "Princípios básicos"
+},
+"19.3.3.2": {
+"pagina_pdf": 177,
+"titulo": "Armaduras mínimas"
+},
+"19.3.3.3": {
+"pagina_pdf": 178,
+"titulo": "Armaduras máximas"
+},
+"19.4": {
+"pagina_pdf": 178,
+"titulo": "Força cortante em lajes e elementos lineares com by > 5d"
+},
+"19.4.1": {
+"pagina_pdf": 178,
+"titulo": "Lajes sem armadura para força cortante"
+},
+"19.4.2": {
+"pagina_pdf": 180,
+"titulo": "Lajes com armadura para força cortante"
+},
+"19.5": {
+"pagina_pdf": 180,
+"titulo": "Dimensionamento de lajes à punção"
+},
+"19.5.1": {
+"pagina_pdf": 180,
+"titulo": "Modelo de cálculo"
+},
+"19.5.2": {
+"pagina_pdf": 180,
+"titulo": "Definição da tensão solicitante nas superfícies críticas Ce C'"
+},
+"19.5.2.1": {
+"pagina_pdf": 180,
+"titulo": "Pilar interno, com carregamento simétrico (ver Figura 19.2)"
+},
+"19.5.2.2": {
+"pagina_pdf": 181,
+"titulo": "Pilar interno, com efeito de momento"
+},
+"19.5.2.3": {
+"pagina_pdf": 182,
+"titulo": "Pilares de borda"
+},
+"19.5.2.4": {
+"pagina_pdf": 183,
+"titulo": "Pilares de canto"
+},
+"19.5.2.5": {
+"pagina_pdf": 184,
+"titulo": "Capitel"
+},
+"19.5.2.6": {
+"pagina_pdf": 185,
+"titulo": "Casos especiais de definição do contorno crítico"
+},
+"19.5.2.7": {
+"pagina_pdf": 185,
+"titulo": "Interação de solicitações normais e tangenciais"
+},
+"19.5.3": {
+"pagina_pdf": 185,
+"titulo": "Definição da tensão resistente nas superfícies críticas C, C'e C”"
+},
+"19.5.3.1": {
+"pagina_pdf": 185,
+"titulo": "Verificação da tensão resistente de compressão diagonal do concreto na superfíci"
+},
+"19.5.3.2": {
+"pagina_pdf": 186,
+"titulo": "Tensão resistente na superfície crítica C' em elementos estruturais ou trechos s"
+},
+"19.5.3.3": {
+"pagina_pdf": 187,
+"titulo": "Tensão resistente na superfície crítica C” em elementos estruturais ou trechos c"
+},
+"19.5.3.4": {
+"pagina_pdf": 187,
+"titulo": "Definição da superfície crítica C”"
+},
+"19.5.3.5": {
+"pagina_pdf": 188,
+"titulo": "Armadura de punção obrigatória"
+},
+"19.5.4": {
+"pagina_pdf": 188,
+"titulo": "Colapso progressivo"
+},
+"19.5.5": {
+"pagina_pdf": 189,
+"titulo": "Verificação de elementos estruturais protendidos"
+},
+"20.1": {
+"pagina_pdf": 190,
+"titulo": "Prescrições gerais"
+},
+"20.2": {
+"pagina_pdf": 190,
+"titulo": "Bordas livres e aberturas"
+},
+"20.3": {
+"pagina_pdf": 191,
+"titulo": "Lajes sem vigas"
+},
+"20.3.1": {
+"pagina_pdf": 191,
+"titulo": "Armaduras passivas"
+},
+"29": {
+"pagina_pdf": 192,
+"titulo": "Figura 20.1 — Bordas livres e aberturas das lajes maciças"
+},
+"20.3.2": {
+"pagina_pdf": 192,
+"titulo": "Lajes protendidas"
+},
+"20.3.2.1": {
+"pagina_pdf": 192,
+"titulo": "Espaçamento máximo"
+},
+"20.3.2.2": {
+"pagina_pdf": 192,
+"titulo": "Largura máxima para disposição dos cabos em faixa externa de apoio"
+},
+"20.3.2.3": {
+"pagina_pdf": 193,
+"titulo": "Espaçamento mínimo entre cabos ou feixes de cabos"
+},
+"20.3.2.4": {
+"pagina_pdf": 193,
+"titulo": "Cobrimento mínimo"
+},
+"20.3.2.5": {
+"pagina_pdf": 193,
+"titulo": "Desvio"
+},
+"20.3.2.6": {
+"pagina_pdf": 193,
+"titulo": "Armaduras passivas e ativas"
+},
+"20.4": {
+"pagina_pdf": 194,
+"titulo": "Armaduras de punção"
+},
+"20.5": {
+"pagina_pdf": 194,
+"titulo": "Lajes armadas com telas soldadas nervuradas"
+},
+"20.5.1": {
+"pagina_pdf": 194,
+"titulo": "Ancoragem das telas soldadas nervuradas no apoio sobre vigas"
+},
+"20.5.2": {
+"pagina_pdf": 194,
+"titulo": "Emendas de armaduras em telas soldadas nervuradas"
+},
+"21": {
+"pagina_pdf": 194,
+"titulo": "Regiões especiais"
+},
+"21.1": {
+"pagina_pdf": 194,
+"titulo": "Definição"
+},
+"21.2": {
+"pagina_pdf": 195,
+"titulo": "Regiões de introdução de cargas concentradas"
+},
+"21.2.1": {
+"pagina_pdf": 195,
+"titulo": "Pressão de contato em área reduzida"
+},
+"21.2.2": {
+"pagina_pdf": 196,
+"titulo": "Articulações de concreto"
+},
+"21.2.3": {
+"pagina_pdf": 196,
+"titulo": "Região de introdução da protensão"
+},
+"21.2.4": {
+"pagina_pdf": 197,
+"titulo": "Cargas aplicadas na superfície de elementos estruturais"
+},
+"21.3": {
+"pagina_pdf": 197,
+"titulo": "Furos e aberturas"
+},
+"21.3.1": {
+"pagina_pdf": 197,
+"titulo": "Generalidades"
+},
+"21.3.2": {
+"pagina_pdf": 198,
+"titulo": "Paredes e vigas-parede"
+},
+"21.3.3": {
+"pagina_pdf": 198,
+"titulo": "Furos que atravessam as vigas na direção da altura"
+},
+"21.3.4": {
+"pagina_pdf": 199,
+"titulo": "Aberturas em lajes"
+},
+"21.4": {
+"pagina_pdf": 199,
+"titulo": "Nós de pórticos e ligações entre paredes"
+},
+"21.5": {
+"pagina_pdf": 199,
+"titulo": "Ligações de elementos estruturais pré-moldados"
+},
+"21.6": {
+"pagina_pdf": 199,
+"titulo": "Juntas de concretagem"
+},
+"22.1": {
+"pagina_pdf": 200,
+"titulo": "Simbologia específica desta seção"
+},
+"22.2": {
+"pagina_pdf": 200,
+"titulo": "Definições"
+},
+"22.3": {
+"pagina_pdf": 201,
+"titulo": "Método de bielas e tirantes"
+},
+"22.3.1": {
+"pagina_pdf": 201,
+"titulo": "Procedimento para aplicação do método"
+},
+"22.3.2": {
+"pagina_pdf": 202,
+"titulo": "Parâmetros de resistência de cálculo das bielas e regiões nodais"
+},
+"22.3.3": {
+"pagina_pdf": 202,
+"titulo": "Parâmetros de resistência de cálculo dos tirantes"
+},
+"22.4": {
+"pagina_pdf": 202,
+"titulo": "Vigas-parede"
+},
+"22.4.1": {
+"pagina_pdf": 202,
+"titulo": "Conceituação"
+},
+"22.4.2": {
+"pagina_pdf": 202,
+"titulo": "Comportamento estrutural"
+},
+"22.4.3": {
+"pagina_pdf": 203,
+"titulo": "Modelos de cálculo"
+},
+"22.4.4": {
+"pagina_pdf": 203,
+"titulo": "Detalhamento"
+},
+"22.4.4.1": {
+"pagina_pdf": 203,
+"titulo": "Armadura de flexão"
+},
+"22.4.4.2": {
+"pagina_pdf": 203,
+"titulo": "Ancoragem da armadura de flexão positiva nos apoios"
+},
+"22.4.4.3": {
+"pagina_pdf": 204,
+"titulo": "Armadura vertical"
+},
+"22.5": {
+"pagina_pdf": 204,
+"titulo": "Consolos e dentes Gerber"
+},
+"22.5.1": {
+"pagina_pdf": 204,
+"titulo": "Consolos"
+},
+"22.5.1.1": {
+"pagina_pdf": 204,
+"titulo": "Conceituação"
+},
+"22.5.1.2": {
+"pagina_pdf": 205,
+"titulo": "Comportamento estrutural"
+},
+"22.5.1.3": {
+"pagina_pdf": 206,
+"titulo": "Modelo de cálculo"
+},
+"22.5.1.4": {
+"pagina_pdf": 206,
+"titulo": "Detalhamento"
+},
+"22.5.1.4.1": {
+"pagina_pdf": 206,
+"titulo": "Armadura do tirante"
+},
+"22.5.1.4.2": {
+"pagina_pdf": 206,
+"titulo": "Aparelho de apoio"
+},
+"22.5.1.4.3": {
+"pagina_pdf": 207,
+"titulo": "Armadura de costura"
+},
+"22.5.1.4.4": {
+"pagina_pdf": 207,
+"titulo": "Armadura de suspensão"
+},
+"22.5.2": {
+"pagina_pdf": 208,
+"titulo": "Dentes Gerber"
+},
+"22.5.2.1": {
+"pagina_pdf": 208,
+"titulo": "Conceituação"
+},
+"22.5.2.2": {
+"pagina_pdf": 208,
+"titulo": "Comportamento"
+},
+"22.5.2.3": {
+"pagina_pdf": 208,
+"titulo": "Modelo de cálculo"
+},
+"22.5.2.4": {
+"pagina_pdf": 208,
+"titulo": "Detalhamento"
+},
+"22.5.2.4.1": {
+"pagina_pdf": 208,
+"titulo": "Generalidades"
+},
+"22.5.2.4.2": {
+"pagina_pdf": 209,
+"titulo": "Armadura de suspensão"
+},
+"22.5.2.4.3": {
+"pagina_pdf": 209,
+"titulo": "Ancoragem da armadura principal"
+},
+"22.5.2.4.4": {
+"pagina_pdf": 209,
+"titulo": "Ancoragem da armadura inferior da viga"
+},
+"22.5.2.4.5": {
+"pagina_pdf": 209,
+"titulo": "Casos especiais"
+},
+"22.6": {
+"pagina_pdf": 209,
+"titulo": "Sapatas"
+},
+"22.6.1": {
+"pagina_pdf": 209,
+"titulo": "Conceituação"
+},
+"22.6.2": {
+"pagina_pdf": 210,
+"titulo": "Comportamento estrutural"
+},
+"22.6.2.1": {
+"pagina_pdf": 210,
+"titulo": "Generalidades"
+},
+"22.6.2.2": {
+"pagina_pdf": 210,
+"titulo": "Sapatas rígidas"
+},
+"22.6.2.3": {
+"pagina_pdf": 210,
+"titulo": "Sapatas flexíveis"
+},
+"22.6.3": {
+"pagina_pdf": 210,
+"titulo": "Modelo de cálculo"
+},
+"22.6.4": {
+"pagina_pdf": 210,
+"titulo": "Detalhamento"
+},
+"22.6.4.1": {
+"pagina_pdf": 210,
+"titulo": "Sapatas rígidas"
+},
+"22.6.4.1.1": {
+"pagina_pdf": 210,
+"titulo": "Armadura de flexão"
+},
+"22.6.4.1.2": {
+"pagina_pdf": 211,
+"titulo": "Armadura de arranque dos pilares"
+},
+"22.6.4.1.3": {
+"pagina_pdf": 211,
+"titulo": "Sapatas flexíveis"
+},
+"22.7": {
+"pagina_pdf": 211,
+"titulo": "Blocos sobre estacas"
+},
+"22.7.1": {
+"pagina_pdf": 211,
+"titulo": "Conceituação"
+},
+"22.7.2": {
+"pagina_pdf": 211,
+"titulo": "Comportamento estrutural"
+},
+"22.7.2.1": {
+"pagina_pdf": 211,
+"titulo": "Bloco rígido"
+},
+"22.7.2.2": {
+"pagina_pdf": 211,
+"titulo": "Bloco flexível"
+},
+"22.7.3": {
+"pagina_pdf": 211,
+"titulo": "Modelo de cálculo"
+},
+"22.7.4": {
+"pagina_pdf": 212,
+"titulo": "Detalhamento"
+},
+"22.7.4.1": {
+"pagina_pdf": 212,
+"titulo": "Blocos rígidos"
+},
+"22.7.4.1.1": {
+"pagina_pdf": 212,
+"titulo": "Armadura de flexão"
+},
+"22.7.4.1.2": {
+"pagina_pdf": 212,
+"titulo": "Armadura de distribuição"
+},
+"22.7.4.1.3": {
+"pagina_pdf": 212,
+"titulo": "Armadura de suspensão"
+},
+"22.7.4.1.4": {
+"pagina_pdf": 213,
+"titulo": "Armadura de arranque dos pilares"
+},
+"22.7.4.1.5": {
+"pagina_pdf": 213,
+"titulo": "Armadura lateral e superior"
+},
+"22.7.4.2": {
+"pagina_pdf": 213,
+"titulo": "Blocos flexíveis"
+},
+"23": {
+"pagina_pdf": 213,
+"titulo": "Ações dinâmicas e fadiga"
+},
+"23.1": {
+"pagina_pdf": 213,
+"titulo": "Simbologia específica desta seção"
+},
+"23.2": {
+"pagina_pdf": 213,
+"titulo": "Generalidades"
+},
+"23.3": {
+"pagina_pdf": 213,
+"titulo": "Estado-limite de vibrações excessivas"
+},
+"23.4": {
+"pagina_pdf": 214,
+"titulo": "Estados-limites últimos provocados por ressonância ou amplificação dinâmica"
+},
+"23.5": {
+"pagina_pdf": 214,
+"titulo": "Estado-limite último de fadiga"
+},
+"23.5.1": {
+"pagina_pdf": 214,
+"titulo": "Ações cíclicas"
+},
+"23.5.2": {
+"pagina_pdf": 215,
+"titulo": "Combinações de ações a considerar"
+},
+"23.5.3": {
+"pagina_pdf": 215,
+"titulo": "Modelo de cálculo"
+},
+"23.5.4": {
+"pagina_pdf": 217,
+"titulo": "Verificação da fadiga do concreto"
+},
+"23.5.4.1": {
+"pagina_pdf": 217,
+"titulo": "Concreto em compressão"
+},
+"23.5.4.2": {
+"pagina_pdf": 218,
+"titulo": "Concreto em tração"
+},
+"23.5.5": {
+"pagina_pdf": 218,
+"titulo": "Verificação da fadiga da armadura"
+},
+"23.6": {
+"pagina_pdf": 220,
+"titulo": "Estados-limites de serviço"
+},
+"24.1": {
+"pagina_pdf": 221,
+"titulo": "Simbologia específica desta Seção"
+},
+"24.2": {
+"pagina_pdf": 222,
+"titulo": "Campo de aplicação"
+},
+"24.3": {
+"pagina_pdf": 222,
+"titulo": "Materiais e propriedades"
+},
+"24.4": {
+"pagina_pdf": 222,
+"titulo": "Juntas e disposições construtivas"
+},
+"24.5": {
+"pagina_pdf": 222,
+"titulo": "Projeto estrutural"
+},
+"24.5.1": {
+"pagina_pdf": 222,
+"titulo": "Generalidades"
+},
+"24.5.2": {
+"pagina_pdf": 222,
+"titulo": "Tensões resistentes de cálculo"
+},
+"24.5.2.1": {
+"pagina_pdf": 222,
+"titulo": "Atensão máxima nas fibras de concreto simples devida às cargas e esforços majora"
+},
+"24.5.2.2": {
+"pagina_pdf": 223,
+"titulo": "Os valores das tensões resistentes de cálculo (valores-limites das tensões deter"
+},
+"24.5.2.4": {
+"pagina_pdf": 223,
+"titulo": "O valor da tensão de cisalhamento resistente de cálculo em lajes de concreto sim"
+},
+"24.5.2.5": {
+"pagina_pdf": 223,
+"titulo": "Ovalor datensão de cisalhamento resistente de cálculo, nos elementos estruturais"
+},
+"24.5.2.6": {
+"pagina_pdf": 223,
+"titulo": "O valor da tensão de cisalhamento resistente de cálculo à punção, no contorno C'"
+},
+"24.5.3": {
+"pagina_pdf": 223,
+"titulo": "Dimensionamento"
+},
+"24.5.4": {
+"pagina_pdf": 224,
+"titulo": "Tensões e deformações na flexão"
+},
+"24.5.4.1": {
+"pagina_pdf": 224,
+"titulo": "Diagrama tensão-deformação do concreto"
+},
+"24.5.4.2": {
+"pagina_pdf": 224,
+"titulo": "Limites das deformações médias"
+},
+"24.5.4.3": {
+"pagina_pdf": 224,
+"titulo": "Tensões resistentes de cálculo"
+},
+"24.5.5": {
+"pagina_pdf": 225,
+"titulo": "Tensões de cisalhamento"
+},
+"24.5.5.2": {
+"pagina_pdf": 225,
+"titulo": "A tensão máxima de cisalhamento twg deve ser calculada para a força cortante a u"
+},
+"24.5.5.3": {
+"pagina_pdf": 225,
+"titulo": "No caso de lajes, não pode ser feita a redução do valor da força cortante nos ap"
+},
+"24.5.6": {
+"pagina_pdf": 225,
+"titulo": "Torção"
+},
+"24.5.7": {
+"pagina_pdf": 225,
+"titulo": "Cálculo de seções submetidas à compressão e à força cortante"
+},
+"24.5.7.1": {
+"pagina_pdf": 225,
+"titulo": "Generalidades"
+},
+"24.5.7.2": {
+"pagina_pdf": 225,
+"titulo": "Cálculo simplificado de seções comprimidas"
+},
+"24.5.7.3": {
+"pagina_pdf": 226,
+"titulo": "Cálculo simplificado de seções à compressão e à força cortante"
+},
+"24.5.8": {
+"pagina_pdf": 226,
+"titulo": "Estabilidade global"
+},
+"24.6": {
+"pagina_pdf": 226,
+"titulo": "Elementos estruturais de concreto simples"
+},
+"24.6.1": {
+"pagina_pdf": 226,
+"titulo": "Pilares-parede"
+},
+"24.6.2": {
+"pagina_pdf": 227,
+"titulo": "Blocos de fundação"
+},
+"24.6.3": {
+"pagina_pdf": 227,
+"titulo": "Pilares"
+},
+"24.6.4": {
+"pagina_pdf": 228,
+"titulo": "Arcos"
+},
+"25": {
+"pagina_pdf": 228,
+"titulo": "Interfaces do projeto com a construção, utilização e manutenção"
+},
+"25.1": {
+"pagina_pdf": 228,
+"titulo": "Aceitação do projeto"
+},
+"25.2": {
+"pagina_pdf": 228,
+"titulo": "Recebimento do concreto e do aço"
+},
+"25.3": {
+"pagina_pdf": 228,
+"titulo": "Manual de utilização, inspeção e manutenção"
+},
+"Tabela 6.1": {
+"pagina_pdf": 35,
+"titulo": "Classes de agressividade ambiental (CAA)"
+},
+"Tabela 7.1": {
+"pagina_pdf": 36,
+"titulo": "Correspondência entre a classe de agressividade e a qualidade do concreto"
+},
+"Tabela 7.2": {
+"pagina_pdf": 38,
+"titulo": "Correspondência entre a classe de agressividade ambiental e"
+},
+"Tabela 8.1": {
+"pagina_pdf": 46,
+"titulo": "Valores característicos superiores da deformação específica de retração"
+},
+"Tabela 8.2": {
+"pagina_pdf": 47,
+"titulo": "Valor do coeficiente de aderência n1"
+},
+"Tabela 8.3": {
+"pagina_pdf": 50,
+"titulo": "Valores de 'P4000; em porcentagem"
+},
+"Tabela 9.1": {
+"pagina_pdf": 55,
+"titulo": "Diâmetro dos pinos de dobramento (D)"
+},
+"Tabela 9.2": {
+"pagina_pdf": 59,
+"titulo": "Diâmetro dos pinos de dobramento para estribos"
+},
+"Tabela 9.3": {
+"pagina_pdf": 61,
+"titulo": "Proporção máxima de barras tracionadas emendadas"
+},
+"Tabela 9.4": {
+"pagina_pdf": 62,
+"titulo": "Valores do coeficiente ct"
+},
+"Tabela 11.1": {
+"pagina_pdf": 83,
+"titulo": "Coeficiente yr = yr1.y+3"
+},
+"Tabela 11.2": {
+"pagina_pdf": 83,
+"titulo": "Valores do coeficiente y;2"
+},
+"Tabela 11.3": {
+"pagina_pdf": 85,
+"titulo": "Combinações últimas (continua)"
+},
+"Tabela 11.4": {
+"pagina_pdf": 87,
+"titulo": "Combinações de serviço"
+},
+"Tabela 12.1": {
+"pagina_pdf": 89,
+"titulo": "Valores dos coeficientes yc e ys"
+},
+"Tabela 13.1": {
+"pagina_pdf": 91,
+"titulo": "Valores do coeficiente adicional yn para pilares e pilares-parede"
+},
+"Tabela 13.2": {
+"pagina_pdf": 92,
+"titulo": "Valores do coeficiente adicional yn para lajes em balanço"
+},
+"Tabela 13.3": {
+"pagina_pdf": 95,
+"titulo": "Limites para deslocamentos (continua)"
+},
+"Tabela 13.4": {
+"pagina_pdf": 98,
+"titulo": "Exigências mínimas de durabilidade relacionadas à fissuração e à proteção"
+},
+"Tabela 15.1": {
+"pagina_pdf": 132,
+"titulo": "Valores de Pr"
+},
+"Tabela 17.1": {
+"pagina_pdf": 146,
+"titulo": "Valores do coeficiente é em função do tempo"
+},
+"Tabela 17.2": {
+"pagina_pdf": 148,
+"titulo": "Valores máximos de diâmetro e espaçamento, com barras de alta aderência"
+},
+"Tabela 17.3": {
+"pagina_pdf": 149,
+"titulo": "Taxas mínimas de armadura de flexão para vigas com seção"
+},
+"Tabela 18.1": {
+"pagina_pdf": 174,
+"titulo": "Espaçamentos mínimos - Caso de pós-tração"
+},
+"Tabela 18.2": {
+"pagina_pdf": 175,
+"titulo": "- Espaçamentos mínimos - Caso de pré-tração"
+},
+"Tabela 19.1": {
+"pagina_pdf": 178,
+"titulo": "Valores mínimos para armaduras passivas aderentes"
+},
+"Tabela 19.2": {
+"pagina_pdf": 181,
+"titulo": "Valores de K"
+},
+"Tabela 23.1": {
+"pagina_pdf": 214,
+"titulo": "Frequência crítica para vibrações verticais para alguns casos especiais de"
+},
+"Tabela 23.2": {
+"pagina_pdf": 218,
+"titulo": "- Parâmetros para as curvas S-N (Woeller) para os aços dentro do concreto à (con"
+},
+"Figura 3.1": {
+"pagina_pdf": 23,
+"titulo": "Estado-limite de descompressão parcial"
+},
+"Figura 8.1": {
+"pagina_pdf": 42,
+"titulo": "Resistência no estado multiaxial de tensões"
+},
+"Figura 8.2": {
+"pagina_pdf": 44,
+"titulo": "Diagrama tensão-deformação idealizado"
+},
+"Figura 8.3": {
+"pagina_pdf": 45,
+"titulo": "Diagrama de tensão-deformação para análise não linear"
+},
+"Figura 8.4": {
+"pagina_pdf": 45,
+"titulo": "Diagrama tensão-deformação bilinear de tração"
+},
+"Figura 8.5": {
+"pagina_pdf": 47,
+"titulo": "Diagrama tensão-deformação para aços de armaduras passivas"
+},
+"Figura 8.6": {
+"pagina_pdf": 49,
+"titulo": "Diagrama tensão-deformação para aços de armaduras ativas"
+},
+"Figura 9.1": {
+"pagina_pdf": 54,
+"titulo": "Ancoragem com barras transversais soldadas"
+},
+"Figura 9.2": {
+"pagina_pdf": 58,
+"titulo": "Estribo com gancho em 135º"
+},
+"Figura 9.3": {
+"pagina_pdf": 59,
+"titulo": "Ancoragem de armadura transversal por meio de barras soldadas"
+},
+"Figura 9.4": {
+"pagina_pdf": 61,
+"titulo": "Emendas supostas como na mesma seção transversal"
+},
+"Figura 9.5": {
+"pagina_pdf": 62,
+"titulo": "Armadura transversal nas emendas"
+},
+"Figura 9.6": {
+"pagina_pdf": 64,
+"titulo": "- Emendas por solda"
+},
+"Figura 9.7": {
+"pagina_pdf": 67,
+"titulo": "Introdução da protensão"
+},
+"Figura 11.1": {
+"pagina_pdf": 77,
+"titulo": "Imperfeições geométricas globais"
+},
+"Figura 11.2": {
+"pagina_pdf": 78,
+"titulo": "Imperfeições geométricas locais"
+},
+"Figura 11.3": {
+"pagina_pdf": 79,
+"titulo": "Envoltória mínima de 1º ordem"
+},
+"Figura 13.1": {
+"pagina_pdf": 94,
+"titulo": "Dimensões-limites para aberturas de lajes com dispensa de verificação"
+},
+"Figura 14.1": {
+"pagina_pdf": 105,
+"titulo": "Trechos rígidos"
+},
+"Figura 14.2": {
+"pagina_pdf": 106,
+"titulo": "Largura de mesa colaborante"
+},
+"Figura 14.3": {
+"pagina_pdf": 107,
+"titulo": "Largura efetiva com abertura"
+},
+"Figura 14.4": {
+"pagina_pdf": 107,
+"titulo": "Altura e largura efetivas de uma seção transversal"
+},
+"Figura 14.5": {
+"pagina_pdf": 108,
+"titulo": "Vão efetivo"
+},
+"Figura 14.6": {
+"pagina_pdf": 108,
+"titulo": "Arredondamento de diagrama de momentos fletores"
+},
+"Figura 14.7": {
+"pagina_pdf": 110,
+"titulo": "Capacidade de rotação de rótulas plásticas"
+},
+"Figura 14.8": {
+"pagina_pdf": 112,
+"titulo": "Aproximação em apoios extremos"
+},
+"Figura 14.9": {
+"pagina_pdf": 116,
+"titulo": "Faixas de laje para distribuição dos esforços nos pórticos múltiplos"
+},
+"Figura 15.1": {
+"pagina_pdf": 119,
+"titulo": "Relação momento-curvatura"
+},
+"Figura 15.2": {
+"pagina_pdf": 120,
+"titulo": "Envoltória mínima com 2º ordem"
+},
+"Figura 15.3": {
+"pagina_pdf": 121,
+"titulo": "Efeitos de 2º ordem localizados"
+},
+"Figura 15.4": {
+"pagina_pdf": 130,
+"titulo": "Comprimento equivalente /e"
+},
+"Figura 15.5": {
+"pagina_pdf": 131,
+"titulo": "Avaliação aproximada do efeito de 2º ordem localizado"
+},
+"Figura 17.1": {
+"pagina_pdf": 140,
+"titulo": "Domínios de estado-limite último de uma seção transversal"
+},
+"Figura 17.3": {
+"pagina_pdf": 145,
+"titulo": "Rigidez equivalente para vãos de vigas contínuas"
+},
+"Figura 17.4": {
+"pagina_pdf": 147,
+"titulo": "Concreto de envolvimento da armadura"
+},
+"Figura 17.5": {
+"pagina_pdf": 161,
+"titulo": "Flexo-torção de perfil com paredes opostas"
+},
+"Figura 18.1": {
+"pagina_pdf": 164,
+"titulo": "- Mudança de direção das armaduras"
+},
+"Figura 18.2": {
+"pagina_pdf": 165,
+"titulo": "Proteção contra flambagem das barras"
+},
+"Figura 18.3": {
+"pagina_pdf": 167,
+"titulo": "Cobertura do diagrama de força de tração solicitante pelo diagrama resistente"
+},
+"Figura 19.1": {
+"pagina_pdf": 179,
+"titulo": "Comprimento de ancoragem necessário"
+},
+"Figura 19.2": {
+"pagina_pdf": 181,
+"titulo": "Perímetro crítico em pilares internos"
+},
+"Figura 19.3": {
+"pagina_pdf": 183,
+"titulo": "Perímetro crítico em pilares de borda"
+},
+"Figura 19.4": {
+"pagina_pdf": 184,
+"titulo": "Perímetro crítico em pilares de canto"
+},
+"Figura 19.5": {
+"pagina_pdf": 184,
+"titulo": "Definição da altura útil no caso de capitel"
+},
+"Figura 19.6": {
+"pagina_pdf": 185,
+"titulo": "Perímetro crítico no caso de o contorno C apresentar reentrância"
+},
+"Figura 19.7": {
+"pagina_pdf": 185,
+"titulo": "Perímetro crítico junto à abertura na laje"
+},
+"Figura 19.8": {
+"pagina_pdf": 187,
+"titulo": "- Disposição da armadura de punção em planta e contorno"
+},
+"Figura 19.9": {
+"pagina_pdf": 188,
+"titulo": "Disposição da armadura de punção em corte"
+},
+"Figura 19.10": {
+"pagina_pdf": 189,
+"titulo": "- Armadura contra colapso progressivo"
+},
+"Figura 19.11": {
+"pagina_pdf": 189,
+"titulo": "Efeito favorável dos cabos inclinados"
+},
+"Figura 20.1": {
+"pagina_pdf": 192,
+"titulo": "Bordas livres e aberturas das lajes maciças"
+},
+"Figura 20.2": {
+"pagina_pdf": 192,
+"titulo": "Lajes sem vigas"
+},
+"Figura 20.3": {
+"pagina_pdf": 193,
+"titulo": "Disposição de cabos em faixa externa de apoio"
+},
+"Figura 21.1": {
+"pagina_pdf": 196,
+"titulo": "Regiões de pressão localizada"
+},
+"Figura 21.2": {
+"pagina_pdf": 196,
+"titulo": "Região de articulação de concreto"
+},
+"Figura 21.3": {
+"pagina_pdf": 197,
+"titulo": "Pressões junto a um pino embutido em um elemento estrutural de concreto"
+},
+"Figura 21.4": {
+"pagina_pdf": 198,
+"titulo": "Aberturas em vigas-parede de concreto armado"
+},
+"Figura 21.5": {
+"pagina_pdf": 199,
+"titulo": "Abertura vertical em vigas"
+},
+"Figura 22.1": {
+"pagina_pdf": 201,
+"titulo": "Situações típicas de regiões D"
+},
+"Figura 22.2": {
+"pagina_pdf": 202,
+"titulo": "Dois tipos comuns de vigas-parede em relação ao carregamento"
+},
+"Figura 22.3": {
+"pagina_pdf": 204,
+"titulo": "Armação típica de viga-parede com h < /"
+},
+"Figura 22.4": {
+"pagina_pdf": 205,
+"titulo": "Modelo biela-tirante para consolo curto"
+},
+"Figura 22.5": {
+"pagina_pdf": 207,
+"titulo": "Armadura típica de um consolo curto"
+},
+"Figura 22.6": {
+"pagina_pdf": 208,
+"titulo": "- Modelo biela-tirante para um dente Gerber"
+},
+"Figura 22.7": {
+"pagina_pdf": 212,
+"titulo": "- Bloco com estacas tracionadas"
+},
+"Figura 23.1": {
+"pagina_pdf": 217,
+"titulo": "Definição das tensões 0ç1 e oc2"
+},
+"Figura 23.2": {
+"pagina_pdf": 220,
+"titulo": "Formato das curvas de resistência característica à fadiga (curvas S-N)"
+},
+"Figura 24.1": {
+"pagina_pdf": 224,
+"titulo": "Diagrama de cálculo tensão-deformação do concreto com consideração"
+},
+"Figura 24.2": {
+"pagina_pdf": 226,
+"titulo": "Seção flexo-comprimida"
+}
+}
+}

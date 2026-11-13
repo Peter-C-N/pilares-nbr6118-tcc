@@ -1,0 +1,9 @@
+# Versões usadas para gerar os resultados do TCC (Python 3.13.16)
+numpy==2.5.3
+scipy==1.18.1
+matplotlib==3.11.2
+openpyxl==3.1.5
+python-docx==1.2.0
+Pillow==12.3.0
+# Opcional: captura das janelas do auditor visual para as figuras do TCC (figuras_complementares.py)
+# playwright==1.56.0

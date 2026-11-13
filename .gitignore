@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+
+# Saídas gravadas pelos programas que não ficam no repositório (o README diz o que fica)
+saida/figuras/
+saida/*.csv
+saida/*.json
+saida/sensibilidade_secao_liquida.txt
+saida/conferencia_busca_exaustiva.txt
+saida/memorial/*.docx
+saida/memorial/*.json
+tqs/*.json
+tqs/camada2_nm1r_tqs.csv
+tqs/decomposicao_curvatura_tqs.csv
+tqs/replica_tqs_nm1r.csv
+tqs/teste_minimo_tqs.csv
+tqs/envoltoria_minima_lote_tqs.csv
+tqs/comparacao_tqs_lote_resumo.txt
+
+# Listagens e relatórios gravados pelo TQS (não fazem parte do repositório)
+tqs/resultados_lote/

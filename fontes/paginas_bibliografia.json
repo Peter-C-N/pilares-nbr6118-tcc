@@ -1,0 +1,41 @@
+{
+ "pasta_local": "../bibliografia/",
+ "documentos": {
+  "NBR": {
+   "arquivo": "1 Normas ABNT/ABNT NBR 6118 (2023) - versão corrigida 2.pdf",
+   "descricao": "ABNT NBR 6118:2023, versão corrigida 2 (exemplar licenciado; não é reproduzido aqui)",
+   "regra": "página do PDF = página impressa + 18 (conferido nas páginas impressas 1, 66 e 222)"
+  },
+  "BASTOS": {
+   "arquivo": "3 Apostilas e notas de aula/BASTOS (2017) - Pilares de concreto armado.pdf",
+   "deslocamento": 4,
+   "regra": "página do PDF = página impressa + 4 (conferido nas páginas impressas 29, 30 e 77)"
+  },
+  "FUSCO": {
+   "arquivo": "2 Livros/FUSCO (1981) - Estruturas de concreto - solicitações normais.pdf",
+   "deslocamento": 10,
+   "regra": "página do PDF = página impressa + 10 (conferido nas páginas impressas 67, 102 e 226)"
+  },
+  "PINHEIRO": {
+   "arquivo": "3 Apostilas e notas de aula/PINHEIRO (2007) - Fundamentos do concreto e projeto de edifícios.pdf",
+   "regra": "itens localizados pelo título no texto do PDF",
+   "itens": {
+    "1.3": 7,
+    "1.4": 8,
+    "16.1": 219,
+    "16.4.5": 228,
+    "16.6": 230,
+    "16.8.1": 234,
+    "16.9": 236,
+    "16.10": 241
+   }
+  },
+  "VENTURINI": {
+   "arquivo": "3 Apostilas e notas de aula/VENTURINI e RODRIGUES (1987) - Flexão reta (ábacos).pdf",
+   "descricao": "VENTURINI, W. S.; RODRIGUES, R. O. Dimensionamento de peças retangulares de concreto armado solicitadas à flexão reta. São Carlos: EESC-USP, 1987 (reimpressão 2000)",
+   "deslocamento": 2,
+   "deslocamento_abaco": 37,
+   "regra": "texto: página do PDF = página impressa + 2 (conferido nas páginas impressas 13 e 14); ábaco A-n: página do PDF = n + 37 (conferido em A-1, A-4, A-27, A-29 e A-63)"
+  }
+ }
+}
